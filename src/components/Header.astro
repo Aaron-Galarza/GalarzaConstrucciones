@@ -1,0 +1,524 @@
+---
+import Logo from './Logo.astro';
+import { getCollection } from 'astro:content';
+import {
+  NAV_LINKS,
+  CTA_PRIMARY,
+  CONTACT,
+  COMPANY,
+  SERVICES,
+} from '../lib/company';
+
+// Ruta actual para marcar el ítem activo (y su hijo) en el header.
+const pathname = Astro.url.pathname;
+
+const obras = (await getCollection('obras'))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const servicios = [...(await getCollection('servicios'))].sort(
+  (a, b) =>
+    SERVICES.findIndex((s) => s.slug === a.id) -
+    SERVICES.findIndex((s) => s.slug === b.id),
+);
+
+type NavChild = {
+  href: string;
+  label: string;
+  sub?: string;
+  isActive: boolean;
+  external?: boolean;
+};
+
+type NavItem = {
+  href: string;
+  label: string;
+  isActive: boolean;
+  children: NavChild[];
+};
+
+const isActive = (href: string) =>
+  href === '/' ? pathname === '/' : pathname.startsWith(href);
+
+const navTree: NavItem[] = NAV_LINKS.map((link) => {
+  const children: NavChild[] = [];
+
+  if (link.href === '/servicios/') {
+    for (const s of servicios) {
+      children.push({
+        href: `/servicios/${s.id}/`,
+        label: s.data.title,
+        isActive: pathname === `/servicios/${s.id}/`,
+      });
+    }
+  } else if (link.href === '/obras/') {
+    for (const o of obras) {
+      children.push({
+        href: `/obras/${o.id}/`,
+        label: o.data.title,
+        sub: `${o.data.category} · ${o.data.location}`,
+        isActive: pathname === `/obras/${o.id}/`,
+      });
+    }
+  } else if (link.href === '/nosotros/') {
+    children.push(
+      { href: '/nosotros/#historia', label: 'Cómo empezó', isActive: false },
+      { href: '/nosotros/#trayectoria', label: 'Trayectoria', isActive: false },
+      {
+        href: '/nosotros/#recomiendan',
+        label: 'Por qué nos recomiendan',
+        isActive: false,
+      },
+      { href: '/nosotros/#experiencia', label: 'Experiencia', isActive: false },
+    );
+  } else if (link.href === '/contacto/') {
+    children.push(
+      {
+        href: CONTACT.whatsappText,
+        label: 'WhatsApp',
+        sub: COMPANY.phone.mobile,
+        isActive: false,
+        external: true,
+      },
+      {
+        href: CONTACT.telLandline,
+        label: 'Teléfono',
+        sub: COMPANY.phone.landline,
+        isActive: false,
+      },
+      {
+        href: CONTACT.mailto,
+        label: 'Email',
+        sub: COMPANY.email,
+        isActive: false,
+      },
+      {
+        href: COMPANY.instagram.url,
+        label: 'Instagram',
+        sub: COMPANY.instagram.handle,
+        isActive: false,
+        external: true,
+      },
+    );
+  }
+
+  return {
+    href: link.href,
+    label: link.label,
+    isActive: isActive(link.href),
+    children,
+  };
+});
+---
+
+<header class="site-header">
+  <div class="shell header-inner">
+    <input type="checkbox" id="nav-check" class="nav-check" />
+    <a href="/" class="brand-link" aria-label="Galarza Construcción — volver al inicio">
+      <Logo />
+    </a>
+
+    <nav class="nav" aria-label="Navegación principal">
+      <ul class="nav-list">
+        {
+          navTree.map((item) => (
+            <li class:list={['nav-item', { 'has-children': item.children.length > 0 }]}>
+              <a
+                href={item.href}
+                class:list={['nav-link', { 'is-active': item.isActive }]}
+                aria-current={item.isActive ? 'page' : undefined}
+              >
+                {item.label}
+{
+                item.children.length > 0 && (
+                  <span class="nav-caret" aria-hidden="true"></span>
+                )
+              }
+            </a>
+
+              {
+                item.children.length > 0 && (
+                  <ul class="dropdown" aria-label={`Submenú de ${item.label}`}>
+                    {
+                      item.children.map((child) => (
+                        <li>
+                          <a
+                            href={child.href}
+                            class:list={['drop-link', { 'is-active': child.isActive }]}
+                            aria-current={child.isActive ? 'page' : undefined}
+                            {...(child.external ? { target: '_blank', rel: 'noopener' } : {})}
+                          >
+                            <span class="drop-label">{child.label}</span>
+                            {
+                              child.sub && (
+                                <span class="drop-sub">{child.sub}</span>
+                              )
+                            }
+                          </a>
+                        </li>
+                      ))
+                    }
+                    <li class="drop-all">
+                      <a href={item.href} class="drop-all-link">
+                        Ir a {item.label}
+                      </a>
+                    </li>
+                  </ul>
+                )
+              }
+            </li>
+          ))
+        }
+        <li class="nav-mobile-cta">
+          <a href={CTA_PRIMARY.href} class="btn" target="_blank" rel="noopener">
+            {CTA_PRIMARY.label}
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a href={CTA_PRIMARY.href} class="btn btn--ghost header-cta" target="_blank" rel="noopener">
+        {CTA_PRIMARY.label}
+      </a>
+      <label for="nav-check" class="nav-toggle" aria-label="Abrir o cerrar el menú">
+        <span class="nav-toggle-box"></span>
+      </label>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--color-paper);
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    min-height: 72px;
+  }
+
+  .brand-link {
+    text-decoration: none;
+    display: inline-flex;
+    margin-right: auto;
+  }
+
+  /* Conmutador CSS para el menú móvil (sin JavaScript) */
+  .nav-check {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-item {
+    position: relative;
+  }
+
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.55rem 0.85rem;
+    color: var(--color-ink);
+    text-decoration: none;
+    font-weight: 500;
+    font-variation-settings: 'wght' 500;
+    font-size: 0.98rem;
+    border-radius: 2px;
+    text-underline-offset: 4px;
+  }
+
+  .nav-link:hover {
+    color: var(--color-navy);
+    text-decoration-color: var(--color-cyan);
+  }
+
+  .nav-link.is-active {
+    color: var(--color-navy);
+    font-weight: 700;
+    font-variation-settings: 'wght' 700;
+    box-shadow: inset 0 -2px 0 var(--color-cyan);
+  }
+
+  .nav-caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 0.4rem;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid currentColor;
+  }
+
+  /* Panel desplegable */
+  .dropdown {
+    position: absolute;
+    top: calc(100% - 0.1rem);
+    left: 0.3rem;
+    min-width: 290px;
+    margin: 0;
+    padding: 0.4rem;
+    list-style: none;
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-top: 3px solid var(--color-navy);
+    box-shadow: 0 16px 32px -14px rgba(10, 30, 44, 0.28);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition:
+      opacity 0.15s ease,
+      transform 0.15s ease,
+      visibility 0s linear 0.15s;
+    z-index: 90;
+  }
+
+  .nav-item:hover .dropdown,
+  .nav-item:focus-within .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition-delay: 0s;
+  }
+
+  .drop-link {
+    display: block;
+    padding: 0.55rem 0.7rem;
+    border-radius: 2px;
+    text-decoration: none;
+    color: var(--color-ink);
+  }
+
+  .drop-link:hover {
+    background: var(--color-navy);
+    color: #fff;
+  }
+
+  .drop-link.is-active {
+    background: var(--color-paper);
+    color: var(--color-navy);
+    font-weight: 700;
+    box-shadow: inset 3px 0 0 var(--color-cyan);
+  }
+
+  .drop-label {
+    display: block;
+    font-size: 0.92rem;
+    font-weight: 600;
+  }
+
+  .drop-sub {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    margin-top: 0.1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .drop-link:hover .drop-sub {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .drop-link.is-active .drop-sub {
+    color: var(--color-muted);
+  }
+
+  .drop-all {
+    border-top: 1px solid var(--color-line);
+    margin-top: 0.35rem;
+  }
+
+  .drop-all-link {
+    display: block;
+    padding: 0.5rem 0.7rem;
+    color: var(--color-navy);
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+
+  .drop-all-link:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--color-cyan);
+    text-underline-offset: 3px;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .nav-toggle {
+    display: none;
+    cursor: pointer;
+  }
+
+  .nav-toggle-box {
+    display: block;
+    width: 24px;
+    height: 18px;
+    position: relative;
+  }
+
+  .nav-toggle-box::before,
+  .nav-toggle-box::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--color-ink);
+    transition: transform 0.2s ease, top 0.2s ease;
+  }
+
+  .nav-toggle-box::before,
+  .nav-toggle-box::after {
+    top: 8px;
+  }
+
+  .nav-check:checked ~ .nav-toggle .nav-toggle-box::before {
+    transform: rotate(45deg);
+  }
+
+  .nav-check:checked ~ .nav-toggle .nav-toggle-box::after {
+    transform: rotate(-45deg);
+  }
+
+  .nav-mobile-cta {
+    display: none;
+  }
+
+  @media (max-width: 880px) {
+    .header-inner {
+      justify-content: space-between;
+    }
+
+    .nav-toggle {
+      display: block;
+    }
+
+    .header-cta {
+      display: none;
+    }
+
+    .nav {
+      position: fixed;
+      inset: 72px 0 auto 0;
+      background: var(--color-navy-ink);
+      border-bottom: 1px solid var(--color-line-on-dark);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+    }
+
+    .nav-check:checked ~ .nav {
+      max-height: calc(100dvh - 72px);
+      overflow-y: auto;
+    }
+
+    .nav-list {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: var(--space-sm) var(--shell-pad) var(--space-lg);
+    }
+
+    .nav-item {
+      position: static;
+    }
+
+    .nav-link {
+      color: #fff;
+      padding: 0.85rem 0.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 1.05rem;
+      width: 100%;
+    }
+
+    .nav-link.is-active {
+      color: var(--color-cyan);
+      font-weight: 700;
+      box-shadow: none;
+      border-bottom-color: var(--color-cyan);
+    }
+
+    /* En móvil los desplegables quedan expandidos y estáticos */
+    .dropdown {
+      position: static;
+      transform: none;
+      opacity: 1;
+      visibility: visible;
+      min-width: 0;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 0.1rem 0 0.4rem 0.5rem;
+    }
+
+    .drop-link {
+      color: #fff;
+      padding: 0.6rem 0.75rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .drop-link:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+
+    .drop-link.is-active {
+      background: rgba(18, 163, 184, 0.14);
+      color: var(--color-cyan);
+      box-shadow: inset 3px 0 0 var(--color-cyan);
+    }
+
+    .drop-sub {
+      color: rgba(255, 255, 255, 0.6);
+      white-space: normal;
+    }
+
+    .drop-link:hover .drop-sub,
+    .drop-link.is-active .drop-sub {
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .drop-all {
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .drop-all-link {
+      color: var(--color-cyan);
+    }
+
+    .nav-caret {
+      display: none;
+    }
+
+    .nav-mobile-cta {
+      display: block;
+      margin-top: var(--space-md);
+    }
+
+    .nav-mobile-cta .btn {
+      width: 100%;
+    }
+  }
+</style>

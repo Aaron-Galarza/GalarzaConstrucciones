@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import TrajectorySection from '../../components/TrajectorySection.astro';
+import ExperienceSection from '../../components/ExperienceSection.astro';
+import CTASection from '../../components/CTASection.astro';
+import { personSchema, breadcrumbSchema, localBusinessSchema } from '../../lib/schema';
+
+const schema = [
+  personSchema(),
+  localBusinessSchema(),
+  breadcrumbSchema([
+    { name: 'Inicio', path: '/' },
+    { name: 'Nosotros', path: '/nosotros/' },
+  ]),
+];
+---
+
+<BaseLayout
+  title="Nosotros | Galarza Construcción — Trayectoria desde 1990"
+  description="De ayudante de albañil a ingeniero en construcciones. La historia de Galarza Construcción: formación académica y más de tres décadas de obra real en Resistencia y el Chaco."
+  path="/nosotros/"
+  schemas={schema}
+>
+  <div class="shell page-content">
+    <Breadcrumbs
+      items={[
+        { name: 'Inicio', path: '/' },
+        { name: 'Nosotros', path: '/nosotros/' },
+      ]}
+    />
+
+    <header class="page-head">
+      <p class="annotation">Nosotros</p>
+      <h1>De ayudante de albañil a ingeniero.</h1>
+      <p class="lead">
+        La trayectoria de Galarza Construcción se construyó del lado real de la
+        obra. La explicación de cómo se formó un criterio técnico que combina
+        formación académica y ejecución directa.
+      </p>
+    </header>
+
+    <div class="story" id="historia">
+      <p>
+        El trabajo en construcción empezó en <strong>1990</strong>, como ayudante
+        de albañil: el oficio que sostuvo los estudios de ingeniería. Antes de
+        eso, de chico, el interés ya estaba — jugar a construir casas, puentes y
+        caminos. Esa curiosidad, estimulada por la familia, terminó encaminando
+        la vocación hacia algo parecido a lo que se jugaba.
+      </p>
+      <p>
+        Ese punto de partida explica el valor diferencial de la empresa:
+        <strong> formación académica en Ingeniería en Construcciones más
+        experiencia directa de obra</strong>. No es una historia sentimental: es
+        la forma en que se construyó el criterio. Saber cómo se hace el trabajo
+        no por haberlo leído, sino por haberlo hecho.
+      </p>
+      <p>
+        Ese criterio se formalizó con los años. Hacia 2004 la actividad tomó su
+        marco legal, con inscripción en el Registro de Empresas de la Provincia y
+        como proveedor del Estado. Desde entonces la empresa combina obra
+        pública, infraestructura y construcción privada, con un compromiso que se
+        mantiene en cada proyecto: <strong>asumir la responsabilidad completa,
+        cumpliendo plazos, normativas y expectativas técnicas</strong>.
+      </p>
+    </div>
+
+    <h2 class="page-h2">Trayectoria</h2>
+  </div>
+
+  <TrajectorySection />
+
+  <div class="shell page-content" id="recomiendan">
+    <h2 class="page-h2">Por qué nos recomiendan</h2>
+    <div class="why-grid">
+      <article class="card why-card">
+        <h3>Soluciones a requerimientos técnicos</h3>
+        <p class="small">
+          El motivo principal de las recomendaciones: dar respuesta real a
+          problemas técnicos de la construcción, con diagnóstico antes que
+          reparación.
+        </p>
+      </article>
+      <article class="card why-card">
+        <h3>Honestidad y precios justos</h3>
+        <p class="small">
+          Presupuestos por rubros, cantidades claras y criterio técnico. Se
+          recomienda a Galarza por honestidad y por precios justos.
+        </p>
+      </article>
+    </div>
+  </div>
+
+  <ExperienceSection />
+  <CTASection />
+</BaseLayout>
+
+<style>
+  .page-content {
+    padding-top: var(--space-lg);
+  }
+
+  .page-head {
+    max-width: var(--container-narrow);
+    margin-bottom: var(--space-lg);
+  }
+
+  .page-head .lead {
+    font-size: var(--text-lg);
+    color: var(--color-muted);
+    margin-top: var(--space-sm);
+  }
+
+  .story {
+    max-width: 66ch;
+    margin-bottom: var(--space-xl);
+  }
+
+  .page-h2 {
+    margin-top: var(--space-xl);
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+  }
+
+  .why-card {
+    padding: var(--space-lg);
+    border-top: 3px solid var(--color-navy);
+  }
+
+  @media (max-width: 700px) {
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

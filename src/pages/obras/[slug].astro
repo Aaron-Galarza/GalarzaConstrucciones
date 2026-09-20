@@ -1,0 +1,244 @@
+---
+// Página dinámica de obra: detalle completo (descripción, problema, solución,
+// resultado) + formato de caso de estudio cuando la obra lo declara.
+
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CTASection from '../../components/CTASection.astro';
+import WorkGallery from '../../components/WorkGallery.astro';
+import { workSchema, breadcrumbSchema, localBusinessSchema } from '../../lib/schema';
+
+export async function getStaticPaths() {
+  const obras = await getCollection('obras');
+  return obras.map((obra) => ({
+    params: { slug: obra.id },
+    props: { obra },
+  }));
+}
+
+const { obra } = Astro.props;
+
+const serviciosRelacionados = (await getCollection('servicios')).filter(
+  (s) => obra.data.services.includes(s.id),
+);
+
+const isCase = obra.data.caseStudy;
+
+const schema = [
+  workSchema({
+    title: obra.data.title,
+    description: obra.data.summary,
+    path: `/obras/${obra.id}/`,
+    location: obra.data.location,
+    image: obra.data.gallery[0]?.src,
+  }),
+  localBusinessSchema(),
+  breadcrumbSchema([
+    { name: 'Inicio', path: '/' },
+    { name: 'Obras', path: '/obras/' },
+    { name: obra.data.title, path: `/obras/${obra.id}/` },
+  ]),
+];
+---
+
+<BaseLayout
+  title={`${obra.data.title} | Obras de Galarza Construcción`}
+  description={obra.data.summary}
+  path={`/obras/${obra.id}/`}
+  image={obra.data.gallery[0]?.src}
+  schemas={schema}
+>
+  <div class="shell page-content">
+    <Breadcrumbs
+      items={[
+        { name: 'Inicio', path: '/' },
+        { name: 'Obras', path: '/obras/' },
+        { name: obra.data.title, path: `/obras/${obra.id}/` },
+      ]}
+    />
+
+    <header class="page-head">
+      {
+        isCase && (
+          <p class="annotation">Caso de estudio</p>
+        )
+      }
+      <h1>{obra.data.title}</h1>
+      <p class="obra-meta small">
+        {obra.data.category} · {obra.data.location}, {obra.data.province}
+        {obra.data.period ? ` · ${obra.data.period}` : ''}
+      </p>
+      <p class="lead">{obra.data.description}</p>
+    </header>
+
+    {
+      obra.data.gallery.length > 0 && (
+        <WorkGallery
+          items={obra.data.gallery}
+          heading="Registro fotográfico de la obra"
+        />
+      )
+    }
+
+    <div class="layout-grid">
+      <article class="case-body">
+        <section class="block">
+          <h2>Problema</h2>
+          <p>{obra.data.problem}</p>
+        </section>
+
+        <section class="block">
+          <h2>Solución</h2>
+          <p>{obra.data.solution}</p>
+        </section>
+
+        <section class="block">
+          <h2>Resultado</h2>
+          <p>{obra.data.result}</p>
+        </section>
+
+        {
+          serviciosRelacionados.length > 0 && (
+            <section class="block">
+              <h2>Servicios involucrados</h2>
+              <ul class="service-tags">
+                {
+                  serviciosRelacionados.map((s) => (
+                    <li>
+                      <a href={`/servicios/${s.id}/`}>{s.data.title}</a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </section>
+          )
+        }
+      </article>
+
+      <aside class="side-col">
+        <div class="side-card">
+          <h3>¿Tenés un proyecto similar?</h3>
+          <p class="small">
+            Si tu obra plantea un desafío de estructura, remodelación o
+            construcción, contanos el caso y lo evaluamos.
+          </p>
+          <a
+            href="https://wa.me/549362154660649?text=Hola%2C%20quiero%20consultar%20mi%20proyecto"
+            class="btn"
+            target="_blank"
+            rel="noopener"
+          >
+            Consultar mi proyecto
+          </a>
+          <a href="/obras/" class="btn btn--ghost side-link">Ver más obras</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <CTASection />
+</BaseLayout>
+
+<style>
+  .page-content {
+    padding-top: var(--space-lg);
+  }
+
+  .page-head {
+    max-width: var(--container-narrow);
+    margin-bottom: var(--space-lg);
+  }
+
+  .obra-meta {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-md);
+  }
+
+  .lead {
+    font-size: var(--text-lg);
+    color: var(--color-muted);
+    margin-top: var(--space-sm);
+    max-width: 62ch;
+  }
+
+  .layout-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 20rem;
+    gap: var(--space-xl);
+    align-items: start;
+  }
+
+  .case-body {
+    min-width: 0;
+  }
+
+  .block {
+    margin-bottom: var(--space-xl);
+  }
+
+  .block h2 {
+    font-size: 1.4rem;
+    margin-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--color-line);
+    padding-bottom: 0.5rem;
+  }
+
+  .block p {
+    max-width: 64ch;
+  }
+
+  .service-tags {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .service-tags a {
+    display: inline-block;
+    border: 1px solid var(--color-line);
+    background: var(--color-surface);
+    padding: 0.55rem 1rem;
+    text-decoration: none;
+    color: var(--color-navy);
+    border-radius: 2px;
+    font-weight: 600;
+    font-size: var(--text-sm);
+  }
+
+  .service-tags a:hover {
+    border-color: var(--color-navy);
+  }
+
+  .side-card {
+    position: sticky;
+    top: 100px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-top: 3px solid var(--color-navy);
+    padding: var(--space-lg);
+  }
+
+  .side-card .btn {
+    width: 100%;
+    margin-bottom: var(--space-sm);
+  }
+
+  .side-link {
+    width: 100%;
+  }
+
+  @media (max-width: 900px) {
+    .layout-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .side-card {
+      position: static;
+    }
+  }
+</style>

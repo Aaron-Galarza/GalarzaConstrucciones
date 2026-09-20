@@ -1,0 +1,68 @@
+---
+// Obras destacadas de la home: lee la colección `obras` y muestra las que
+// están marcadas como featured, ordenadas por `order`.
+
+import { getCollection } from 'astro:content';
+import BlueprintCard from './BlueprintCard.astro';
+
+const obras = (await getCollection('obras'))
+  .filter((obra) => obra.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<section class="section works">
+  <div class="shell">
+    <header class="section-head">
+      <p class="annotation">Obras destacadas</p>
+      <h2>Proyectos reales, ejecutados y supervisados.</h2>
+      <p class="lead">
+        Una selección de obras que muestran escala, complejidad y resolución
+        técnica.
+      </p>
+    </header>
+
+    <div class="works-grid">
+      {
+        obras.map((obra, i) => (
+          <BlueprintCard
+            code={`O-${String(i + 1).padStart(2, '0')}`}
+            title={obra.data.title}
+            href={`/obras/${obra.id}/`}
+            category={obra.data.category}
+            location={obra.data.location}
+            image={obra.data.gallery[0]?.src}
+            imageAlt={obra.data.gallery[0]?.alt}
+          />
+        ))
+      }
+    </div>
+
+    <p class="works-more">
+      <a href="/obras/" class="btn btn--ghost">Ver todas las obras</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+  }
+
+  .works-more {
+    margin-top: var(--space-lg);
+  }
+
+  @media (max-width: 1024px) {
+    .works-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .works-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

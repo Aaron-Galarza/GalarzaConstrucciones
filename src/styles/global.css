@@ -1,0 +1,387 @@
+/* ============================================================
+   ESTILOS GLOBALES — base, tipografía, utilidades de layout,
+   botones, enlaces, secciones. Los componentes cargan su CSS
+   propio en <style> local.
+   ============================================================ */
+
+@import './tokens.css';
+
+/* ---------- Reset básico ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+/* Secciones ancladas (menú con subíndices): no quedan tras el header fijo. */
+[id] {
+  scroll-margin-top: 92px;
+}
+
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 400;
+  font-variation-settings: 'wght' 400;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  display: block;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- Tipografía ---------- */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 640;
+  font-variation-settings: 'wght' 640;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin: 0 0 var(--space-sm);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--text-3xl);
+  font-weight: 680;
+  font-variation-settings: 'wght' 680;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: var(--text-2xl);
+  max-width: 22ch;
+}
+
+h3 {
+  font-size: var(--text-xl);
+}
+
+h4 {
+  font-size: var(--text-base);
+}
+
+p {
+  margin: 0 0 var(--space-sm);
+  max-width: 72ch;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  color: var(--color-navy);
+  text-decoration: underline;
+  text-decoration-color: var(--color-cyan);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--color-cyan);
+}
+
+strong,
+b {
+  font-weight: 640;
+  font-variation-settings: 'wght' 640;
+}
+
+.small {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+/* ---------- Accesibilidad ---------- */
+:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-sm);
+  top: -100%;
+  z-index: 200;
+  background: var(--color-navy-ink);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: var(--space-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- Layout ---------- */
+.shell {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--shell-pad);
+  width: 100%;
+}
+
+.shell--narrow {
+  max-width: var(--container-narrow);
+}
+
+.section {
+  padding-block: var(--section-pad);
+}
+
+.section--tight {
+  padding-block: calc(var(--section-pad) * 0.6);
+}
+
+/* Secciones oscuras (héroe, casos, CTA, footer) */
+.dark {
+  background: var(--color-navy-ink);
+  color: var(--color-ink-on-dark);
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4 {
+  color: #fff;
+}
+
+.dark p,
+.dark .small,
+.dark .muted {
+  color: var(--color-muted-on-dark);
+}
+
+.dark a {
+  color: #fff;
+  text-decoration-color: rgba(18, 163, 184, 0.8);
+}
+
+.dark a:hover {
+  color: #fff;
+}
+
+/* Encabezado de sección estándar */
+.section-head {
+  max-width: var(--container-narrow);
+  margin-bottom: var(--space-lg);
+}
+
+.section-head.is-centered {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-head .lead {
+  font-size: var(--text-lg);
+  color: var(--color-muted);
+  margin-top: var(--space-sm);
+}
+
+.dark .section-head .lead {
+  color: var(--color-muted-on-dark);
+}
+
+/* Anotación de sección — estilo título de plano técnico */
+.annotation {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: var(--space-sm);
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-variation-settings: 'wght' 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-cyan);
+}
+
+.annotation::before {
+  content: '';
+  width: 2.15rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.annotation--center {
+  justify-content: center;
+}
+
+.annotation--center::after {
+  content: '';
+  width: 2.15rem;
+  height: 1px;
+  background: currentColor;
+}
+
+/* ---------- Botones ---------- */
+.btn {
+  --btn-bg: var(--color-navy);
+  --btn-color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0.85rem 1.6rem;
+  border: 1px solid var(--btn-bg);
+  border-radius: 2px;
+  background: var(--btn-bg);
+  color: var(--btn-color);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  font-variation-settings: 'wght' 600;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+    color 0.15s ease, transform 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  background: var(--color-navy-ink);
+  border-color: var(--color-navy-ink);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-color: var(--color-navy);
+}
+
+.btn--ghost:hover {
+  --btn-bg: var(--color-navy);
+  --btn-color: #fff;
+  border-color: var(--color-navy);
+}
+
+.dark .btn--ghost,
+.btn--on-dark {
+  --btn-bg: transparent;
+  --btn-color: #fff;
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.dark .btn--ghost:hover {
+  --btn-bg: #fff;
+  --btn-color: var(--color-navy-ink);
+  border-color: #fff;
+}
+
+.btn--om-dark {
+  background: var(--color-cyan);
+  border-color: var(--color-cyan);
+  color: #06202a;
+}
+
+.btn--om-dark:hover {
+  background: #0c8fa3;
+  border-color: #0c8fa3;
+}
+
+/* ---------- Tarjetas técnicas ---------- */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+}
+
+.card--link {
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.card--link:hover {
+  border-color: var(--color-navy);
+  color: inherit;
+  transform: translateY(-2px);
+}
+
+/* ---------- Listas ---------- */
+ul,
+ol {
+  padding-left: 1.25rem;
+}
+
+li {
+  margin-bottom: 0.35rem;
+}
+
+li::marker {
+  color: var(--color-cyan);
+}
+
+/* ---------- Utilidades varias ---------- */
+.muted {
+  color: var(--color-muted);
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.divider {
+  height: 1px;
+  background: var(--color-line);
+  border: 0;
+  margin: 0;
+}
+
+.dark .divider {
+  background: var(--color-line-on-dark);
+}
+
+/* Los encabezados de página (h1) no deben quedar pegados al layout */
+.page-h1 {
+  margin-bottom: var(--space-lg);
+}

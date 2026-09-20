@@ -1,0 +1,2345 @@
+1. ui-ux-pro-max — la principal
+
+Específicamente está hecha para diseño UI/UX y soporta OpenCode. Incluye un sistema de diseño, selección de estilos, tipografías, paletas, reglas UX y revisión visual.
+
+Instalación:
+
+npx skills add https://github.com/nextlevelbuilder/ui-ux-pro-max-skill --skill ui-ux-pro-max
+
+La skill además tiene integración explícita para OpenCode.
+
+2. frontend-design — segunda que considero muy útil
+
+Es la skill oficial de Anthropic para crear interfaces distintivas y de producción, evitando precisamente la estética repetitiva/plantillada de interfaces generadas por IA. Hace énfasis en dirección visual, tipografía, composición y decisiones deliberadas de diseño.
+
+Instalación:
+
+npx skills add https://github.com/anthropics/skills --skill frontend-design
+Para Galarza
+
+Yo instalaría las dos, pero le diría a OpenCode que:
+
+UI/UX Pro Max = sistema de diseño y dirección visual
+frontend-design = criterio de diseño y anti-estética genérica de IA
+
+Y además le pondría una regla explícita:
+
+No quiero una landing genérica de IA. No usar patrones cliché de SaaS, gradients violetas, glassmorphism gratuito, bento grids porque sí, blobs, cards repetitivas, animaciones innecesarias ni layouts previsibles. El diseño debe nacer de la identidad de Galarza Construcción: ingeniería, arquitectura, obra, materiales, planos, estructuras, precisión y trayectoria. Debe parecer diseñado por un estudio profesional especializado en arquitectura/construcción, no generado por una IA.
+
+# SPEC — GALARZA CONSTRUCCIÓN
+
+## 0. OBJETIVO PRINCIPAL
+
+Construir una landing/site institucional profesional para **Galarza Construcción**, orientada principalmente a:
+
+* Resistencia, Chaco
+* Chaco, Argentina
+* búsqueda de servicios de construcción
+* búsquedas relacionadas con ingeniería y resolución de problemas constructivos
+* SEO local
+* SEO nacional progresivo
+* Google Search
+* Google AI Overviews / AI Mode
+* Bing / Copilot
+* ChatGPT Search y otros sistemas de búsqueda generativa
+
+### Objetivo de negocio
+
+La web debe convertir visitas en consultas reales de personas que necesitan:
+
+* construir
+* remodelar
+* ampliar
+* resolver problemas estructurales
+* resolver patologías de la construcción
+* dirección técnica
+* presupuestos / cómputos
+* proyectos
+* regularizaciones
+* obras civiles
+
+### Objetivo SEO
+
+Construir una base técnica y semántica sólida para competir inicialmente por búsquedas de:
+
+* empresa constructora en Resistencia
+* empresa de construcción en Resistencia
+* constructora en Resistencia Chaco
+* constructora en Chaco
+* ingeniero en construcciones en Resistencia
+* remodelaciones en Resistencia
+* ampliaciones en Resistencia
+* problemas estructurales en Resistencia
+* patologías de la construcción en Resistencia
+* soluciones estructurales en Chaco
+* dirección técnica en Resistencia
+
+Y progresivamente ampliar el alcance hacia búsquedas nacionales relacionadas.
+
+### Objetivo AI Search
+
+La web debe ser extremadamente fácil de:
+
+* rastrear
+* interpretar
+* relacionar semánticamente
+* extraer
+* citar
+* enlazar
+
+No implementar "trucos para engañar a la IA".
+
+La estrategia debe ser:
+
+**contenido real + estructura clara + entidades claras + datos verificables + autoridad + SEO técnico + experiencia real + buen rendimiento.**
+
+---
+
+# 1. REGLAS ABSOLUTAS DEL PROYECTO
+
+## 1.1 No crear cosas innecesarias
+
+No agregar:
+
+* dependencias que no hagan falta
+* React si Astro puede resolverlo
+* backend si no es necesario
+* base de datos si no es necesario
+* APIs inexistentes
+* componentes sin uso
+* archivos vacíos
+* funciones sin llamadas
+* imports sin uso
+* estilos sin uso
+* rutas sin contenido
+* botones que no hagan nada
+* links que no lleven a ningún lugar
+* imágenes inexistentes
+* placeholders rotos
+* lorem ipsum
+* textos genéricos de template
+* código duplicado
+
+Todo archivo debe tener una responsabilidad concreta.
+
+Todo componente debe utilizarse realmente.
+
+Todo elemento interactivo debe funcionar realmente.
+
+---
+
+## 1.2 No inventar información
+
+NO inventar:
+
+* cantidad de obras
+* años exactos de determinadas obras
+* certificaciones
+* premios
+* clientes
+* testimonios
+* valoraciones
+* cantidades de empleados
+* metros cuadrados
+* estadísticas
+* facturación
+* porcentajes
+* rankings
+* posiciones en Google
+* reseñas
+* datos técnicos no confirmados
+
+Cuando un dato no esté confirmado:
+
+* no inventarlo
+* dejarlo fuera
+* o dejar una estructura preparada para incorporarlo posteriormente
+
+---
+
+## 1.3 Contenido real de Galarza
+
+La web debe utilizar exclusivamente información real proporcionada en este brief y posteriormente validada.
+
+No escribir contenido corporativo genérico como:
+
+> "Somos líderes del mercado"
+
+> "Brindamos excelencia"
+
+> "La mejor constructora"
+
+> "Garantizamos la máxima calidad"
+
+salvo que exista evidencia concreta.
+
+La marca debe transmitir:
+
+* ingeniería
+* experiencia
+* criterio técnico
+* resolución de problemas
+* responsabilidad
+* supervisión
+* experiencia práctica
+* adaptación al proyecto
+* cercanía
+* profesionalismo
+
+---
+
+# 2. STACK TECNOLÓGICO
+
+## Core
+
+* Astro
+* TypeScript
+* HTML5 semántico
+* CSS moderno
+* Markdown / MDX
+* Astro Content Collections / API de contenido vigente de la versión instalada
+
+## SEO
+
+* `@astrojs/sitemap`
+* canonical URLs
+* metadata
+* Open Graph
+* robots.txt
+* JSON-LD / Schema.org
+* breadcrumbs
+* sitemap.xml
+* URLs semánticas
+
+## Imágenes
+
+* Astro Assets
+* imágenes optimizadas
+* WebP / AVIF cuando corresponda
+* responsive images
+* dimensiones explícitas
+* `alt` descriptivo
+* lazy loading cuando corresponda
+
+## Analítica
+
+* Google Search Console
+* Google Analytics 4
+
+Preparar integración sin agregar JavaScript innecesario.
+
+## Search / AI
+
+* Google Search
+* Google Search Console
+* Bing Webmaster Tools
+* Bing AI Performance
+* compatibilidad con OAI-SearchBot
+* robots.txt correctamente configurado
+
+## Hosting
+
+Preparar el proyecto para:
+
+* Vercel
+* o Cloudflare Pages
+
+No agregar infraestructura adicional.
+
+## Interactividad
+
+Usar:
+
+* Astro
+* Astro Islands
+
+React solamente si aparece un requisito real que lo justifique.
+
+Por defecto:
+
+**NO REACT.**
+
+## CSS
+
+Usar:
+
+**CSS propio.**
+
+No usar Tailwind.
+
+No utilizar una librería UI pesada.
+
+No usar Bootstrap salvo que aparezca una necesidad concreta y justificada.
+
+---
+
+# 3. CONFIGURACIÓN DEL ENTORNO
+
+## Desarrollo
+
+El sitio debe ejecutarse exactamente en:
+
+```bash
+npm run dev
+```
+
+y abrir en:
+
+```text
+http://localhost:3000
+```
+
+Configurar Astro explícitamente para utilizar el puerto `3000`.
+
+## Scripts mínimos
+
+El `package.json` debe tener como mínimo:
+
+```text
+dev
+build
+preview
+check
+```
+
+Y los scripts deben funcionar realmente.
+
+---
+
+# 4. ARQUITECTURA GENERAL
+
+Usar una estructura clara y fácil de entender para una persona que abra VS Code por primera vez.
+
+Propuesta:
+
+```text
+/
+├── public/
+│   ├── favicon.svg
+│   ├── robots.txt
+│   ├── manifest.webmanifest
+│   └── ...
+│
+├── src/
+│   ├── assets/
+│   │   ├── images/
+│   │   └── ...
+│   │
+│   ├── components/
+│   │   ├── Header.astro
+│   │   ├── Hero.astro
+│   │   ├── TrustBar.astro
+│   │   ├── ValueProposition.astro
+│   │   ├── ServicesSection.astro
+│   │   ├── ProblemsSection.astro
+│   │   ├── ProcessSection.astro
+│   │   ├── FeaturedWorks.astro
+│   │   ├── TrajectorySection.astro
+│   │   ├── ExperienceSection.astro
+│   │   ├── TestimonialsSection.astro
+│   │   ├── FAQSection.astro
+│   │   ├── CTASection.astro
+│   │   ├── ContactSection.astro
+│   │   └── Footer.astro
+│   │
+│   ├── layouts/
+│   │   ├── BaseLayout.astro
+│   │   └── ContentLayout.astro
+│   │
+│   ├── content/
+│   │   ├── obras/
+│   │   ├── servicios/
+│   │   ├── blog/
+│   │   └── ...
+│   │
+│   ├── pages/
+│   │   ├── index.astro
+│   │   ├── nosotros/
+│   │   │   └── index.astro
+│   │   ├── servicios/
+│   │   │   ├── index.astro
+│   │   │   ├── construccion/
+│   │   │   ├── remodelaciones/
+│   │   │   ├── ampliaciones/
+│   │   │   ├── soluciones-estructurales/
+│   │   │   ├── patologias-de-la-construccion/
+│   │   │   └── direccion-tecnica/
+│   │   ├── obras/
+│   │   │   ├── index.astro
+│   │   │   └── [slug].astro
+│   │   ├── blog/
+│   │   │   ├── index.astro
+│   │   │   └── [slug].astro
+│   │   └── contacto/
+│   │       └── index.astro
+│   │
+│   ├── lib/
+│   │   ├── seo.ts
+│   │   ├── schema.ts
+│   │   └── ...
+│   │
+│   └── styles/
+│       ├── global.css
+│       ├── tokens.css
+│       └── ...
+│
+├── astro.config.mjs
+├── tsconfig.json
+├── package.json
+└── README.md
+```
+
+### IMPORTANTE
+
+No crear todos esos archivos "porque sí".
+
+Si un archivo todavía no tiene una función real:
+
+**NO CREARLO.**
+
+La estructura anterior es la arquitectura objetivo.
+
+Implementar únicamente lo que vaya a utilizarse en la V1.
+
+---
+
+# 5. RESPONSABILIDAD DE CADA CARPETA
+
+## `/public`
+
+Archivos estáticos que no necesitan procesamiento.
+
+Ejemplos:
+
+* favicon
+* robots.txt
+* manifest
+* archivos específicos que deban conservarse sin procesamiento
+
+No colocar lógica ahí.
+
+---
+
+## `/src/assets`
+
+Imágenes que Astro debe procesar/optimizar.
+
+Usar esta carpeta para:
+
+* fotografías de obras
+* imágenes del portfolio
+* imágenes destinadas a SEO
+* recursos visuales propios
+
+---
+
+## `/src/components`
+
+Componentes visuales reutilizables.
+
+Regla:
+
+Cada componente debe tener una única responsabilidad clara.
+
+Ejemplo:
+
+`Hero.astro`
+
+= solamente hero.
+
+`ServicesSection.astro`
+
+= solamente sección de servicios.
+
+No crear un `MegaLanding.astro` de 2000 líneas.
+
+---
+
+## `/src/layouts`
+
+Layouts reutilizables.
+
+`BaseLayout.astro`
+
+Debe manejar:
+
+* `<html>`
+* `<head>`
+* metadata
+* canonical
+* language
+* scripts globales realmente necesarios
+* body
+* accesibilidad global
+
+---
+
+## `/src/content`
+
+Contenido administrable desde archivos.
+
+Utilizar para:
+
+* obras
+* servicios
+* artículos
+* eventualmente FAQs estructuradas
+
+No duplicar el mismo contenido en múltiples componentes.
+
+---
+
+## `/src/pages`
+
+Únicamente rutas.
+
+Las páginas deben ensamblar componentes y contenido.
+
+No meter toda la lógica visual dentro de cada page.
+
+---
+
+## `/src/lib`
+
+Lógica reutilizable que no es componente visual.
+
+Ejemplos:
+
+* SEO
+* JSON-LD
+* helpers
+* formateadores
+* funciones de contenido
+
+No crear una carpeta `utils` gigante sin criterio.
+
+---
+
+## `/src/styles`
+
+CSS global y tokens.
+
+No duplicar reglas visuales innecesariamente.
+
+---
+
+# 6. DISEÑO DE LA HOME
+
+La home debe seguir esta secuencia:
+
+```text
+1. Header
+2. Hero
+3. Trust Bar
+4. Propuesta de valor
+5. Servicios
+6. Problemas que resolvemos
+7. Cómo trabajamos
+8. Obras destacadas
+9. Casos de estudio
+10. Trayectoria
+11. Experiencia / autoridad
+12. Testimonios
+13. FAQ
+14. CTA
+15. Contacto
+16. Footer
+```
+
+---
+
+# 7. HEADER
+
+## Objetivo
+
+Navegación rápida y clara.
+
+## Contenido
+
+Logo Galarza.
+
+Links:
+
+* Inicio
+* Servicios
+* Obras
+* Nosotros
+* Contacto
+
+CTA:
+
+**Consultar mi proyecto**
+
+En móvil:
+
+* menú funcional
+* accesible
+* sin JavaScript innecesario
+
+El teléfono y WhatsApp deben ser enlaces reales.
+
+---
+
+# 8. HERO
+
+## Objetivo
+
+Explicar inmediatamente qué hace Galarza y dónde.
+
+### Concepto principal
+
+**Ingeniería para resolver. Construcción para perdurar.**
+
+### Mensaje
+
+Debe quedar claro:
+
+* es una empresa/profesional de construcción
+* tiene base en Resistencia, Chaco
+* tiene trayectoria desde 1990
+* combina ingeniería y experiencia práctica
+* realiza obras, remodelaciones, ampliaciones y soluciones técnicas
+
+### CTA principal
+
+**Consultar mi proyecto**
+
+Debe dirigir a contacto/WhatsApp.
+
+### CTA secundario
+
+**Ver obras**
+
+Debe dirigir a `/obras/`.
+
+No utilizar un hero abstracto que no explique qué hace la empresa.
+
+---
+
+# 9. TRUST BAR
+
+Mostrar información real:
+
+```text
+Trayectoria desde 1990
+Más de 30 años de experiencia
+Obras públicas y privadas
+Supervisión profesional
+```
+
+NO utilizar "más de 35 años" si el texto comercial final no fue validado.
+
+La formulación recomendada es:
+
+**Trayectoria profesional iniciada en 1990.**
+
+No decir:
+
+**Empresa fundada en 1990**
+
+salvo que esa afirmación legal sea confirmada.
+
+---
+
+# 10. PROPUESTA DE VALOR
+
+## Objetivo
+
+Explicar la diferencia competitiva.
+
+Idea central:
+
+Galarza no solamente ejecuta trabajos.
+
+Primero:
+
+* observa
+* analiza
+* encuentra el problema
+* define una solución
+* planifica
+* ejecuta
+* supervisa
+
+La propuesta debe mostrar:
+
+**Ingeniería + experiencia práctica + ejecución.**
+
+Evitar lenguaje de marketing genérico.
+
+---
+
+# 11. SERVICIOS
+
+Crear una sección principal con las categorías más importantes.
+
+Servicios confirmados:
+
+### Construcción de obras nuevas
+
+Viviendas, locales y otras obras.
+
+### Remodelaciones
+
+Intervenciones sobre construcciones existentes.
+
+### Ampliaciones
+
+Extensión y adaptación de construcciones existentes.
+
+### Soluciones estructurales
+
+Análisis y resolución de requerimientos estructurales.
+
+### Patologías de la construcción
+
+Ejemplos:
+
+* grietas
+* fisuras
+* humedad
+* problemas constructivos
+* deterioros
+* patologías estructurales
+
+### Dirección técnica
+
+Supervisión y seguimiento profesional.
+
+### Proyecto y documentación
+
+* proyectos
+* cómputos
+* presupuestos
+* documentación técnica
+* regularizaciones municipales
+
+### Obras civiles
+
+Trabajos civiles e infraestructura.
+
+Cada servicio debe tener:
+
+* nombre
+* explicación breve
+* problemas que aborda
+* qué incluye
+* CTA
+* enlace a página propia cuando corresponda
+
+---
+
+# 12. PÁGINAS INDIVIDUALES DE SERVICIOS
+
+Cada servicio estratégico debe tener su propia URL.
+
+Ejemplo:
+
+```text
+/servicios/remodelaciones/
+```
+
+Cada página debe responder:
+
+1. Qué es el servicio
+2. Cuándo se necesita
+3. Qué problemas resuelve
+4. Cómo trabaja Galarza
+5. Qué experiencia tiene relacionada
+6. Obras relacionadas
+7. Preguntas frecuentes
+8. CTA
+
+Evitar crear páginas prácticamente iguales cambiando únicamente "Resistencia" por "Chaco".
+
+Cada página debe aportar valor real.
+
+---
+
+# 13. PROBLEMAS QUE RESOLVEMOS
+
+Sección orientada a intención de búsqueda.
+
+Ejemplos:
+
+* Grietas y fisuras
+* Humedad
+* Intervenciones sobre estructuras existentes
+* Ampliaciones complejas
+* Reformas de locales
+* Problemas estructurales
+* Necesidad de dirección técnica
+* Construcciones que requieren adaptación
+* Regularizaciones y documentación
+
+Mensaje:
+
+**Cuando construir implica resolver un problema técnico, el diagnóstico importa tanto como la ejecución.**
+
+No exagerar ni afirmar diagnósticos automáticos.
+
+---
+
+# 14. CÓMO TRABAJAMOS
+
+Proceso visual:
+
+```text
+01 — Evaluamos
+02 — Analizamos
+03 — Planificamos
+04 — Ejecutamos
+05 — Supervisamos
+```
+
+Cada etapa debe tener explicación breve.
+
+No crear una timeline animada innecesariamente pesada.
+
+Debe funcionar perfectamente sin JavaScript.
+
+---
+
+# 15. OBRAS DESTACADAS
+
+Mostrar proyectos reales.
+
+Inicialmente priorizar:
+
+### Centro Interpretativo Campo del Cielo
+
+Ubicación:
+
+Gancedo, Chaco.
+
+Proyecto relevante por su escala y trayectoria.
+
+### Axion Puerto Tirol
+
+Proyecto relevante por infraestructura y complejidad.
+
+### Farmacia + Regalería
+
+Caso especialmente importante por resolución estructural.
+
+### Kilómetro 48
+
+Proyecto residencial en Monte Chaqueño.
+
+Cada tarjeta debe llevar a su página propia.
+
+---
+
+# 16. PÁGINA DE OBRAS
+
+Ruta:
+
+```text
+/obras/
+```
+
+Debe funcionar como portfolio.
+
+Cada proyecto debe mostrar:
+
+* nombre
+* ubicación
+* tipo
+* período cuando esté confirmado
+* descripción
+* imágenes
+* servicios relacionados
+* desafío
+* solución
+* resultado
+
+No inventar métricas.
+
+---
+
+# 17. CASO DE ESTUDIO — FARMACIA + REGALERÍA
+
+Crear un caso de estudio completo.
+
+## Contexto
+
+Dos locales comerciales originalmente separados:
+
+* farmacia
+* regalería
+
+Separados por una pared de mampostería portante.
+
+La pared participaba en la transmisión de cargas de la losa superior.
+
+## Problema
+
+Se buscaba integrar ambos espacios sin comprometer la estructura y manteniendo la actividad comercial durante la intervención.
+
+## Solución
+
+Se realizó:
+
+* sectorización temporal
+* protección del área operativa
+* reemplazo estructural previo a la demolición
+* utilización de perfiles IPN 220
+* apoyos y elementos de soporte
+* demolición controlada
+* apuntalamientos donde fueron necesarios
+
+IMPORTANTE:
+
+El dato existente de una longitud expresada como "126,00 m" no está validado.
+
+NO utilizarlo en la web hasta verificarlo.
+
+## Resultado
+
+Espacio comercial integrado, mejor circulación y funcionalidad, manteniendo condiciones estructurales seguras durante la intervención.
+
+Este caso debe demostrar:
+
+* análisis
+* ingeniería
+* planificación
+* control de riesgo
+* ejecución en obra existente
+
+---
+
+# 18. CASO DE ESTUDIO — KILÓMETRO 48
+
+## Contexto
+
+Proyecto residencial en el Monte Chaqueño.
+
+Período:
+
+2020–2025.
+
+## Primera etapa
+
+Construcción con metodología artesanal utilizando materiales del entorno y troncos.
+
+## Segunda etapa
+
+Desde 2022:
+
+* ladrillo
+* estructura metálica
+* metodología híbrida
+
+para mejorar velocidad y eficiencia manteniendo el carácter del proyecto.
+
+## Particularidad
+
+Javier participó personalmente en la ejecución de detalles artesanales, incluyendo una escalera realizada con tronco local.
+
+## Resultado
+
+Proyecto terminado en 2025 con:
+
+* estructura robusta
+* instalaciones eléctricas
+* conectividad
+* agua corriente
+* interior de carácter rústico-natural
+
+Este caso debe mostrar:
+
+* adaptación
+* planificación
+* construcción híbrida
+* resolución técnica
+* trabajo artesanal
+* ejecución en entorno remoto
+
+---
+
+# 19. TRAYECTORIA
+
+Ruta:
+
+```text
+/nosotros/
+```
+
+## Historia
+
+Narrar la trayectoria profesional.
+
+### 1990
+
+Inicio del trabajo en construcción como ayudante de albañil mientras estudiaba ingeniería.
+
+### Posteriormente
+
+Desarrollo profesional como Ingeniero en Construcciones.
+
+### Antes de 2004
+
+Trabajo como contratista y ejecución de proyectos de gran escala para empresas como:
+
+* Telecom
+* Telefónica
+
+Participación en programas:
+
+* PROPASA
+* PROSOFA
+
+### 2004
+
+Formalización del marco legal de la actividad y registro como empresa/proveedor estatal.
+
+### 2004–2009
+
+Trabajos para:
+
+* Ministerio de Educación del Chaco
+* Ministerio de Seguridad del Chaco
+
+Con obras vinculadas a:
+
+* escuelas
+* alcaidías
+* comisarías
+
+Paralelamente:
+
+* viviendas
+* remodelaciones
+* ampliaciones
+* edificios residenciales
+
+### 2011
+
+Incorporación de obras civiles hidráulicas y redes de agua potable.
+
+Trabajos en:
+
+* Pampa del Indio
+* La Leonesa
+
+### 2011–actualidad
+
+Relación continua como proveedor de INSSSEP para mantenimiento y refacciones de distintas dependencias.
+
+### Actualidad
+
+Combinación de:
+
+* construcción privada
+* obras públicas
+* infraestructura
+* remodelaciones
+* ampliaciones
+* soluciones estructurales
+* patologías
+* dirección técnica
+
+---
+
+# 20. "DE AYUDANTE ALBAÑIL A INGENIERO"
+
+Este bloque es importante para diferenciación.
+
+Historia resumida:
+
+Javier comenzó trabajando en construcción como ayudante de albañil para sostener sus estudios de ingeniería.
+
+Desde joven tenía interés por construir casas, puentes y caminos.
+
+El valor diferencial es la combinación de:
+
+**formación académica + experiencia directa de obra.**
+
+No presentarlo como una historia sentimental exagerada.
+
+Presentarlo como una explicación de cómo se construyó su criterio profesional.
+
+---
+
+# 21. EXPERIENCIA / AUTORIDAD
+
+Mostrar diferentes ámbitos donde se trabajó:
+
+```text
+Residencial
+Comercial
+Institucional
+Obra pública
+Infraestructura
+Hidráulica
+Mantenimiento
+Remodelación
+```
+
+También mostrar experiencia con:
+
+* Telecom
+* Telefónica
+* organismos públicos
+* INSSSEP
+
+Únicamente utilizar logos si existe autorización para utilizarlos.
+
+En caso contrario usar texto.
+
+---
+
+# 22. CLIENTES Y PRUEBA SOCIAL
+
+No crear testimonios falsos.
+
+Si posteriormente se obtienen testimonios reales:
+
+mostrar:
+
+* nombre
+* relación con el proyecto
+* testimonio
+* proyecto relacionado
+
+Clientes recurrentes mencionados previamente:
+
+* Mariela Kasor
+* Javier Tejerina
+* Daniel Giraudi
+* Cristian Vaernet
+
+Solo publicar nombres identificables si existe autorización para hacerlo.
+
+---
+
+# 23. FAQ
+
+Crear preguntas reales orientadas a intención de búsqueda.
+
+Ejemplos:
+
+### ¿Qué servicios realiza Galarza Construcción?
+
+### ¿Realizan remodelaciones de viviendas?
+
+### ¿Trabajan sobre construcciones existentes?
+
+### ¿Pueden evaluar grietas o problemas estructurales?
+
+### ¿Realizan ampliaciones?
+
+### ¿Realizan dirección técnica?
+
+### ¿Realizan proyectos y presupuestos?
+
+### ¿Trabajan en Resistencia y otras localidades de Chaco?
+
+### ¿Trabajan en otras provincias?
+
+### ¿Cómo se consulta por una obra?
+
+Las respuestas deben ser concretas.
+
+No escribir textos artificiales solamente para insertar keywords.
+
+---
+
+# 24. ZONA GEOGRÁFICA
+
+La prioridad SEO debe ser:
+
+## Resistencia
+
+Después:
+
+## Chaco
+
+Después:
+
+## Argentina
+
+No intentar posicionar inmediatamente todas las localidades posibles con páginas casi idénticas.
+
+Crear páginas geográficas solamente cuando exista contenido real suficiente.
+
+Ejemplo válido:
+
+```text
+/zonas/resistencia/
+```
+
+pero únicamente si existe información específica que aporte valor.
+
+No crear:
+
+```text
+/constructora-resistencia/
+/constructora-resistencia-1/
+/constructora-resistencia-2/
+```
+
+---
+
+# 25. BLOG / CONTENIDO
+
+Crear arquitectura para blog, pero no llenar la web de artículos irrelevantes.
+
+El blog debe atacar preguntas reales.
+
+Ejemplos:
+
+* ¿Qué significan las grietas en una pared?
+* ¿Cuándo una fisura requiere revisión profesional?
+* ¿Cómo detectar problemas de humedad?
+* ¿Cuándo conviene remodelar o ampliar?
+* ¿Qué implica intervenir una pared portante?
+* ¿Qué hace un director técnico?
+* ¿Qué revisar antes de comprar una vivienda para remodelarla?
+* ¿Qué diferencias existen entre una obra nueva y una ampliación?
+
+Cada artículo debe tener:
+
+* título claro
+* fecha
+* fecha de actualización cuando corresponda
+* autor
+* contenido original
+* imágenes reales cuando sea posible
+* enlaces internos
+* servicio relacionado
+* CTA
+
+No publicar contenido generado automáticamente sin revisión humana.
+
+---
+
+# 26. SEO ON-PAGE
+
+Todas las páginas deben tener:
+
+* title único
+* meta description única
+* canonical
+* H1 único
+* headings jerárquicos
+* contenido visible en HTML
+* URLs descriptivas
+* enlaces internos
+* imágenes optimizadas
+* alt text
+* breadcrumbs cuando corresponda
+
+Evitar:
+
+* keyword stuffing
+* títulos artificiales
+* párrafos escritos solamente para SEO
+* contenido duplicado
+* páginas casi iguales
+
+---
+
+# 27. ESTRUCTURA DE TÍTULOS
+
+Ejemplo:
+
+```text
+H1:
+Empresa de construcción en Resistencia, Chaco
+
+H2:
+Construcción, remodelaciones y soluciones estructurales
+
+H2:
+Servicios
+
+H2:
+Obras destacadas
+
+H2:
+Trayectoria
+
+H2:
+Preguntas frecuentes
+```
+
+No forzar exactamente esos textos si UX/contenido requiere una variante mejor.
+
+El H1 debe definir claramente el tema principal de la página.
+
+---
+
+# 28. SEO LOCAL
+
+La web debe ser consistente con los datos reales de Galarza.
+
+## Nombre
+
+Galarza Construcción
+
+## Profesional
+
+Ing. Javier Galarza
+
+## Profesión
+
+Ingeniero en Construcciones
+
+## Dirección
+
+Bélgica Nº 652
+Resistencia, Chaco
+
+## Teléfono fijo
+
+0362-4340080
+
+## Teléfono móvil
+
+0362-154660649
+
+## Email
+
+[adalbertojg@hotmail.com](mailto:adalbertojg@hotmail.com)
+
+## Instagram
+
+@galarzaconstruccion
+
+No modificar datos.
+
+No inventar horarios.
+
+No inventar coordenadas.
+
+---
+
+# 29. ENTITY SEO
+
+Representar claramente la relación:
+
+```text
+Galarza Construcción
+        ↓
+empresa/profesional de construcción
+        ↓
+Resistencia
+        ↓
+Chaco
+        ↓
+Ingeniería en Construcciones
+        ↓
+Servicios
+        ↓
+Obras
+        ↓
+Javier Galarza
+```
+
+Implementar JSON-LD apropiado según cada página.
+
+Posibles tipos:
+
+* LocalBusiness
+* Organization
+* Person
+* Service
+* BreadcrumbList
+* WebSite
+* Article cuando corresponda
+
+No crear schemas que no representen información real de la página.
+
+No insertar datos estructurados falsos.
+
+---
+
+# 30. JSON-LD
+
+Crear una utilidad centralizada para generar JSON-LD.
+
+No repetir manualmente bloques gigantes de JSON-LD en cada page.
+
+Ejemplo conceptual:
+
+```text
+src/lib/schema.ts
+```
+
+Responsabilidad:
+
+* LocalBusiness
+* Organization
+* Person
+* Service
+* BreadcrumbList
+* Article
+
+Cada página debe utilizar únicamente los schemas correspondientes.
+
+---
+
+# 31. SEO PARA BUSCADORES GENERATIVOS
+
+No crear una "AI landing".
+
+La misma web debe servir:
+
+* usuarios
+* Google
+* Bing
+* ChatGPT Search
+* otros sistemas generativos
+
+Principios:
+
+### Contenido importante en HTML
+
+No esconder información importante detrás de JavaScript.
+
+### Headings claros
+
+Describir correctamente el contenido.
+
+### Respuestas directas
+
+Cuando una sección responde una pregunta, empezar con una explicación clara y concreta.
+
+### Datos estructurados
+
+Utilizar JSON-LD coherente.
+
+### Entidades claras
+
+Empresa, profesional, servicios, obras, ubicación.
+
+### Enlaces internos
+
+Relacionar:
+
+```text
+servicio
+→ obra
+→ caso de estudio
+→ profesional
+→ contacto
+```
+
+### Contenido verificable
+
+No inventar estadísticas ni autoridad.
+
+### Contenido original
+
+Priorizar experiencia propia de obra.
+
+---
+
+# 32. ROBOTS.TXT
+
+Crear `public/robots.txt`.
+
+Debe permitir el rastreo normal del sitio.
+
+No bloquear accidentalmente:
+
+* Googlebot
+* Bingbot
+* OAI-SearchBot
+
+No agregar reglas de robots sin motivo.
+
+---
+
+# 33. SITEMAP
+
+Instalar:
+
+```text
+@astrojs/sitemap
+```
+
+Configurar correctamente la URL final del sitio.
+
+El sitemap debe generarse automáticamente en build.
+
+No generar manualmente URLs que no existan.
+
+---
+
+# 34. CANONICAL
+
+Todas las páginas indexables deben tener canonical absoluta.
+
+Evitar duplicación por:
+
+* trailing slash
+* parámetros
+* variantes
+* URLs alternativas
+
+---
+
+# 35. OPEN GRAPH
+
+Toda página compartible debe tener:
+
+* `og:title`
+* `og:description`
+* `og:image`
+* `og:url`
+* `og:type`
+
+Crear imagen social general para la marca.
+
+Cada obra puede tener imagen propia.
+
+No utilizar imágenes inexistentes.
+
+---
+
+# 36. IMÁGENES
+
+Prioridad:
+
+**fotografías reales de las obras de Galarza.**
+
+Convención de nombres:
+
+```text
+campo-del-cielo-gancedo-chaco.webp
+farmacia-regaleria-resistencia.webp
+kilometro-48-monte-chaqueno.webp
+axion-puerto-tirol.webp
+```
+
+No:
+
+```text
+IMG_8273.jpg
+image1.png
+final-final2.jpg
+```
+
+Cada imagen debe tener:
+
+* alt
+* dimensiones
+* relación correcta con el contenido
+
+No utilizar stock como sustituto permanente de fotografías reales.
+
+Si faltan fotografías reales:
+
+utilizar una solución visual deliberada y limpia, nunca una imagen rota.
+
+---
+
+# 37. ACCESIBILIDAD
+
+Cumplir buenas prácticas WCAG.
+
+Como mínimo:
+
+* contraste correcto
+* focus visible
+* navegación por teclado
+* labels en formularios
+* alt text
+* botones reales
+* enlaces reales
+* jerarquía correcta de headings
+* `aria-*` solamente cuando sea necesario
+
+No crear interfaces que dependan exclusivamente de hover.
+
+---
+
+# 38. PERFORMANCE
+
+Objetivo:
+
+sitio extremadamente rápido.
+
+Prioridades:
+
+1. HTML estático/prerenderizado
+2. poco JavaScript
+3. CSS eficiente
+4. imágenes optimizadas
+5. lazy loading estratégico
+6. fuentes optimizadas
+7. evitar librerías innecesarias
+8. evitar animaciones pesadas
+
+Objetivo Core Web Vitals:
+
+* LCP ≤ 2.5 s
+* INP < 200 ms
+* CLS < 0.1
+
+No sacrificar rendimiento por efectos visuales.
+
+---
+
+# 39. ANIMACIONES
+
+Animaciones:
+
+* sutiles
+* rápidas
+* funcionales
+* no esenciales
+
+Nunca utilizar:
+
+* carousels innecesarios
+* backgrounds pesados
+* video autoplay pesado
+* efectos que retrasen contenido
+* JavaScript solamente para hacer aparecer texto
+
+La página debe seguir funcionando perfectamente sin animaciones.
+
+---
+
+# 40. DISEÑO VISUAL
+
+Identidad:
+
+**Tradicional + innovadora**
+
+Características:
+
+* técnico
+* elegante
+* serio
+* profesional
+* premium
+* sobrio
+* cercano
+* moderno
+
+Paleta base:
+
+* azul / cyan corporativo
+* blanco / off-white
+* negro
+* gris
+
+Evitar como color principal:
+
+* naranja
+* rojo
+* estética de inmobiliaria genérica
+* estética de influencer
+* estética de "empresa de reformas barata"
+
+---
+
+# 41. LOGO
+
+Utilizar el isotipo existente de Galarza.
+
+Concepto:
+
+monograma GAJ entrelazado.
+
+No rediseñarlo arbitrariamente.
+
+Si el archivo de logo no está disponible:
+
+crear una integración visual temporal limpia, pero no inventar un logo definitivo distinto.
+
+---
+
+# 42. COPY / TONO
+
+El tono debe ser:
+
+* profesional
+* directo
+* técnico cuando corresponde
+* comprensible para un particular
+* argentino
+* cercano sin ser informal
+
+Evitar:
+
+> "Llevamos tus sueños al siguiente nivel."
+
+> "Construimos tus sueños."
+
+> "Somos líderes."
+
+> "La excelencia nos define."
+
+Preferir:
+
+> "Analizamos el proyecto antes de ejecutar."
+
+> "Cada obra requiere una solución adecuada a su contexto."
+
+> "Experiencia de obra + formación en ingeniería."
+
+---
+
+# 43. CONVERSIÓN
+
+CTA principal:
+
+**Consultar mi proyecto**
+
+CTA secundarios:
+
+* Ver obras
+* Conocer los servicios
+* Hablar por WhatsApp
+
+WhatsApp debe abrir correctamente.
+
+El teléfono debe ser clickeable en móvil.
+
+El email debe ser `mailto:`.
+
+No dejar botones visuales sin acción.
+
+---
+
+# 44. CONTACTO
+
+La sección debe mostrar:
+
+```text
+Galarza Construcción
+Ing. Javier Galarza
+Ingeniero en Construcciones
+
+Bélgica Nº 652
+Resistencia, Chaco
+
+0362-4340080
+0362-154660649
+
+adalbertojg@hotmail.com
+
+Instagram:
+@galarzaconstruccion
+```
+
+Agregar mapa únicamente si se dispone de una integración real.
+
+---
+
+# 45. FORMULARIO
+
+Si se implementa en V1, debe funcionar realmente.
+
+Campos:
+
+* Nombre
+* Teléfono / WhatsApp
+* Email
+* Localidad
+* Tipo de proyecto
+* Descripción
+
+Opciones de proyecto:
+
+* Obra nueva
+* Remodelación
+* Ampliación
+* Problema estructural
+* Patología
+* Dirección técnica
+* Presupuesto / proyecto
+* Otro
+
+No implementar un formulario falso que "parezca enviar" pero no envíe.
+
+Si todavía no existe backend/email service:
+
+priorizar WhatsApp + teléfono + email.
+
+---
+
+# 46. FOOTER
+
+Mostrar:
+
+* logo
+* nombre
+* navegación
+* servicios
+* contacto
+* ubicación
+* Instagram
+* copyright
+* enlaces legales si realmente existen
+
+No crear páginas legales ficticias.
+
+---
+
+# 47. URLS
+
+URLs limpias.
+
+Ejemplos:
+
+```text
+/
+ /nosotros/
+/servicios/
+/servicios/construccion/
+/servicios/remodelaciones/
+/servicios/ampliaciones/
+/servicios/soluciones-estructurales/
+/servicios/patologias-de-la-construccion/
+/servicios/direccion-tecnica/
+/obras/
+/obras/campo-del-cielo/
+/obras/axion-puerto-tirol/
+/obras/farmacia-regaleria/
+/obras/kilometro-48/
+/blog/
+/contacto/
+```
+
+Cada URL debe responder una intención concreta.
+
+---
+
+# 48. CONTENIDO ESTRUCTURADO
+
+Usar Content Collections para contenido repetible.
+
+Colección `obras`:
+
+```text
+title
+slug
+location
+province
+year
+category
+summary
+description
+problem
+solution
+result
+services
+featured
+images
+```
+
+Solo incluir campos reales.
+
+Colección `servicios`:
+
+```text
+title
+slug
+summary
+description
+problems
+process
+relatedWorks
+faq
+```
+
+Colección `blog`:
+
+```text
+title
+slug
+description
+date
+updatedDate
+author
+category
+tags
+image
+```
+
+Usar el mecanismo oficial vigente de Content Collections de la versión de Astro instalada.
+
+---
+
+# 49. COMENTARIOS EN EL CÓDIGO
+
+El código debe ser entendible.
+
+Agregar comentarios solamente cuando aporten contexto.
+
+Ejemplo:
+
+```ts
+// Genera el canonical absoluto para evitar señales duplicadas entre URLs.
+```
+
+No escribir comentarios obvios como:
+
+```ts
+// Importamos Header
+import Header from './Header.astro'
+```
+
+Los comentarios deben explicar:
+
+* por qué
+* una decisión importante
+* una consideración SEO
+* una limitación
+* una configuración que pueda ser modificada
+
+---
+
+# 50. README
+
+Crear `README.md`.
+
+Debe explicar:
+
+1. Qué es el proyecto
+2. Stack
+3. Cómo instalar
+4. Cómo ejecutar
+5. Cómo hacer build
+6. Estructura de carpetas
+7. Dónde modificar contenido
+8. Dónde modificar estilos
+9. Dónde agregar obras
+10. Dónde agregar servicios
+11. Dónde editar SEO
+12. Cómo cambiar datos de contacto
+
+El README debe ser realmente útil para entender el proyecto.
+
+---
+
+# 51. FACILIDAD DE EDICIÓN
+
+Una persona debe poder encontrar rápidamente:
+
+## Cambiar textos generales
+
+Ubicación clara.
+
+## Agregar una obra
+
+Crear un nuevo archivo de contenido.
+
+## Cambiar un servicio
+
+Modificar su contenido.
+
+## Cambiar colores
+
+Un único lugar de tokens CSS.
+
+## Cambiar contacto
+
+Un único lugar de configuración/datos.
+
+## Cambiar SEO global
+
+Un único lugar.
+
+No duplicar el teléfono en 17 archivos.
+
+No duplicar el nombre de la empresa en 30 lugares cuando pueda centralizarse.
+
+---
+
+# 52. TOKENS DE DISEÑO
+
+Crear variables CSS centrales:
+
+```css
+:root {
+  --color-primary: ...;
+  --color-primary-dark: ...;
+  --color-background: ...;
+  --color-surface: ...;
+  --color-text: ...;
+  --color-muted: ...;
+
+  --font-heading: ...;
+  --font-body: ...;
+
+  --container-width: ...;
+
+  --space-xs: ...;
+  --space-sm: ...;
+  --space-md: ...;
+  --space-lg: ...;
+  --space-xl: ...;
+}
+```
+
+No repetir valores arbitrariamente.
+
+---
+
+# 53. DATOS DE EMPRESA
+
+Crear una fuente central de datos reales.
+
+Ejemplo conceptual:
+
+```text
+src/lib/company.ts
+```
+
+Debe contener:
+
+* nombre
+* profesional
+* profesión
+* dirección
+* ciudad
+* provincia
+* país
+* teléfono
+* móvil
+* email
+* Instagram
+* descripción
+* trayectoria
+
+Así los componentes pueden reutilizar la información.
+
+---
+
+# 54. SEO GLOBAL
+
+Crear una abstracción SEO central.
+
+Ejemplo conceptual:
+
+```text
+src/lib/seo.ts
+```
+
+Responsabilidades:
+
+* title
+* description
+* canonical
+* OG
+* robots
+* locale
+* site name
+
+No duplicar `<head>` manualmente en todas las páginas.
+
+---
+
+# 55. VALIDACIONES ANTES DE CONSIDERAR TERMINADO
+
+Ejecutar:
+
+```bash
+npm run check
+npm run build
+```
+
+No terminar con:
+
+* warnings importantes
+* errores TypeScript
+* links rotos
+* imports rotos
+* rutas rotas
+* imágenes inexistentes
+* componentes sin usar
+* errores de build
+
+Además comprobar manualmente:
+
+```text
+/
+/nosotros/
+/servicios/
+/servicios/*
+/obras/
+/obras/*
+/blog/
+/contacto/
+```
+
+---
+
+# 56. TEST MANUAL FINAL
+
+Antes de finalizar:
+
+## Desktop
+
+Comprobar:
+
+* navegación
+* layout
+* imágenes
+* CTAs
+* formularios
+* footer
+
+## Mobile
+
+Comprobar:
+
+* menú
+* tipografía
+* botones
+* imágenes
+* scroll horizontal inexistente
+* CTA
+* contacto
+
+## SEO
+
+Comprobar:
+
+* title
+* description
+* H1
+* canonical
+* sitemap
+* robots
+* JSON-LD
+* Open Graph
+
+## Performance
+
+Comprobar:
+
+* Lighthouse
+* PageSpeed
+* imágenes
+* JavaScript innecesario
+
+---
+
+# 57. CRITERIO "NO DEAD CODE"
+
+Antes de terminar, revisar:
+
+### Cada componente
+
+¿Está siendo utilizado?
+
+### Cada función
+
+¿Tiene un consumidor?
+
+### Cada dependencia
+
+¿Se utiliza?
+
+### Cada ruta
+
+¿Tiene contenido?
+
+### Cada botón
+
+¿Hace algo?
+
+### Cada link
+
+¿Existe el destino?
+
+### Cada imagen
+
+¿Existe el archivo?
+
+### Cada schema
+
+¿Representa información real?
+
+### Cada CSS class
+
+¿Se utiliza?
+
+### Cada archivo
+
+¿Tiene una responsabilidad?
+
+Si la respuesta es NO:
+
+**eliminarlo.**
+
+---
+
+# 58. REGLA CONTRA SOBREINGENIERÍA
+
+No convertir una landing en un sistema innecesariamente complejo.
+
+La solución correcta para este proyecto es:
+
+```text
+Astro
++
+TypeScript
++
+Content
++
+CSS
++
+SEO
++
+Schema
++
+Analytics
++
+Static Hosting
+```
+
+No agregar:
+
+```text
+Node backend
+Express
+MongoDB
+Firebase
+Redis
+JWT
+Redux
+GraphQL
+React
+```
+
+salvo que exista una necesidad real demostrable.
+
+---
+
+# 59. PRIORIDAD DEL PROYECTO
+
+El orden de importancia es:
+
+```text
+1. Contenido real
+2. UX
+3. SEO técnico
+4. SEO local
+5. Autoridad / entidad
+6. Performance
+7. Conversión
+8. AI Search discoverability
+9. Diseño visual
+10. Animaciones
+```
+
+No sacrificar los puntos superiores por estética.
+
+---
+
+# 60. RESULTADO ESPERADO
+
+Al terminar debo poder ejecutar:
+
+```bash
+npm install
+npm run dev
+```
+
+y obtener:
+
+```text
+http://localhost:3000
+```
+
+con una web completamente funcional.
+
+Debe sentirse como un sitio real terminado, no como:
+
+* starter template
+* demo
+* wireframe
+* prototipo
+* colección de componentes
+* landing genérica de una constructora
+
+Debe existir una relación clara entre:
+
+```text
+Galarza
+↓
+Resistencia
+↓
+Ingeniería
+↓
+Construcción
+↓
+Experiencia
+↓
+Problemas reales
+↓
+Obras reales
+↓
+Servicios
+↓
+Contacto
+```
+
+---
+
+# 61. PRINCIPIO FINAL
+
+La web no debe intentar decir:
+
+> "Galarza es la mejor constructora."
+
+La web debe construir suficiente evidencia para que:
+
+* un usuario lo considere
+* Google entienda qué es Galarza
+* Bing entienda qué es Galarza
+* los buscadores locales entiendan dónde trabaja
+* los sistemas generativos puedan identificar a Galarza correctamente
+* las obras demuestren experiencia
+* los casos de estudio demuestren capacidad técnica
+* la trayectoria demuestre experiencia
+* los servicios respondan búsquedas concretas
+* el contenido responda preguntas reales
+
+La meta no es llenar el sitio de SEO.
+
+La meta es construir una **fuente web completa, rápida, semántica, verificable y profesional sobre Galarza Construcción**.
+
+## EMPEZAR AHORA
+
+1. Analizar el repositorio actual.
+2. Detectar qué existe y qué puede reutilizarse.
+3. Eliminar o corregir lo que esté muerto/duplicado.
+4. Instalar únicamente las dependencias necesarias.
+5. Configurar Astro para `localhost:3000`.
+6. Implementar la arquitectura.
+7. Implementar la Home completa.
+8. Implementar las páginas reales de servicios y obras disponibles.
+9. Implementar SEO técnico.
+10. Implementar JSON-LD.
+11. Implementar sitemap.
+12. Implementar robots.txt.
+13. Implementar responsive.
+14. Ejecutar checks.
+15. Ejecutar build.
+16. Corregir todo error encontrado.
+17. Verificar manualmente las rutas.
+18. Dejar el proyecto limpio y entendible.
+
+**No detenerse en un mockup.**
+
+**No dejar botones falsos.**
+
+**No dejar contenido de relleno.**
+
+**No dejar archivos sin propósito.**
+
+**No inventar información.**
+
+**No sobreingenierizar.**
+
+El resultado final debe quedar listo para abrir `http://localhost:3000` y recorrerlo completamente.

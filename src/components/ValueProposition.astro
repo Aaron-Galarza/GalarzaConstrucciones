@@ -1,0 +1,71 @@
+---
+const points = [
+  {
+    title: 'Analizar antes de ejecutar',
+    text: 'Cada obra se observa y se diagnostica. El problema define la solución, no al revés: eso evita resoluciones técnicas inadecuadas.',
+  },
+  {
+    title: 'Ingeniería con experiencia de obra',
+    text: 'Formación académica en Ingeniería en Construcciones combinada con ejecución directa. Un criterio que se construyó trabajando desde el 1990.',
+  },
+  {
+    title: 'Responsabilidad en cada etapa',
+    text: 'Plazos, normativas y expectativas técnicas se asumen con compromiso. La obra se supervisa personalmente, de principio a fin.',
+  },
+];
+---
+
+<section class="section value">
+  <div class="shell">
+    <header class="section-head">
+      <p class="annotation">Propuesta</p>
+      <h2>No solamente ejecutamos trabajos: los analizamos.</h2>
+      <p class="lead">
+        Galarza observa, encuentra el problema, define la solución, planifica,
+        ejecuta y supervisa. La diferencia es el criterio técnico aplicado a
+        cada decisión de obra.
+      </p>
+    </header>
+
+    <div class="value-grid">
+      {
+        points.map((p) => (
+          <article class="card value-card">
+            <h3 class="value-title">{p.title}</h3>
+            <p class="value-text">{p.text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .value-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+
+  .value-card {
+    padding: var(--space-lg);
+    border-top: 3px solid var(--color-navy);
+    background: var(--color-surface);
+  }
+
+  .value-title {
+    font-size: 1.3rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .value-text {
+    color: var(--color-muted);
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 860px) {
+    .value-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

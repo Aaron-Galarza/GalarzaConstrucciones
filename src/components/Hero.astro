@@ -1,0 +1,177 @@
+---
+import { CTA_PRIMARY, CONTACT, COMPANY } from '../lib/company';
+---
+
+<section class="hero">
+  <div class="shell hero-grid">
+    <div class="hero-copy">
+      <p class="annotation hero-annotation">Resistencia · Chaco · Argentina</p>
+      <h1>
+        <span class="hero-line">Ingeniería para resolver.</span>
+        <span class="hero-line hero-line--outline">Construcción para perdurar.</span>
+      </h1>
+      <p class="hero-lead">
+        {COMPANY.name} desarrolla obras nuevas, remodelaciones, ampliaciones y
+        soluciones estructurales. Combinamos formación en ingeniería con
+        experiencia directa de obra: la trayectoria profesional comenzó en
+        {COMPANY.startedYear}.
+      </p>
+      <div class="hero-ctas">
+        <a href={CONTACT.whatsappText} class="btn" target="_blank" rel="noopener">
+          {CTA_PRIMARY.label}
+        </a>
+        <a href="/obras/" class="btn btn--ghost btn--on-dark">Ver obras</a>
+      </div>
+      <dl class="hero-meta">
+        <div>
+          <dt>Base</dt>
+          <dd>Resistencia, Chaco</dd>
+        </div>
+        <div>
+          <dt>Trayectoria</dt>
+          <dd>Desde {COMPANY.startedYear}</dd>
+        </div>
+        <div>
+          <dt>Tipo</dt>
+          <dd>Pública y privada</dd>
+        </div>
+      </dl>
+    </div>
+
+    <figure class="hero-panel">
+      <img
+        class="hero-panel-img"
+        src="/obras/axion-puerto-tirol/montaje-estructura.jpg"
+        alt="Montaje de la estructura metálica de la estación de servicios Axion en Puerto Tirol"
+        width="1600"
+        height="1200"
+        loading="eager"
+        decoding="async"
+      />
+      <figcaption id="hero-panel-caption">
+        Estructura metálica en montaje — obra real ejecutada en Puerto Tirol,
+        Chaco.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .hero {
+    background:
+      linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      var(--color-navy-ink);
+    background-size: 34px 34px;
+    color: var(--color-ink-on-dark);
+    border-bottom: 1px solid var(--color-line-on-dark);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: var(--space-xl);
+    align-items: center;
+    padding-block: clamp(4rem, 9vw, 7rem);
+  }
+
+  .hero-copy h1 {
+    color: #fff;
+    margin-bottom: var(--space-md);
+  }
+
+  .hero-line {
+    display: block;
+  }
+
+  .hero-line--outline {
+    color: var(--color-cyan);
+  }
+
+  @supports (-webkit-text-stroke: 1px white) {
+    .hero-line--outline {
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--color-cyan);
+    }
+  }
+
+  .hero-lead {
+    font-size: var(--text-lg);
+    color: var(--color-muted-on-dark);
+    max-width: 60ch;
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+    margin: 0;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-line-on-dark);
+  }
+
+  .hero-meta dt {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-cyan);
+    margin: 0 0 0.2rem;
+  }
+
+  .hero-meta dd {
+    margin: 0;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  /* Panel con el dibujo técnico */
+  .hero-panel {
+    margin: 0;
+    border: 1px solid var(--color-line-on-dark);
+    border-radius: var(--radius);
+    background:
+      linear-gradient(rgba(18, 163, 184, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(18, 163, 184, 0.05) 1px, transparent 1px),
+      #0e2736;
+    background-size: 22px 22px;
+    padding: 1.25rem 1.25rem 1rem;
+  }
+
+  .hero-panel-img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border: 1px solid var(--color-line-on-dark);
+    border-radius: calc(var(--radius) - 1px);
+  }
+
+  .hero-panel figcaption {
+    font-size: var(--text-xs);
+    color: var(--color-muted-on-dark);
+    margin-top: var(--space-sm);
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-line-on-dark);
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+
+    .hero-panel {
+      max-width: 520px;
+    }
+  }
+</style>

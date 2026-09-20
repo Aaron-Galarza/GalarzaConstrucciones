@@ -1,0 +1,72 @@
+---
+import { COMPANY } from '../lib/company';
+
+interface Props {
+  /** Modo claro (por defecto) u oscuro para zonas oscuras del sitio. */
+  tone?: 'light' | 'dark';
+}
+
+const { tone = 'light' } = Astro.props;
+---
+
+<span class={`brand ${tone === 'dark' ? 'brand--on-dark' : ''}`}>
+  <img
+    class="brand-mark"
+    src="/logo.png"
+    alt=""
+    width="42"
+    height="42"
+    loading="eager"
+    decoding="async"
+  />
+  <span class="brand-text">
+    <strong class="brand-name">{COMPANY.name}</strong>
+    <span class="brand-tag">{COMPANY.profession}</span>
+  </span>
+</span>
+
+<style>
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+  }
+  .brand-mark {
+    width: 42px;
+    height: 42px;
+    flex: none;
+    border-radius: 5px;
+  }
+  .brand--on-dark .brand-mark {
+    background: #fff;
+    padding: 3px;
+    box-sizing: border-box;
+  }
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+  .brand-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-variation-settings: 'wght' 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+    color: var(--color-ink);
+  }
+  .brand-tag {
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-cyan);
+  }
+  .brand--on-dark .brand-name {
+    color: #fff;
+  }
+  .brand--on-dark .brand-tag {
+    color: var(--color-cyan);
+  }
+</style>

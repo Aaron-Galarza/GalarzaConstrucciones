@@ -1,0 +1,124 @@
+---
+const problems = [
+  {
+    title: 'Grietas y fisuras',
+    text: 'Evaluación de fisuras en muros y losas, con diagnóstico de la causa real.',
+    href: '/servicios/patologias-de-la-construccion/',
+  },
+  {
+    title: 'Humedad',
+    text: 'Tratamiento de humedad y patologías vinculadas al agua antes de revestir.',
+    href: '/servicios/patologias-de-la-construccion/',
+  },
+  {
+    title: 'Intervenciones sobre estructuras existentes',
+    text: 'Reemplazos, refuerzos y adecuaciones que respetan la carga y el uso.',
+    href: '/servicios/soluciones-estructurales/',
+  },
+  {
+    title: 'Ampliaciones complejas',
+    text: 'Crecimiento de una construcción existente sin comprometer su estructura.',
+    href: '/servicios/ampliaciones/',
+  },
+  {
+    title: 'Reformas de locales',
+    text: 'Integración y puesta en valor de espacios comerciales en actividad.',
+    href: '/servicios/remodelaciones/',
+  },
+  {
+    title: 'Problemas estructurales',
+    text: 'Análisis de requerimientos estructurales en construcciones pequeñas y medianas.',
+    href: '/servicios/soluciones-estructurales/',
+  },
+  {
+    title: 'Dirección técnica',
+    text: 'Supervisión y seguimiento profesional con responsabilidad técnica.',
+    href: '/servicios/direccion-tecnica/',
+  },
+  {
+    title: 'Regularizaciones y documentación',
+    text: 'Proyectos, cómputos, presupuestos y trámites municipales.',
+    href: '/servicios/#proyecto-y-documentacion',
+  },
+];
+---
+
+<section class="section problems dark">
+  <div class="shell">
+    <header class="section-head">
+      <p class="annotation">Problemas que resolvemos</p>
+      <h2>Cuando construir implica resolver un problema técnico.</h2>
+      <p class="lead">
+        El diagnóstico importa tanto como la ejecución. Estas son las
+        situaciones más frecuentes con las que trabajamos en obras existentes y
+        nuevos proyectos.
+      </p>
+    </header>
+
+    <ul class="problems-list">
+      {
+        problems.map((p) => (
+          <li>
+            <a href={p.href} class="problem-row">
+              <span class="problem-title">{p.title}</span>
+              <span class="problem-text">{p.text}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .problems-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 var(--space-lg);
+    border-top: 1px solid var(--color-line-on-dark);
+  }
+
+  .problem-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: var(--space-md);
+    align-items: baseline;
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--color-line-on-dark);
+    text-decoration: none;
+    color: var(--color-ink-on-dark);
+  }
+
+  .problem-row:hover .problem-title {
+    color: #fff;
+  }
+
+  .problem-title {
+    font-family: var(--font-display);
+    font-weight: 620;
+    font-size: 1.12rem;
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-color: var(--color-cyan);
+    text-underline-offset: 5px;
+  }
+
+  .problem-text {
+    color: var(--color-muted-on-dark);
+    font-size: var(--text-sm);
+  }
+
+  @media (max-width: 820px) {
+    .problems-list {
+      grid-template-columns: 1fr;
+    }
+
+    .problem-row {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
+  }
+</style>

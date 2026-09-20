@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ServicesSection from '../../components/ServicesSection.astro';
+import ProcessSection from '../../components/ProcessSection.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CTASection from '../../components/CTASection.astro';
+import { breadcrumbSchema, localBusinessSchema } from '../../lib/schema';
+
+const schema = [
+  localBusinessSchema(),
+  breadcrumbSchema([
+    { name: 'Inicio', path: '/' },
+    { name: 'Servicios', path: '/servicios/' },
+  ]),
+];
+---
+
+<BaseLayout
+  title="Servicios de construcción en Resistencia | Galarza Construcción"
+  description="Obras nuevas, remodelaciones, ampliaciones, soluciones estructurales, patologías, dirección técnica, proyectos y obras civiles. Ingeniería y construcción en Resistencia, Chaco."
+  path="/servicios/"
+  schemas={schema}
+>
+  <div class="shell page-content">
+    <Breadcrumbs
+      items={[
+        { name: 'Inicio', path: '/' },
+        { name: 'Servicios', path: '/servicios/' },
+      ]}
+    />
+    <header class="page-head">
+      <p class="annotation">Servicios</p>
+      <h1>Todo el ciclo de la obra, con criterio técnico.</h1>
+      <p class="lead">
+        Ocho servicios que cubren desde la obra nueva hasta la intervención
+        sobre una construcción existente. Cada uno tiene su página propia con
+        alcance, problemas que resuelve y preguntas frecuentes.
+      </p>
+    </header>
+  </div>
+
+  <ServicesSection heading="Un servicio para cada etapa del proyecto." />
+  <ProcessSection />
+  <FAQSection />
+  <CTASection />
+</BaseLayout>
+
+<style>
+  .page-content {
+    padding-top: var(--space-lg);
+  }
+
+  .page-head {
+    max-width: var(--container-narrow);
+    margin-bottom: var(--space-lg);
+  }
+
+  .page-head .lead {
+    font-size: var(--text-lg);
+    color: var(--color-muted);
+    margin-top: var(--space-sm);
+  }
+</style>

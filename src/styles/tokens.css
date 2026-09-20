@@ -1,0 +1,61 @@
+/* ============================================================
+   TOKENS — única fuente de verdad de colores, tipografía y ritmo.
+   Para cambiar la estética completa del sitio, editar este archivo.
+   ============================================================ */
+
+:root {
+  /* Color (identidad técnica: azul corporativo + off-white + tinta) */
+  --color-ink: #14242e;          /* texto principal (tinta azulada) */
+  --color-muted: #5a6a73;        /* texto secundario / gris grafito */
+  --color-paper: #f6f6f3;        /* fondo general (papel frío) */
+  --color-surface: #ffffff;      /* superficies / tarjetas */
+  --color-line: #dcdfdc;         /* hairlines / retícula */
+  --color-navy: #0d2b3f;         /* azul corporativo profundo */
+  --color-navy-ink: #0a1e2c;     /* secciones oscuras */
+  --color-cyan: #12a3b8;         /* acento técnico */
+
+  --color-ink-on-dark: #eaf2f5;  /* texto claro sobre oscuro */
+  --color-muted-on-dark: #9fb4bf;
+  --color-line-on-dark: rgba(255, 255, 255, 0.16);
+
+  /* Tipografía — Archivo Variable (autohosted, vía @fontsource) */
+  --font-body: 'Archivo Variable', 'Archivo', system-ui, -apple-system,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Archivo Variable', 'Archivo', system-ui, -apple-system,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  /* Escala tipográfica */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.2rem;
+  --text-xl: 1.375rem;
+  --text-2xl: clamp(1.7rem, 3vw, 2.4rem);
+  --text-3xl: clamp(2.4rem, 5.2vw, 4.25rem);
+
+  /* Espaciado */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+
+  --section-pad: clamp(4.5rem, 9vw, 7.5rem);
+  --shell-pad: clamp(1.25rem, 4vw, 2.25rem);
+
+  /* Contenedores */
+  --container: 76rem;
+  --container-narrow: 47rem;
+
+  /* Detalles técnicos (poco redondeo: espíritu de plano) */
+  --radius: 3px;
+  --radius-lg: 6px;
+
+  --focus-ring: 0 0 0 3px rgba(18, 163, 184, 0.35);
+
+  /* Tipografía por defecto */
+  font-size: 16px;
+}
+
+/* Breakpoints de uso frecuente:
+   --bp-sm: 40rem (640) · --bp-md: 48rem (768) · --bp-lg: 64rem (1024) */

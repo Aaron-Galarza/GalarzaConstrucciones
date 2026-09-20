@@ -1,0 +1,46 @@
+---
+import { CONTACT } from '../lib/company';
+---
+
+<section class="section cta dark">
+  <div class="shell cta-inner">
+    <h2 class="cta-title">¿Tenés un proyecto sobre la mesa?</h2>
+    <p class="cta-text">
+      Contanos qué necesitás: obra nueva, remodelación, ampliación o un
+      problema estructural. Respondemos con criterio técnico y sin vueltas.
+    </p>
+    <div class="cta-actions">
+      <a href={CONTACT.whatsappText} class="btn btn--om-dark" target="_blank" rel="noopener">
+        Hablar por WhatsApp
+      </a>
+      <a href="/contacto/" class="btn btn--ghost">Ir a contacto</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .cta-title {
+    color: #fff;
+    max-width: 20ch;
+  }
+
+  .cta-text {
+    color: var(--color-muted-on-dark);
+    max-width: 52ch;
+    margin: 0 auto var(--space-lg);
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+</style>

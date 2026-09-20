@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import TrustBar from '../components/TrustBar.astro';
+import ValueProposition from '../components/ValueProposition.astro';
+import ServicesSection from '../components/ServicesSection.astro';
+import ProblemsSection from '../components/ProblemsSection.astro';
+import ProcessSection from '../components/ProcessSection.astro';
+import FeaturedWorks from '../components/FeaturedWorks.astro';
+import CaseStudies from '../components/CaseStudies.astro';
+import TrajectorySection from '../components/TrajectorySection.astro';
+import ExperienceSection from '../components/ExperienceSection.astro';
+import FAQSection from '../components/FAQSection.astro';
+import CTASection from '../components/CTASection.astro';
+import ContactSection from '../components/ContactSection.astro';
+import { SITE } from '../lib/site';
+import { FAQ_ITEMS } from '../lib/faq';
+import { localBusinessSchema, websiteSchema } from '../lib/schema';
+
+const schema = [
+  localBusinessSchema(),
+  websiteSchema(),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQ_ITEMS.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title="Empresa de construcción en Resistencia, Chaco | Galarza Construcción"
+  description={SITE.description}
+  path="/"
+  schemas={schema}
+>
+  <Hero />
+  <TrustBar />
+  <ValueProposition />
+  <ServicesSection />
+  <ProblemsSection />
+  <ProcessSection />
+  <FeaturedWorks />
+  <CaseStudies />
+  <TrajectorySection />
+  <ExperienceSection />
+  <FAQSection />
+  <CTASection />
+  <ContactSection heading="Consultá por tu proyecto." />
+</BaseLayout>

@@ -1,0 +1,30 @@
+{
+  "name": "Galarza Construcción",
+  "short_name": "Galarza",
+  "description": "Ingeniería para resolver. Construcción para perdurar. Obras, remodelaciones, ampliaciones y soluciones estructurales en Resistencia, Chaco.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f6f3",
+  "theme_color": "#0a1e2c",
+  "lang": "es-AR",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "64x64",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
