@@ -1,0 +1,22 @@
+# robots.txt — Galarza Construcción
+# Rastreo normal permitido para todos los buscadores, incluidos los de IA.
+# URL final del sitio declarada en src/lib/site.ts.
+
+User-agent: *
+Allow: /
+
+# Buscadores y sistemas de búsqueda generativa
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+# Sitemap generado por @astrojs/sitemap en cada build
+Sitemap: https://galarzaconstruccion.com.ar/sitemap-index.xml

@@ -1,0 +1,106 @@
+---
+// Casos de estudio destacados: obras con `caseStudy: true`, con formato
+// narrativo (problema → solución → resultado) en su página propia.
+
+import { getCollection } from 'astro:content';
+
+const cases = (await getCollection('obras'))
+  .filter((obra) => obra.data.caseStudy)
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<section class="section cases dark">
+  <div class="shell">
+    <header class="section-head">
+      <p class="annotation">Casos de estudio</p>
+      <h2>Obras que exigieron análisis y planificación.</h2>
+      <p class="lead">
+        Dos intervenciones sobre construcciones existentes donde el riesgo
+        técnico se manejó con criterio de ingeniería.
+      </p>
+    </header>
+
+    <div class="cases-grid">
+      {
+        cases.map((c) => (
+          <article class="case-card card">
+            <p class="case-tag">Caso de estudio</p>
+            <h3 class="case-title">
+              <a href={`/obras/${c.id}/`}>{c.data.title}</a>
+            </h3>
+            <p class="case-location small">
+              {c.data.category} · {c.data.location}, {c.data.province}
+              {c.data.period ? ` · ${c.data.period}` : ''}
+            </p>
+            <p class="case-summary">{c.data.summary}</p>
+            <a href={`/obras/${c.id}/`} class="case-link">
+              Leer el caso
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .cases-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+
+  .case-card {
+    background: #0e2736;
+    border-color: var(--color-line-on-dark);
+    padding: var(--space-lg);
+    border-left: 3px solid var(--color-cyan);
+  }
+
+  .case-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-cyan);
+    margin-bottom: var(--space-sm);
+  }
+
+  .case-title {
+    margin-bottom: 0.5rem;
+    color: #fff;
+  }
+
+  .case-title a {
+    color: #fff;
+    text-decoration-color: var(--color-cyan);
+  }
+
+  .case-title a:hover {
+    color: #fff;
+  }
+
+  .case-location {
+    margin-bottom: var(--space-md);
+  }
+
+  .case-summary {
+    color: var(--color-muted-on-dark);
+    margin-bottom: var(--space-md);
+  }
+
+  .case-link {
+    color: #fff;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--color-cyan);
+    text-underline-offset: 4px;
+  }
+
+  @media (max-width: 820px) {
+    .cases-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

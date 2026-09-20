@@ -1,0 +1,149 @@
+---
+// Tarjeta visual técnica: cumple el rol de las fotografías de obra con un
+// panel estilo plano, deliberado y sin stock. Cuando existan fotos reales,
+// reemplazar el panel plano por <Image> en el mismo lugar.
+
+interface Props {
+  code: string;
+  title: string;
+  href: string;
+  category: string;
+  location: string;
+  /** Foto real de la obra (ruta pública). Si se pasa, reemplaza el panel plano. */
+  image?: string;
+  imageAlt?: string;
+}
+
+const { code, title, href, category, location, image, imageAlt = title } =
+  Astro.props;
+---
+
+<a href={href} class="work-card card card--link">
+  {
+    image ? (
+      <div class="work-photo-wrap">
+        <img
+          class="work-photo"
+          src={image}
+          alt={imageAlt}
+          width="1600"
+          height="1200"
+          loading="lazy"
+          decoding="async"
+        />
+        <span class="work-code">{code}</span>
+      </div>
+    ) : (
+      <div class="work-panel" role="img" aria-label={`Bosquejo plano de la obra ${title}`}>
+    <svg class="work-panel-svg" viewBox="0 0 320 200" aria-hidden="true">
+      <rect x="10" y="10" width="300" height="180" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1.5" />
+      <path d="M10 10h14M10 10v14M306 190h-14M306 190v-14M310 10h-14M310 10v14M14 190v-14" stroke="rgba(255,255,255,0.55)" stroke-width="1.5" fill="none" />
+      <text x="26" y="36" fill="rgba(255,255,255,0.5)" font-size="9" letter-spacing="2">GALARZA CONSTRUCCIÓN</text>
+      <text x="26" y="172" fill="rgba(255,255,255,0.5)" font-size="9" letter-spacing="2">PLANO / OBRA</text>
+      <text x="294" y="172" fill="#12a3b8" font-size="9" text-anchor="end" letter-spacing="1">{code}</text>
+      <text x="160" y="106" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.4" font-size="84" font-weight="700" text-anchor="middle">{code.replace('O-', '')}</text>
+      <g stroke="rgba(255,255,255,0.4)" stroke-width="1" fill="none">
+        <path d="M282 52l14 0 -14 14M282 52v14" />
+        <text x="282" y="44" fill="rgba(255,255,255,0.4)" font-size="8" text-anchor="middle">N</text>
+      </g>
+    </svg>
+      </div>
+    )
+  }
+  <div class="work-body">
+    <p class="work-meta small">{category} · {location}</p>
+    <h3 class="work-title">{title}</h3>
+    <span class="work-link">Ver obra</span>
+  </div>
+</a>
+
+<style>
+  .work-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .work-panel {
+    aspect-ratio: 16 / 10;
+    background:
+      linear-gradient(rgba(18, 163, 184, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(18, 163, 184, 0.06) 1px, transparent 1px),
+      var(--color-navy-ink);
+    background-size: 20px 20px;
+    border-bottom: 1px solid var(--color-line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .work-panel-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .work-photo-wrap {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    background: var(--color-navy-ink);
+    border-bottom: 1px solid var(--color-line);
+    overflow: hidden;
+  }
+
+  .work-photo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+  }
+
+  .work-card:hover .work-photo {
+    transform: scale(1.03);
+  }
+
+  .work-code {
+    position: absolute;
+    right: 0.75rem;
+    bottom: 0.6rem;
+    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    color: #fff;
+    background: rgba(10, 30, 44, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 0.2rem 0.5rem;
+  }
+
+  .work-body {
+    padding: var(--space-md);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .work-meta {
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+  }
+
+  .work-title {
+    font-size: 1.22rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .work-link {
+    margin-top: auto;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-navy);
+    text-decoration: underline;
+    text-decoration-color: var(--color-cyan);
+    text-underline-offset: 3px;
+  }
+</style>

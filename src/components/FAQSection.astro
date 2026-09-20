@@ -1,0 +1,82 @@
+---
+import { FAQ_ITEMS } from '../lib/faq';
+
+interface Props {
+  /** Preguntas a mostrar; por defecto todas las de lib/faq.ts. */
+  items?: typeof FAQ_ITEMS;
+}
+
+const items = Astro.props.items ?? FAQ_ITEMS;
+---
+
+<section class="section faq" id="preguntas">
+  <div class="shell">
+    <header class="section-head">
+      <p class="annotation">Preguntas frecuentes</p>
+      <h2>Respuestas concretas a dudas frecuentes.</h2>
+    </header>
+
+    <div class="faq-list">
+      {
+        items.map((item) => (
+          <details class="faq-item">
+            <summary>{item.q}</summary>
+            <p class="faq-answer">{item.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-list {
+    border-top: 1px solid var(--color-line);
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .faq-item summary {
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-weight: 620;
+    font-size: 1.08rem;
+    padding: var(--space-md) 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item summary::after {
+    content: '+';
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: var(--color-cyan);
+    flex: none;
+    transition: transform 0.15s ease;
+  }
+
+  .faq-item[open] summary::after {
+    transform: rotate(45deg);
+  }
+
+  .faq-item summary:hover {
+    color: var(--color-navy);
+  }
+
+  .faq-answer {
+    color: var(--color-muted);
+    padding-bottom: var(--space-md);
+    max-width: 68ch;
+    margin: 0;
+  }
+</style>

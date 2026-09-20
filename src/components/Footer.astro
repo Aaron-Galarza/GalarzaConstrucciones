@@ -1,0 +1,180 @@
+---
+import Logo from './Logo.astro';
+import { COMPANY, CONTACT, NAV_LINKS, SERVICES } from '../lib/company';
+---
+
+<footer class="site-footer">
+  <div class="shell">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <a href="/" class="footer-logo" aria-label="Galarza Construcción — inicio">
+          <Logo tone="dark" />
+        </a>
+        <p class="footer-desc">
+          Ingeniería para resolver. Construcción para perdurar. Obras,
+          remodelaciones, ampliaciones y soluciones estructurales en
+          Resistencia, Chaco y otras provincias.
+        </p>
+        <a
+          href={CONTACT.whatsappText}
+          class="btn btn--om-dark footer-cta"
+          target="_blank"
+          rel="noopener"
+        >
+          Consultar mi proyecto por WhatsApp
+        </a>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Navegación</h4>
+        <ul class="footer-list">
+          {
+            NAV_LINKS.map((link) => (
+              <li>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Servicios</h4>
+        <ul class="footer-list">
+          {
+            SERVICES.map((service) => (
+              <li>
+                <a href={service.link}>{service.title}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Contacto</h4>
+        <ul class="footer-list footer-contact">
+          <li>
+            {COMPANY.address.street}<br />
+            {COMPANY.address.city}, {COMPANY.address.province}
+          </li>
+          <li>
+            <a href={CONTACT.telLandline}>{COMPANY.phone.landline}</a>
+          </li>
+          <li>
+            <a href={CONTACT.telMobile}>{COMPANY.phone.mobile}</a>
+          </li>
+          <li>
+            <a href={CONTACT.mailto}>{COMPANY.email}</a>
+          </li>
+          <li>
+            <a href={COMPANY.instagram.url} target="_blank" rel="noopener">
+              Instagram {COMPANY.instagram.handle}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="small mb-0">
+        © {new Date().getFullYear()} {COMPANY.name} — {COMPANY.lawyer},{' '}
+        {COMPANY.profession}. Todos los derechos reservados.
+      </p>
+      <p class="small mb-0 footer-note">
+        Trayectoria profesional iniciada en {COMPANY.startedYear}.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-navy-ink);
+    color: var(--color-ink-on-dark);
+    padding-top: var(--space-xl);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.4fr;
+    gap: var(--space-xl) var(--space-lg);
+    padding-block: var(--space-lg);
+  }
+
+  .footer-logo {
+    display: inline-flex;
+    text-decoration: none;
+    margin-bottom: var(--space-md);
+  }
+
+  .footer-desc {
+    color: var(--color-muted-on-dark);
+    max-width: 42ch;
+  }
+
+  .footer-cta {
+    margin-top: var(--space-md);
+  }
+
+  .footer-title {
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-sm);
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--color-line-on-dark);
+  }
+
+  .footer-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .footer-list a {
+    color: var(--color-muted-on-dark);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+
+  .footer-list a:hover {
+    color: #fff;
+  }
+
+  .footer-contact {
+    color: var(--color-muted-on-dark);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    padding-block: var(--space-md);
+    border-top: 1px solid var(--color-line-on-dark);
+  }
+
+  .footer-bottom .small {
+    color: var(--color-muted-on-dark);
+  }
+
+  @media (max-width: 960px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+  }
+</style>

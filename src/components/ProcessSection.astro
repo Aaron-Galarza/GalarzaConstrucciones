@@ -1,0 +1,129 @@
+---
+const steps = [
+  {
+    num: '01',
+    title: 'Evaluamos',
+    text: 'Relevamos la situación, el terreno o la construcción existente. Escuchamos qué necesita el proyecto.',
+  },
+  {
+    num: '02',
+    title: 'Analizamos',
+    text: 'Estudiamos el problema técnico real: estructura, patologías, plazos, normativas y presupuesto.',
+  },
+  {
+    num: '03',
+    title: 'Planificamos',
+    text: 'Definimos la solución, el alcance, la documentación y el orden de ejecución.',
+  },
+  {
+    num: '04',
+    title: 'Ejecutamos',
+    text: 'Trabajamos con personal propio y supervisión directa, cumpliendo plazos y procedimientos.',
+  },
+  {
+    num: '05',
+    title: 'Supervisamos',
+    text: 'Seguimos la obra hasta el detalle final: control de calidad, instalaciones y terminaciones.',
+  },
+];
+---
+
+<section class="section process">
+  <div class="shell">
+    <header class="section-head">
+      <p class="annotation">Cómo trabajamos</p>
+      <h2>Un proceso de cinco etapas, siempre el mismo rigor.</h2>
+      <p class="lead">
+        Aplica lo mismo a la obra nueva que a la intervención más delicada sobre
+        una construcción existente. Funciona sin depender de JavaScript: es
+        contenido estructural.
+      </p>
+    </header>
+
+    <ol class="process-list">
+      {
+        steps.map((step) => (
+          <li class="process-item">
+            <span class="process-num" aria-hidden="true">{step.num}</span>
+            <h3 class="process-title">{step.title}</h3>
+            <p class="process-text">{step.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .process-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border-top: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .process-item {
+    padding: var(--space-lg) var(--space-md);
+    border-left: 1px solid var(--color-line);
+  }
+
+  .process-item:first-child {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .process-num {
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 680;
+    font-variation-settings: 'wght' 680;
+    line-height: 1;
+    color: var(--color-cyan);
+    margin-bottom: var(--space-sm);
+  }
+
+  .process-title {
+    font-size: 1.18rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .process-text {
+    color: var(--color-muted);
+    font-size: var(--text-sm);
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 960px) {
+    .process-list {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .process-item:nth-child(odd) {
+      border-left: 0;
+    }
+
+    .process-item:nth-child(5) {
+      grid-column: 1 / -1;
+      border-left: 0;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .process-list {
+      grid-template-columns: 1fr;
+    }
+
+    .process-item {
+      border-left: 0;
+      border-top: 1px solid var(--color-line);
+    }
+
+    .process-item:first-child {
+      border-top: 0;
+    }
+  }
+</style>

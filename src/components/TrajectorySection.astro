@@ -1,0 +1,110 @@
+---
+const milestones = [
+  {
+    year: '1990',
+    title: 'Inicio en la obra',
+    text: 'Primeros pasos como ayudante de albañil, trabajando para sostener los estudios de ingeniería.',
+  },
+  {
+    year: 'Antes de 2004',
+    title: 'Contratista para grandes empresas',
+    text: 'Ejecución de proyectos para Telecom y Telefónica y participación en los programas federales PROPASA y PROSOFA.',
+  },
+  {
+    year: '2004',
+    title: 'Registro como proveedor del Estado',
+    text: 'Formalización del marco legal de la actividad en el Registro de Empresas de la Provincia y como proveedor estatal.',
+  },
+  {
+    year: '2004 – 2009',
+    title: 'Obra pública en el Chaco',
+    text: 'Remodelación y puesta en valor de escuelas, alcaidías y comisarías para los Ministerios de Educación y de Seguridad del Chaco, en paralelo con obra privada.',
+  },
+  {
+    year: '2011',
+    title: 'Obras civiles hidráulicas',
+    text: 'Construcción de redes de agua potable en Pampa del Indio y La Leonesa, e inicio de la relación continua con INSSSEP.',
+  },
+];
+---
+
+<section class="section trajectory" id="trayectoria">
+  <div class="shell">
+    <header class="section-head">
+      <p class="annotation">Trayectoria</p>
+      <h2>Más de tres décadas de obra continua.</h2>
+      <p class="lead">
+        La trayectoria profesional comenzó en 1990 y no se detuvo: del trabajo
+        artesanal en obra a la dirección técnica de proyectos públicos y
+        privados.
+      </p>
+    </header>
+
+    <ol class="trajectory-list">
+      {
+        milestones.map((m) => (
+          <li class="trajectory-item">
+            <span class="trajectory-year" aria-hidden="true">{m.year}</span>
+            <div class="trajectory-body">
+              <h3 class="trajectory-title">{m.title}</h3>
+              <p class="trajectory-text">{m.text}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+
+    <p class="trajectory-more">
+      <a href="/nosotros/" class="btn btn--ghost">Conocer la historia completa</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .trajectory-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .trajectory-item {
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    gap: var(--space-lg);
+    padding-block: var(--space-md);
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .trajectory-year {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 680;
+    font-variation-settings: 'wght' 680;
+    color: var(--color-cyan);
+    padding-top: 0.2rem;
+  }
+
+  .trajectory-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .trajectory-text {
+    color: var(--color-muted);
+    margin-bottom: 0;
+    max-width: 62ch;
+  }
+
+  .trajectory-more {
+    margin-top: var(--space-lg);
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 720px) {
+    .trajectory-item {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
+  }
+</style>

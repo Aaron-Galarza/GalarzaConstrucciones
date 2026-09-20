@@ -1,0 +1,108 @@
+---
+const areas = [
+  'Residencial',
+  'Comercial',
+  'Institucional',
+  'Obra pública',
+  'Infraestructura',
+  'Hidráulica',
+  'Mantenimiento',
+  'Remodelación',
+];
+
+const actors = [
+  { name: 'Telecom', note: 'Proyectos de gran escala como contratista' },
+  { name: 'Telefónica', note: 'Proyectos de gran escala como contratista' },
+  { name: 'Ministerio de Educación del Chaco', note: 'Escuelas (2004–2009)' },
+  { name: 'Ministerio de Seguridad del Chaco', note: 'Alcaidías y comisarías (2004–2009)' },
+  { name: 'INSSSEP', note: 'Mantenimiento y refacciones desde 2011' },
+];
+---
+
+<section class="section experience" id="experiencia">
+  <div class="shell">
+    <header class="section-head">
+      <p class="annotation">Experiencia</p>
+      <h2>Ámbitos donde desarrollamos obra real.</h2>
+      <p class="lead">
+        No usamos logos ajenos: los organismos y empresas se muestran por su
+        nombre, con la relación de trabajo correspondiente.
+      </p>
+    </header>
+
+    <div class="experience-areas">
+      {
+        areas.map((area) => (
+          <span class="area-chip">{area}</span>
+        ))
+      }
+    </div>
+
+    <ul class="actors-list">
+      {
+        actors.map((actor) => (
+          <li class="actor-row">
+            <strong class="actor-name">{actor.name}</strong>
+            <span class="actor-note small">{actor.note}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .experience-areas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
+  }
+
+  .area-chip {
+    border: 1px solid var(--color-line);
+    padding: 0.6rem 1.1rem;
+    font-weight: 600;
+    font-size: var(--text-sm);
+    color: var(--color-navy);
+    background: var(--color-surface);
+    border-radius: 2px;
+  }
+
+  .actors-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .actor-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-md);
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--color-line);
+    margin: 0;
+  }
+
+  .actor-name {
+    font-family: var(--font-display);
+    font-size: 1.06rem;
+  }
+
+  .actor-note {
+    text-align: right;
+  }
+
+  @media (max-width: 640px) {
+    .actor-row {
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .actor-note {
+      text-align: left;
+    }
+  }
+</style>

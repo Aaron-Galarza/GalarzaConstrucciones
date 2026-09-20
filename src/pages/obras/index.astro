@@ -1,0 +1,105 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import BlueprintCard from '../../components/BlueprintCard.astro';
+import CTASection from '../../components/CTASection.astro';
+import { breadcrumbSchema, localBusinessSchema } from '../../lib/schema';
+import { COMPANY } from '../../lib/company';
+import { canonicalUrl } from '../../lib/seo';
+
+const obras = (await getCollection('obras')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+
+const schema = [
+  localBusinessSchema(),
+  breadcrumbSchema([
+    { name: 'Inicio', path: '/' },
+    { name: 'Obras', path: '/obras/' },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Obras de Galarza Construcción',
+    itemListElement: obras.map((obra, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: obra.data.title,
+      url: canonicalUrl(`/obras/${obra.id}/`),
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title="Obras en Resistencia y el Chaco | Galarza Construcción"
+  description={`Portfolio de obras reales de ${COMPANY.name}: Campo del Cielo (Gancedo), Axion Puerto Tirol, Farmacia y Regalería en Resistencia y Kilómetro 48 en Monte Chaqueño.`}
+  path="/obras/"
+  schemas={schema}
+>
+  <div class="shell page-content">
+    <Breadcrumbs
+      items={[
+        { name: 'Inicio', path: '/' },
+        { name: 'Obras', path: '/obras/' },
+      ]}
+    />
+    <header class="page-head">
+      <p class="annotation">Obras</p>
+      <h1>Proyectos reales, ejecutados y supervisados.</h1>
+      <p class="lead">
+        Una selección de obras que muestran escala, infraestructura, resolución
+        estructural y adaptación al entorno.
+      </p>
+    </header>
+
+    <div class="works-grid">
+      {
+        obras.map((obra, i) => (
+          <BlueprintCard
+            code={`O-${String(i + 1).padStart(2, '0')}`}
+            title={obra.data.title}
+            href={`/obras/${obra.id}/`}
+            category={obra.data.category}
+            location={obra.data.location}
+            image={obra.data.gallery[0]?.src}
+            imageAlt={obra.data.gallery[0]?.alt}
+          />
+        ))
+      }
+    </div>
+  </div>
+
+  <CTASection />
+</BaseLayout>
+
+<style>
+  .page-content {
+    padding-top: var(--space-lg);
+  }
+
+  .page-head {
+    max-width: var(--container-narrow);
+    margin-bottom: var(--space-lg);
+  }
+
+  .page-head .lead {
+    font-size: var(--text-lg);
+    color: var(--color-muted);
+    margin-top: var(--space-sm);
+  }
+
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+  }
+
+  @media (max-width: 720px) {
+    .works-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

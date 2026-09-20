@@ -1,0 +1,95 @@
+---
+const facts = [
+  { value: '1990', label: 'Inicio de trayectoria profesional' },
+  { value: '2004', label: 'Registro como proveedor estatal' },
+  { value: 'Pública y privada', label: 'Obras en ambos sectores' },
+  { value: 'Supervisión propia', label: 'Seguimiento permanente de obra' },
+];
+---
+
+<section class="trust dark" aria-label="Datos de trayectoria">
+  <div class="shell trust-grid">
+    {
+      facts.map((fact) => (
+        <div class="trust-cell">
+          <span class="trust-value">{fact.value}</span>
+          <span class="trust-label">{fact.label}</span>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .trust {
+    padding-block: var(--space-lg);
+    border-bottom: 1px solid var(--color-line-on-dark);
+  }
+
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .trust-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 0 var(--space-lg);
+    border-left: 1px solid var(--color-line-on-dark);
+  }
+
+  .trust-cell:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .trust-value {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+    font-weight: 680;
+    font-variation-settings: 'wght' 680;
+    letter-spacing: -0.02em;
+    color: #fff;
+    line-height: 1.1;
+  }
+
+  .trust-label {
+    color: var(--color-muted-on-dark);
+    font-size: var(--text-sm);
+    max-width: 22ch;
+  }
+
+  @media (max-width: 860px) {
+    .trust-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md) 0;
+    }
+
+    .trust-cell {
+      border-left: 1px solid var(--color-line-on-dark);
+    }
+
+    .trust-cell:nth-child(odd) {
+      border-left: 0;
+    }
+
+    .trust-cell:nth-child(1),
+    .trust-cell:nth-child(2) {
+      padding-top: 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .trust-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .trust-cell {
+      border-left: 0;
+      padding: var(--space-sm) 0;
+      border-top: 1px solid var(--color-line-on-dark);
+    }
+  }
+</style>

@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import { CONTACT, COMPANY } from '../../lib/company';
+import { breadcrumbSchema, localBusinessSchema } from '../../lib/schema';
+
+const schema = [
+  localBusinessSchema(),
+  breadcrumbSchema([
+    { name: 'Inicio', path: '/' },
+    { name: 'Contacto', path: '/contacto/' },
+  ]),
+];
+---
+
+<BaseLayout
+  title="Contacto | Galarza Construcción — Resistencia, Chaco"
+  description="Consultá por tu proyecto de obra, remodelación, ampliación o solución estructural. WhatsApp 0362-154660649, teléfono 0362-4340080, Bélgica Nº 652, Resistencia, Chaco."
+  path="/contacto/"
+  schemas={schema}
+>
+  <div class="shell page-content">
+    <Breadcrumbs
+      items={[
+        { name: 'Inicio', path: '/' },
+        { name: 'Contacto', path: '/contacto/' },
+      ]}
+    />
+
+    <header class="page-head">
+      <p class="annotation">Contacto</p>
+      <h1>Contanos qué proyecto tenés.</h1>
+      <p class="lead">
+        Cada consulta arranca igual: entendemos qué necesitás antes de pensar
+        cualquier solución. Sin formularios falsos: el primer contacto es
+        directo, por WhatsApp, teléfono o email.
+      </p>
+    </header>
+
+    <div class="how-grid">
+      <a href={CONTACT.whatsappText} class="how-card card card--link" target="_blank" rel="noopener">
+        <h2 class="how-title">WhatsApp</h2>
+        <p class="small">{COMPANY.phone.mobile}</p>
+        <p class="how-note">
+          La vía más rápida. Escribí el tipo de proyecto y la localidad, y
+          coordinamos una evaluación.
+        </p>
+        <span class="how-cta">Abrir WhatsApp</span>
+      </a>
+
+      <a href={CONTACT.telLandline} class="how-card card card--link">
+        <h2 class="how-title">Teléfono fijo</h2>
+        <p class="small">{COMPANY.phone.landline}</p>
+        <p class="how-note">
+          Para consultas directas durante el horario laboral.
+        </p>
+        <span class="how-cta">Llamar</span>
+      </a>
+
+      <a href={CONTACT.mailto} class="how-card card card--link">
+        <h2 class="how-title">Email</h2>
+        <p class="small">{COMPANY.email}</p>
+        <p class="how-note">
+          Para enviar documentación, planos o descripciones detalladas del proyecto.
+        </p>
+        <span class="how-cta">Escribir un email</span>
+      </a>
+    </div>
+  </div>
+
+  <ContactSection heading="Datos de contacto." />
+
+  <div class="shell">
+    <FAQSection
+      items={[
+        {
+          q: '¿Cómo se consulta por una obra?',
+          a: 'Por WhatsApp en el 0362-154660649, por teléfono al 0362-4340080 o por email a adalbertojg@hotmail.com. Contanos qué proyecto tenés y coordinamos una evaluación real.',
+        },
+        {
+          q: '¿Qué información conviene mandar en la consulta?',
+          a: 'El tipo de proyecto (obra nueva, remodelación, ampliación, problema estructural, dirección técnica, presupuesto), la localidad y qué necesitás resolver. Con eso ya podemos orientarte.',
+        },
+        {
+          q: '¿En qué zonas trabajan?',
+          a: 'Tenemos base en Resistencia y trabajamos en toda la provincia del Chaco, y también en otras provincias según el proyecto, como lo hemos hecho a lo largo de la trayectoria.',
+        },
+      ]}
+    />
+  </div>
+</BaseLayout>
+
+<style>
+  .page-content {
+    padding-top: var(--space-lg);
+  }
+
+  .page-head {
+    max-width: var(--container-narrow);
+    margin-bottom: var(--space-lg);
+  }
+
+  .page-head .lead {
+    font-size: var(--text-lg);
+    color: var(--color-muted);
+    margin-top: var(--space-sm);
+  }
+
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+  }
+
+  .how-card {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-lg);
+    text-decoration: none;
+    color: inherit;
+    border-top: 3px solid var(--color-navy);
+  }
+
+  .how-title {
+    font-size: 1.35rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .how-note {
+    color: var(--color-muted);
+    flex: 1;
+    margin-top: var(--space-sm);
+  }
+
+  .how-cta {
+    margin-top: var(--space-md);
+    font-weight: 600;
+    color: var(--color-navy);
+    text-decoration: underline;
+    text-decoration-color: var(--color-cyan);
+    text-underline-offset: 3px;
+  }
+
+  @media (max-width: 860px) {
+    .how-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
