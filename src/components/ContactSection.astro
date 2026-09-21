@@ -1,5 +1,5 @@
 ---
-import { COMPANY, CONTACT } from '../lib/company';
+import { COMPANY, CONTACT, whatsappURL } from '../lib/company';
 
 interface Props {
   /** Encabezado de la sección (en la home se usa uno más corto). */
@@ -37,7 +37,7 @@ const { heading = 'Consultá por tu proyecto.' } = Astro.props;
           </li>
           <li>
             <span class="contact-label">Celular / WhatsApp</span>
-            <a href={CONTACT.whatsappText} target="_blank" rel="noopener">
+            <a href={whatsappURL(CONTACT.whatsappMessage)} target="_blank" rel="noopener">
               {COMPANY.phone.mobile}
             </a>
           </li>
@@ -64,7 +64,7 @@ const { heading = 'Consultá por tu proyecto.' } = Astro.props;
           Trabajamos en Resistencia, en toda la provincia del Chaco y en otras
           provincias según el proyecto.
         </p>
-        <a href={CONTACT.whatsappText} class="btn" target="_blank" rel="noopener">
+        <a href={whatsappURL(CONTACT.whatsappMessage)} class="btn" target="_blank" rel="noopener">
           Consultar mi proyecto
         </a>
       </div>

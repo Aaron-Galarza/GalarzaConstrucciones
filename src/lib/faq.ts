@@ -40,6 +40,6 @@ export const FAQ_ITEMS = [
   },
   {
     q: '¿Cómo se consulta por una obra?',
-    a: 'Por WhatsApp en el 0362-154660649, por teléfono al 0362-4340080 o por email a adalbertojg@hotmail.com. Contanos qué proyecto tenés y coordinamos una evaluación.',
+    a: 'Por WhatsApp en el 0362-4660649, por teléfono al 0362-4340080 o por email a javieradalbertogalarza@gmail.com. Contanos qué proyecto tenés y coordinamos una evaluación.',
   },
 ];

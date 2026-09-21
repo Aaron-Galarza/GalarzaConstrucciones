@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import FAQSection from '../../components/FAQSection.astro';
-import { CONTACT, COMPANY } from '../../lib/company';
+import { CONTACT, COMPANY, whatsappURL } from '../../lib/company';
 import { breadcrumbSchema, localBusinessSchema } from '../../lib/schema';
 
 const schema = [
@@ -17,7 +17,7 @@ const schema = [
 
 <BaseLayout
   title="Contacto | Galarza Construcción — Resistencia, Chaco"
-  description="Consultá por tu proyecto de obra, remodelación, ampliación o solución estructural. WhatsApp 0362-154660649, teléfono 0362-4340080, Bélgica Nº 652, Resistencia, Chaco."
+  description="Consultá por tu proyecto de obra, remodelación, ampliación o solución estructural. WhatsApp 0362-4660649, teléfono 0362-4340080, Bélgica Nº 652, Resistencia, Chaco."
   path="/contacto/"
   schemas={schema}
 >
@@ -40,7 +40,7 @@ const schema = [
     </header>
 
     <div class="how-grid">
-      <a href={CONTACT.whatsappText} class="how-card card card--link" target="_blank" rel="noopener">
+      <a href={whatsappURL(CONTACT.whatsappMessage)} class="how-card card card--link" target="_blank" rel="noopener">
         <h2 class="how-title">WhatsApp</h2>
         <p class="small">{COMPANY.phone.mobile}</p>
         <p class="how-note">
@@ -77,7 +77,7 @@ const schema = [
       items={[
         {
           q: '¿Cómo se consulta por una obra?',
-          a: 'Por WhatsApp en el 0362-154660649, por teléfono al 0362-4340080 o por email a adalbertojg@hotmail.com. Contanos qué proyecto tenés y coordinamos una evaluación real.',
+          a: 'Por WhatsApp en el 0362-4660649, por teléfono al 0362-4340080 o por email a javieradalbertogalarza@gmail.com. Contanos qué proyecto tenés y coordinamos una evaluación real.',
         },
         {
           q: '¿Qué información conviene mandar en la consulta?',

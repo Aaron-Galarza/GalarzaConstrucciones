@@ -1,5 +1,5 @@
 ---
-import { CTA_PRIMARY, CONTACT, COMPANY } from '../lib/company';
+import { CTA_PRIMARY, CONTACT, COMPANY, whatsappURL } from '../lib/company';
 ---
 
 <section class="hero">
@@ -17,7 +17,7 @@ import { CTA_PRIMARY, CONTACT, COMPANY } from '../lib/company';
         {COMPANY.startedYear}.
       </p>
       <div class="hero-ctas">
-        <a href={CONTACT.whatsappText} class="btn" target="_blank" rel="noopener">
+        <a href={whatsappURL(CONTACT.whatsappMessage)} class="btn" target="_blank" rel="noopener">
           {CTA_PRIMARY.label}
         </a>
         <a href="/obras/" class="btn btn--ghost btn--on-dark">Ver obras</a>

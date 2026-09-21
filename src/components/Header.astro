@@ -7,6 +7,7 @@ import {
   CONTACT,
   COMPANY,
   SERVICES,
+  whatsappURL,
 } from '../lib/company';
 
 // Ruta actual para marcar el ítem activo (y su hijo) en el header.
@@ -73,7 +74,7 @@ const navTree: NavItem[] = NAV_LINKS.map((link) => {
   } else if (link.href === '/contacto/') {
     children.push(
       {
-        href: CONTACT.whatsappText,
+        href: whatsappURL(CONTACT.whatsappMessage),
         label: 'WhatsApp',
         sub: COMPANY.phone.mobile,
         isActive: false,
