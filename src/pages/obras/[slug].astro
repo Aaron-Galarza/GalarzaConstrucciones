@@ -8,6 +8,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import CTASection from '../../components/CTASection.astro';
 import WorkGallery from '../../components/WorkGallery.astro';
 import { workSchema, breadcrumbSchema, localBusinessSchema } from '../../lib/schema';
+import { whatsappURL } from '../../lib/company';
 
 export async function getStaticPaths() {
   const obras = await getCollection('obras');
@@ -124,7 +125,9 @@ const schema = [
             construcción, contanos el caso y lo evaluamos.
           </p>
           <a
-            href="https://wa.me/549362154660649?text=Hola%2C%20quiero%20consultar%20mi%20proyecto"
+            href={whatsappURL(
+              `Hola, vi la obra ${obra.data.title} en la web de Galarza Construcción y me gustaría hacer un proyecto similar. ¿Me cuentan cómo lo encararían y cómo coordinamos una llamada o reunión?`,
+            )}
             class="btn"
             target="_blank"
             rel="noopener"
@@ -137,7 +140,9 @@ const schema = [
     </div>
   </div>
 
-  <CTASection />
+  <CTASection
+    message={`Hola, vi la obra ${obra.data.title} en la web de Galarza Construcción y me gustaría hacer un proyecto similar. ¿Me cuentan cómo lo encararían y cómo coordinamos una llamada o reunión?`}
+  />
 </BaseLayout>
 
 <style>

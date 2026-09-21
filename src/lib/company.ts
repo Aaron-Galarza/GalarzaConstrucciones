@@ -14,12 +14,12 @@ export const COMPANY = {
   },
   phone: {
     landline: '0362-4340080',
-    mobile: '0362-154660649',
+    mobile: '0362-4660649',
   },
-  email: 'adalbertojg@hotmail.com',
+  email: 'javieradalbertogalarza@gmail.com',
   instagram: {
-    handle: '@galarzaconstruccion',
-    url: 'https://www.instagram.com/galarzaconstruccion',
+    handle: '@galarzaconstrucciones',
+    url: 'https://www.instagram.com/galarzaconstrucciones',
   },
   startedYear: 1990,
 } as const;
@@ -27,15 +27,26 @@ export const COMPANY = {
 export const CONTACT = {
   // Enlaces reales y clickeables.
   // WhatsApp: formato internacional argentino con código 549 (móvil).
-  whatsappUrl: 'https://wa.me/549362154660649',
-  whatsappText:
-    'https://wa.me/549362154660649?text=Hola%2C%20quiero%20consultar%20mi%20proyecto%20de%20construcci%C3%B3n',
+  // Número: +54 9 362 466-0649
+  whatsappNumber: '5493624660649',
+  whatsappUrl: 'https://wa.me/5493624660649',
   whatsappMessage:
-    'Hola, quiero consultar mi proyecto de construcción.',
+    'Hola, vengo desde la web de Galarza Construcción y quiero consultar por un proyecto de obra. ¿Me cuentan cómo trabajan, qué servicios ofrecen y cómo coordinamos una reunión para hablar de mi caso?',
   telLandline: 'tel:+543624340080',
-  telMobile: 'tel:+549362154660649',
-  mailto: 'mailto:adalbertojg@hotmail.com',
+  telMobile: 'tel:+5493624660649',
+  mailto:
+    'mailto:javieradalbertogalarza@gmail.com?subject=' +
+    encodeURIComponent('Consulta por servicios y contrataciones') +
+    '&body=' +
+    encodeURIComponent(
+      'Hola Javier, vengo desde la web de Galarza Construcción y quiero consultar por sus servicios, presupuestos y contrataciones. ¿Coordinamos una reunión o una llamada?',
+    ),
 } as const;
+
+// Genera un enlace de WhatsApp con mensaje precargado y codificado.
+// Cada CTA arma su propio mensaje según la sección donde se toca.
+export const whatsappURL = (message: string): string =>
+  `https://wa.me/${CONTACT.whatsappNumber}?text=${encodeURIComponent(message)}`;
 
 // Navegación principal del header/footer. Cada destino existe realmente.
 export const NAV_LINKS = [
@@ -48,7 +59,7 @@ export const NAV_LINKS = [
 
 export const CTA_PRIMARY = {
   label: 'Consultar mi proyecto',
-  href: CONTACT.whatsappUrl,
+  href: whatsappURL(CONTACT.whatsappMessage),
 } as const;
 
 // Servicios confirmados (Informacion.txt). Cada item define su slug de página

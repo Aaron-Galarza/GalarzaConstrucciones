@@ -1,6 +1,6 @@
 ---
 import Logo from './Logo.astro';
-import { COMPANY, CONTACT, NAV_LINKS, SERVICES } from '../lib/company';
+import { COMPANY, CONTACT, NAV_LINKS, SERVICES, whatsappURL } from '../lib/company';
 ---
 
 <footer class="site-footer">
@@ -16,7 +16,7 @@ import { COMPANY, CONTACT, NAV_LINKS, SERVICES } from '../lib/company';
           Resistencia, Chaco y otras provincias.
         </p>
         <a
-          href={CONTACT.whatsappText}
+          href={whatsappURL(CONTACT.whatsappMessage)}
           class="btn btn--om-dark footer-cta"
           target="_blank"
           rel="noopener"
