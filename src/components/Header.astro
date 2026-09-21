@@ -182,7 +182,9 @@ const navTree: NavItem[] = NAV_LINKS.map((link) => {
         {CTA_PRIMARY.label}
       </a>
       <label for="nav-check" class="nav-toggle" aria-label="Abrir o cerrar el menú">
-        <span class="nav-toggle-box"></span>
+        <span class="nav-toggle-box">
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+        </span>
       </label>
     </div>
   </div>
@@ -380,27 +382,40 @@ const navTree: NavItem[] = NAV_LINKS.map((link) => {
   }
 
   .nav-toggle-box::before,
-  .nav-toggle-box::after {
+  .nav-toggle-box::after,
+  .nav-toggle-bar {
     content: '';
     position: absolute;
     left: 0;
     right: 0;
     height: 2px;
     background: var(--color-ink);
-    transition: transform 0.2s ease, top 0.2s ease;
+    transition: transform 0.2s ease, top 0.2s ease, opacity 0.2s ease;
   }
 
-  .nav-toggle-box::before,
-  .nav-toggle-box::after {
+  /* Tres rayitas paralelas apiladas (1 arriba, 1 al medio, 1 abajo) */
+  .nav-toggle-bar {
+    top: 0;
+  }
+
+  .nav-toggle-box::before {
     top: 8px;
   }
 
+  .nav-toggle-box::after {
+    top: 16px;
+  }
+
   .nav-check:checked ~ .nav-toggle .nav-toggle-box::before {
-    transform: rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .nav-check:checked ~ .nav-toggle .nav-toggle-bar {
+    opacity: 0;
   }
 
   .nav-check:checked ~ .nav-toggle .nav-toggle-box::after {
-    transform: rotate(-45deg);
+    transform: translateY(-8px) rotate(-45deg);
   }
 
   .nav-mobile-cta {
