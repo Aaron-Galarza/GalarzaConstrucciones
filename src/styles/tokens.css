@@ -59,3 +59,10 @@
 
 /* Breakpoints de uso frecuente:
    --bp-sm: 40rem (640) · --bp-md: 48rem (768) · --bp-lg: 64rem (1024) */
+
+/* Pantallas muy pequeñas: un poco más de aire horizontal en el layout. */
+@media (max-width: 380px) {
+  :root {
+    --shell-pad: 1rem;
+  }
+}

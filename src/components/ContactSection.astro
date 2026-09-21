@@ -113,6 +113,11 @@ const { heading = 'Consultá por tu proyecto.' } = Astro.props;
     color: var(--color-cyan);
   }
 
+  .contact-list a {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
   .contact-note {
     background: var(--color-surface);
     border: 1px solid var(--color-line);
@@ -132,6 +137,14 @@ const { heading = 'Consultá por tu proyecto.' } = Astro.props;
     .contact-grid {
       grid-template-columns: 1fr;
       gap: var(--space-lg);
+    }
+  }
+
+  /* Móvil: etiqueta sobre valor, para que el email no quede aplastado. */
+  @media (max-width: 640px) {
+    .contact-list li {
+      grid-template-columns: 1fr;
+      gap: 0.2rem;
     }
   }
 </style>
