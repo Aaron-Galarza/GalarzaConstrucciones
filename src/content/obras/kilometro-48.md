@@ -10,17 +10,17 @@ description: >
   desafío de ejecución en entorno remoto que combinó dos lógicas constructivas:
   primero una etapa artesanal con materiales del entorno, y luego una etapa
   híbrida con técnicas convencionales.
-problem: >
+before: >
   Construir en un entorno alejado obliga a pensar el abastecimiento, la mano de
   obra, el agua y la energía de otra manera. La primera etapa aprovechó troncos y
   materiales del lugar; la necesidad de ganar velocidad y eficiencia llevó a
   repensar la metodología.
-solution: >
+during: >
   Desde 2022 el proyecto incorporó ladrillo y estructura metálica, combinando la
   construcción tradicional con un método híbrido que aceleró la obra sin
   renunciar al carácter del lugar. El Ing. Javier Galarza participó personalmente
   en los detalles artesanales, incluyendo una escalera construida con tronco local.
-result: >
+after: >
   Proyecto terminado en 2025 con estructura robusta, instalaciones eléctricas,
   conectividad y agua corriente, y un interior de carácter rústico-natural. El
   resultado muestra cómo se puede construir con calidad en un entorno remoto

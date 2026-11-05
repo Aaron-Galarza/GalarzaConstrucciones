@@ -9,19 +9,19 @@ description: >
   estaban divididos por una pared de mampostería portante que participaba en la
   transmisión de cargas de la losa superior. El proyecto buscó integrar ambos
   espacios en un único local operativo.
-problem: >
+before: >
   Abrir un vano entre los dos locales exigía intervenir una pared que cumplía
   función estructural y sostiene la losa superior. La operación debía realizarse
   sin comprometer la estructura y sin detener la actividad comercial del área.
   Cualquier error de secuencia en este tipo de obra puede generar asientos o
   fisuras en la estructura existente.
-solution: >
+during: >
   Se ejecutó un reemplazo estructural previo a la demolición: sectorización
   temporal y protección del área operativa, colocación de perfiles IPN 220 con
   sus apoyos y elementos de soporte, demolición controlada de la mampostería y
   apuntalamientos donde fueron necesarios. La estructura recibió la carga antes
   de retirar la pared.
-result: >
+after: >
   Espacio comercial integrado con mejor circulación y funcionalidad, manteniendo
   condiciones estructurales seguras durante toda la intervención. El local pudo
   seguir operando mientras se trabajaba. Es la intervención que más cambió un

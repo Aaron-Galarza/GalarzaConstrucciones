@@ -15,6 +15,11 @@ const imageRef = z.object({
   caption: z.string().optional(),
 });
 
+/** Imagen de obra con la etapa del ciclo a la que pertenece. */
+const workImage = imageRef.extend({
+  stage: z.enum(['antes', 'durante', 'despues']).optional(),
+});
+
 const obras = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/obras' }),
   schema: z.object({
@@ -26,13 +31,14 @@ const obras = defineCollection({
     category: z.string(),
     summary: z.string(),
     description: z.string(),
-    problem: z.string(),
-    solution: z.string(),
-    result: z.string(),
+    /** Guía de contenido del proceso: antes, durante y después. */
+    before: z.string(),
+    during: z.string(),
+    after: z.string(),
     /** Slugs de servicios relacionados (colección `servicios`). */
     services: z.array(z.string()).default([]),
-    /** Galería fotográfica de la obra (etapa, estructura, resultado). */
-    gallery: z.array(imageRef).default([]),
+    /** Galería fotográfica agrupable por etapa del ciclo. */
+    gallery: z.array(workImage).default([]),
     featured: z.boolean().default(false),
     caseStudy: z.boolean().default(false),
     order: z.number().default(99),

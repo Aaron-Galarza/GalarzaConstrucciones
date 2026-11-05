@@ -26,6 +26,13 @@ const serviciosRelacionados = (await getCollection('servicios')).filter(
 
 const isCase = obra.data.caseStudy;
 
+// Galería: las imágenes sin etapa van al registro general; las que tienen
+// etapa se muestran junto a su bloque del proceso (antes, durante, después).
+const stageItems = (stage: 'antes' | 'durante' | 'despues') =>
+  obra.data.gallery.filter((item) => item.stage === stage);
+
+const gallery = obra.data.gallery.filter((item) => !item.stage);
+
 const schema = [
   workSchema({
     title: obra.data.title,
@@ -74,9 +81,9 @@ const schema = [
     </header>
 
     {
-      obra.data.gallery.length > 0 && (
+      gallery.length > 0 && (
         <WorkGallery
-          items={obra.data.gallery}
+          items={gallery}
           heading="Registro fotográfico de la obra"
         />
       )
@@ -85,18 +92,33 @@ const schema = [
     <div class="layout-grid">
       <article class="case-body">
         <section class="block">
-          <h2>Problema</h2>
-          <p>{obra.data.problem}</p>
+          <h2>Antes</h2>
+          <p>{obra.data.before}</p>
+          {
+            stageItems('antes').length > 0 && (
+              <WorkGallery items={stageItems('antes')} heading="" />
+            )
+          }
         </section>
 
         <section class="block">
-          <h2>Solución</h2>
-          <p>{obra.data.solution}</p>
+          <h2>Durante</h2>
+          <p>{obra.data.during}</p>
+          {
+            stageItems('durante').length > 0 && (
+              <WorkGallery items={stageItems('durante')} heading="" />
+            )
+          }
         </section>
 
         <section class="block">
-          <h2>Resultado</h2>
-          <p>{obra.data.result}</p>
+          <h2>Después</h2>
+          <p>{obra.data.after}</p>
+          {
+            stageItems('despues').length > 0 && (
+              <WorkGallery items={stageItems('despues')} heading="" />
+            )
+          }
         </section>
 
         {

@@ -8,21 +8,21 @@ description: >
   Estación de servicios Axion ubicada en el acceso a Puerto Tirol, Chaco. Una de
   las obras de mayor complejidad por la conjunción de obra civil, instalaciones
   y requisitos específicos de un establecimiento de expendio de combustible.
-problem: >
+before: >
   Este tipo de obra combina movimiento de suelos, cemento y hormigón, instalaciones
   técnicas y superficies exigidas por la operación. El plazo operativo y las
   normativas del rubro condicionan la secuencia de ejecución.
-solution: >
+during: >
   Planificación de obra por etapas con frente de trabajo ordenado, ejecución con
   personal propio y supervisión directa en cada sector, coordinando los rubros
   técnicos que conviven en la estación.
-result: >
+after: >
   Infraestructura comercial concluida y operativa, que demuestra la capacidad de
   Galarza Construcción para ejecutar obras de infraestructura fuera del segmento
   residencial.
 services:
   - construccion
-  - obra-civiles
+  - obras-civiles
   - direccion-tecnica
 gallery:
   - src: /obras/axion-puerto-tirol/panoramica.jpg
