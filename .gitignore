@@ -5,6 +5,9 @@ node_modules/
 dist/
 .astro/
 
+# Documentación, fuentes y archivos de trabajo (no se publican en GitHub)
+Docs/
+
 # Entorno
 .env
 .env.*
