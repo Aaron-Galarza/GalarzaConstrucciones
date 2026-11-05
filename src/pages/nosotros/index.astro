@@ -40,30 +40,68 @@ const schema = [
       </p>
     </header>
 
-    <div class="story" id="historia">
-      <p>
-        El trabajo en construcción empezó en <strong>1990</strong>, como ayudante
-        de albañil: el oficio que sostuvo los estudios de ingeniería. Antes de
-        eso, de chico, el interés ya estaba — jugar a construir casas, puentes y
-        caminos. Esa curiosidad, estimulada por la familia, terminó encaminando
-        la vocación hacia algo parecido a lo que se jugaba.
-      </p>
-      <p>
-        Ese punto de partida explica el valor diferencial de la empresa:
-        <strong> formación académica en Ingeniería en Construcciones más
-        experiencia directa de obra</strong>. No es una historia sentimental: es
-        la forma en que se construyó el criterio. Saber cómo se hace el trabajo
-        no por haberlo leído, sino por haberlo hecho.
-      </p>
-      <p>
-        Ese criterio se formalizó con los años. Hacia 2004 la actividad tomó su
-        marco legal, con inscripción en el Registro de Empresas de la Provincia y
-        como proveedor del Estado. Desde entonces la empresa combina obra
-        pública, infraestructura y construcción privada, con un compromiso que se
-        mantiene en cada proyecto: <strong>asumir la responsabilidad completa,
-        cumpliendo plazos, normativas y expectativas técnicas</strong>.
-      </p>
-    </div>
+    <section class="profile" id="historia">
+      <figure class="profile-photo">
+        <img
+          src="/javier-galarza.webp"
+          alt="Javier Galarza, ingeniero en construcciones y fundador de Galarza Construcción"
+          width="1200"
+          height="1143"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>Javier Galarza — Ingeniero en Construcciones</figcaption>
+      </figure>
+
+      <div class="profile-body">
+        <p class="annotation">Javier Galarza</p>
+        <h2 class="profile-title">El criterio que nació en la obra.</h2>
+        <p>
+          Galarza Construcciones nació de una trayectoria construida desde el
+          trabajo en obra.
+        </p>
+        <p>
+          <strong>Javier Galarza</strong>, ingeniero en construcciones y
+          fundador de la empresa, comenzó a trabajar en construcción en{' '}
+          <strong>1990</strong>, como ayudante de albañil. El trabajo no fue un
+          punto de llegada: fue el medio que le permitió sostener sus estudios y
+          formarse profesionalmente.
+        </p>
+        <p>
+          El interés por construir había comenzado mucho antes. De chico, jugaba
+          a construir casas, puentes y caminos. Con el tiempo, aquella curiosidad
+          se convirtió en una profesión y, posteriormente, en una forma de
+          entender la construcción.
+        </p>
+        <p>
+          Su formación combinó dos experiencias que hoy definen la manera de
+          trabajar de Galarza Construcciones:{' '}
+          <strong>la formación técnica de la ingeniería y el conocimiento
+          directo de la obra</strong>.
+        </p>
+        <p>
+          Antes de dirigir proyectos, estuvo del otro lado: ejecutando tareas,
+          entendiendo los materiales, los tiempos y las dificultades que aparecen
+          cuando un proyecto deja el plano y pasa a convertirse en una obra real.
+        </p>
+        <p>
+          Esa experiencia es parte del criterio con el que se aborda cada
+          proyecto:{' '}
+          <strong>entender el problema, evaluar técnicamente las alternativas y
+          asumir la responsabilidad sobre la solución</strong>.
+        </p>
+        <p>
+          Con los años, esa trayectoria dio lugar a una empresa que desarrolló
+          proyectos residenciales, comerciales, institucionales, de
+          infraestructura y obra pública en la provincia del Chaco.
+        </p>
+        <p>
+          Más de tres décadas después, la premisa sigue siendo la misma:{' '}
+          <strong>hacer la obra con responsabilidad, criterio técnico y
+          compromiso con lo acordado</strong>.
+        </p>
+      </div>
+    </section>
 
     <h2 class="page-h2">Trayectoria</h2>
   </div>
@@ -111,9 +149,57 @@ const schema = [
     margin-top: var(--space-sm);
   }
 
-  .story {
-    max-width: 66ch;
+  .profile {
+    display: grid;
+    grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+    gap: var(--space-xl);
+    align-items: start;
     margin-bottom: var(--space-xl);
+  }
+
+  .profile-photo {
+    margin: 0;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius);
+    background:
+      linear-gradient(rgba(18, 163, 184, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(18, 163, 184, 0.05) 1px, transparent 1px),
+      var(--color-surface);
+    background-size: 22px 22px;
+    padding: 0.75rem 0.75rem 0.6rem;
+  }
+
+  .profile-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1200 / 1143;
+    object-fit: cover;
+    border-radius: calc(var(--radius) - 1px);
+  }
+
+  .profile-photo figcaption {
+    font-size: var(--text-xs);
+    color: var(--color-muted);
+    margin-top: var(--space-sm);
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .profile-title {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-md);
+  }
+
+  @media (max-width: 820px) {
+    .profile {
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+
+    .profile-photo {
+      max-width: 22rem;
+    }
   }
 
   .page-h2 {
