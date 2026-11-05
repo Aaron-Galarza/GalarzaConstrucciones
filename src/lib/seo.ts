@@ -20,6 +20,16 @@ export interface SEOProps {
   robots?: string;
 }
 
+/**
+ * Etiqueta del <head>. BaseLayout decide el elemento real según `tag`, de modo
+ * que el canonical se emita como <link rel="canonical"> y no como <meta>.
+ */
+export interface HeadTag {
+  tag: 'title' | 'meta' | 'link';
+  attrs: Record<string, string>;
+  children?: string;
+}
+
 /** Devuelve la URL absoluta de una ruta interna, garantizando trailing slash. */
 export function canonicalUrl(path: string): string {
   const p = path === '/' ? '/' : `/${path.replace(/^\/+|\/+$/g, '')}/`;
@@ -33,30 +43,29 @@ export function buildSEOTags({
   type = 'website',
   image = SITE.ogImage,
   robots = 'index, follow',
-}: SEOProps) {
+}: SEOProps): HeadTag[] {
   const canonical = canonicalUrl(path);
-  const ogUrl = canonical;
 
   return [
     { tag: 'title', attrs: {}, children: title },
-    { tag: 'meta', attrs: { name: 'description', content: description }, children: '' },
-    { tag: 'meta', attrs: { name: 'robots', content: robots }, children: '' },
-    { tag: 'link', attrs: { rel: 'canonical', href: canonical }, children: '' },
+    { tag: 'meta', attrs: { name: 'description', content: description } },
+    { tag: 'meta', attrs: { name: 'robots', content: robots } },
+    { tag: 'link', attrs: { rel: 'canonical', href: canonical } },
 
     // Open Graph
-    { tag: 'meta', attrs: { property: 'og:type', content: type }, children: '' },
-    { tag: 'meta', attrs: { property: 'og:site_name', content: SITE.name }, children: '' },
-    { tag: 'meta', attrs: { property: 'og:title', content: title }, children: '' },
-    { tag: 'meta', attrs: { property: 'og:description', content: description }, children: '' },
-    { tag: 'meta', attrs: { property: 'og:url', content: ogUrl }, children: '' },
-    { tag: 'meta', attrs: { property: 'og:locale', content: 'es_AR' }, children: '' },
-    { tag: 'meta', attrs: { property: 'og:image', content: `${SITE.url}${image}` }, children: '' },
-    { tag: 'meta', attrs: { property: 'og:image:alt', content: COMPANY.name }, children: '' },
+    { tag: 'meta', attrs: { property: 'og:type', content: type } },
+    { tag: 'meta', attrs: { property: 'og:site_name', content: SITE.name } },
+    { tag: 'meta', attrs: { property: 'og:title', content: title } },
+    { tag: 'meta', attrs: { property: 'og:description', content: description } },
+    { tag: 'meta', attrs: { property: 'og:url', content: canonical } },
+    { tag: 'meta', attrs: { property: 'og:locale', content: 'es_AR' } },
+    { tag: 'meta', attrs: { property: 'og:image', content: `${SITE.url}${image}` } },
+    { tag: 'meta', attrs: { property: 'og:image:alt', content: COMPANY.name } },
 
     // Twitter Card
-    { tag: 'meta', attrs: { name: 'twitter:card', content: 'summary_large_image' }, children: '' },
-    { tag: 'meta', attrs: { name: 'twitter:title', content: title }, children: '' },
-    { tag: 'meta', attrs: { name: 'twitter:description', content: description }, children: '' },
-    { tag: 'meta', attrs: { name: 'twitter:image', content: `${SITE.url}${image}` }, children: '' },
+    { tag: 'meta', attrs: { name: 'twitter:card', content: 'summary_large_image' } },
+    { tag: 'meta', attrs: { name: 'twitter:title', content: title } },
+    { tag: 'meta', attrs: { name: 'twitter:description', content: description } },
+    { tag: 'meta', attrs: { name: 'twitter:image', content: `${SITE.url}${image}` } },
   ];
 }

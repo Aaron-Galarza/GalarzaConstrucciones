@@ -21,7 +21,6 @@ export default defineConfig({
       // El sitemap incluye todas las rutas estáticas + las de contenido.
       filter: (page) => !page.includes('/404'),
       changefreq: 'monthly',
-      lastmod: new Date(),
     }),
   ],
   vite: {

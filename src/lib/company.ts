@@ -62,7 +62,7 @@ export const CTA_PRIMARY = {
   href: whatsappURL(CONTACT.whatsappMessage),
 } as const;
 
-// Servicios confirmados (Informacion.txt). Cada item define su slug de página
+// Servicios confirmados (Docs/Informacion.txt). Cada item define su slug de página
 // cuando la página propia existe; enlaces siempre funcionales.
 export const SERVICES = [
   {

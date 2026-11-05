@@ -7,8 +7,8 @@ import { buildSEOTags } from '../lib/seo';
 import type { SEOProps } from '../lib/seo';
 
 interface Props extends SEOProps {
-  /** Schemas JSON-LD específicos de la página (ya serializados por lib/schema). */
-  schemas?: ReturnType<typeof JSON.parse>[];
+  /** Schemas JSON-LD específicos de la página (objetos de lib/schema). */
+  schemas?: Record<string, unknown>[];
   /** Alias para SLOT del main */
   children?: any;
 }
@@ -38,9 +38,15 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID as string | undefined;
     <meta name="theme-color" content="#0a1e2c" />
 
     {
-      seo.map((t) => (
-        t.tag === 'title' ? <title>{t.children}</title> : <meta {...t.attrs} />
-      ))
+      seo.map((t) =>
+        t.tag === 'title' ? (
+          <title>{t.children}</title>
+        ) : t.tag === 'link' ? (
+          <link {...t.attrs} />
+        ) : (
+          <meta {...t.attrs} />
+        )
+      )
     }
 
     <link rel="icon" href="/favicon.png" type="image/png" />

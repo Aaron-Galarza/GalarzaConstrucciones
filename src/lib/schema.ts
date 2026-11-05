@@ -2,7 +2,6 @@
 // que representan información real de esa página. No se generan datos
 // estructurados inventados.
 
-import type { CollectionEntry } from 'astro:content';
 import { SITE } from './site';
 import { COMPANY } from './company';
 import { canonicalUrl } from './seo';
@@ -192,15 +191,3 @@ export function workSchema(work: {
     },
   };
 }
-
-type Schema = Record<string, unknown>;
-
-/** Serializa una lista de schemas a un único bloque JSON-LD. */
-export function renderSchema(schemas: Schema[]): string {
-  const json = schemas.length === 1 ? schemas[0] : schemas;
-  return JSON.stringify(json, null, 0);
-}
-
-export type ServiceEntry = CollectionEntry<'servicios'>;
-export type ObraEntry = CollectionEntry<'obras'>;
-export type BlogEntry = CollectionEntry<'blog'>;
