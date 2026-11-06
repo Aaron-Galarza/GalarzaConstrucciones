@@ -25,13 +25,13 @@ services:
   - obras-civiles
   - direccion-tecnica
 gallery:
-  - src: /obras/axion-puerto-tirol/panoramica.jpg
+  - src: /obras/axion-puerto-tirol/panoramica.webp
     alt: Vista panorámica de la estación de servicios Axion en obra
     caption: Vista general de la obra en Puerto Tirol
-  - src: /obras/axion-puerto-tirol/montaje-estructura.jpg
+  - src: /obras/axion-puerto-tirol/montaje-estructura.webp
     alt: Montaje de la estructura metálica de la estación de servicios
     caption: Montaje de la estructura metálica
-  - src: /obras/axion-puerto-tirol/hormigonado.jpg
+  - src: /obras/axion-puerto-tirol/hormigonado.webp
     alt: Hormigonado de superficies en la estación de servicios Axion
     caption: Hormigonado de playas y veredas
 featured: true

@@ -30,16 +30,16 @@ services:
   - proyecto-y-documentacion
   - direccion-tecnica
 gallery:
-  - src: /obras/kilometro-48/casa-terminada.jpg
+  - src: /obras/kilometro-48/casa-terminada.webp
     alt: Casa terminada en el Monte Chaqueño, Kilómetro 48
     caption: El proyecto terminado en 2025
-  - src: /obras/kilometro-48/muro-de-lena.jpg
+  - src: /obras/kilometro-48/muro-de-lena.webp
     alt: Cimiento de troncos de caranda en la primera etapa artesanal
     caption: Cimiento de troncos de caranda, primera etapa
-  - src: /obras/kilometro-48/escalera-tronco.jpg
+  - src: /obras/kilometro-48/escalera-tronco.webp
     alt: Escalera construida con tronco local
     caption: Escalera construida con tronco local
-  - src: /obras/kilometro-48/galeria-caranday.jpg
+  - src: /obras/kilometro-48/galeria-caranday.webp
     alt: Galería con columnas rústicas de caranday
     caption: Galería con columnas rústicas de caranday
 featured: true

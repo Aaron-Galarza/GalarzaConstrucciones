@@ -7,7 +7,7 @@ tags:
   - estructura
   - muro portante
   - ampliaciones
-image: /trabajos/refuerzo-dinteles.jpg
+image: /trabajos/refuerzo-dinteles.webp
 featured: false
 ---
 

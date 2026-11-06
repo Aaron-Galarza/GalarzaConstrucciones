@@ -31,13 +31,13 @@ services:
   - remodelaciones
   - direccion-tecnica
 gallery:
-  - src: /obras/farmacia-regaleria/local-terminado.jpg
+  - src: /obras/farmacia-regaleria/local-terminado.webp
     alt: Locales integrados terminados de farmacia y regalería
     caption: Los dos locales integrados en un único espacio comercial
-  - src: /obras/farmacia-regaleria/demolicion-muro.jpg
+  - src: /obras/farmacia-regaleria/demolicion-muro.webp
     alt: Demolición del tabique portante de mampostería
     caption: Demolición controlada del muro portante de mampostería
-  - src: /obras/farmacia-regaleria/columna-reemplazo.jpg
+  - src: /obras/farmacia-regaleria/columna-reemplazo.webp
     alt: Columna de reemplazo que recibe la carga antes de retirar el muro
     caption: Reemplazo estructural ejecutado antes de la demolición
 featured: true

@@ -27,15 +27,15 @@ services:
   - construccion
   - direccion-tecnica
 gallery:
-  - src: /obras/club-america/antes.jpg
+  - src: /obras/club-america/antes.webp
     alt: Lorem ipsum — estado inicial de la obra del Club América
     caption: "Antes: Lorem ipsum dolor sit amet"
     stage: antes
-  - src: /obras/club-america/durante.jpg
+  - src: /obras/club-america/durante.webp
     alt: Lorem ipsum — obra del Club América en ejecución
     caption: "Durante: Lorem ipsum dolor sit amet"
     stage: durante
-  - src: /obras/club-america/despues.jpg
+  - src: /obras/club-america/despues.webp
     alt: Lorem ipsum — obra terminada del Club América
     caption: "Después: Lorem ipsum dolor sit amet"
     stage: despues

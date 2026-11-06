@@ -23,13 +23,13 @@ includes:
 works:
   - farmacia-regaleria
 images:
-  - src: /trabajos/cocina-terminada.jpg
+  - src: /trabajos/cocina-terminada.webp
     alt: Cocina terminada tras una remodelación
     caption: Cocina renovada en una remodelación integral
-  - src: /trabajos/living-terminado.jpg
+  - src: /trabajos/living-terminado.webp
     alt: Living terminado tras una remodelación
     caption: Living renovado con terminaciones nuevas
-  - src: /trabajos/demolicion-interior.jpg
+  - src: /trabajos/demolicion-interior.webp
     alt: Demolición controlada dentro de un interior en remodelación
     caption: Demolición controlada en el inicio de una remodelación
 faq:

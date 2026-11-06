@@ -7,7 +7,7 @@ import { glob } from 'astro/loaders';
 
 /**
  * Imagen de contenido referenciada desde la carpeta pública `/`.
- * `src` es la ruta absoluta del sitio (ej. "/obras/axion/panoramica.jpg").
+ * `src` es la ruta absoluta del sitio (ej. "/obras/axion/panoramica.webp").
  */
 const imageRef = z.object({
   src: z.string(),

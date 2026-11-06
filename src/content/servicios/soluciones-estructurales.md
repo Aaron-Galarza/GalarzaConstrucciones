@@ -26,7 +26,7 @@ includes:
 works:
   - farmacia-regaleria
 images:
-  - src: /trabajos/refuerzo-dinteles.jpg
+  - src: /trabajos/refuerzo-dinteles.webp
     alt: Refuerzo de dinteles con perfiles metálicos en una obra
     caption: Refuerzo de dinteles antes de continuar la obra
 faq:

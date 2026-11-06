@@ -27,15 +27,15 @@ services:
   - construccion
   - direccion-tecnica
 gallery:
-  - src: /obras/acceso-general-san-martin/antes.jpg
+  - src: /obras/acceso-general-san-martin/antes.webp
     alt: Lorem ipsum — estado inicial del acceso a General San Martín
     caption: "Antes: Lorem ipsum dolor sit amet"
     stage: antes
-  - src: /obras/acceso-general-san-martin/durante.jpg
+  - src: /obras/acceso-general-san-martin/durante.webp
     alt: Lorem ipsum — obra del acceso en ejecución
     caption: "Durante: Lorem ipsum dolor sit amet"
     stage: durante
-  - src: /obras/acceso-general-san-martin/despues.jpg
+  - src: /obras/acceso-general-san-martin/despues.webp
     alt: Lorem ipsum — acceso terminado
     caption: "Después: Lorem ipsum dolor sit amet"
     stage: despues
