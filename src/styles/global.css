@@ -199,6 +199,28 @@ b {
   color: #fff;
 }
 
+/* Encabezado de páginas interiores */
+.page-content {
+  padding-top: var(--space-lg);
+}
+
+.page-head {
+  max-width: var(--container-narrow);
+  margin-bottom: var(--space-lg);
+}
+
+.page-head .lead {
+  font-size: var(--text-lg);
+  color: var(--color-muted);
+  margin-top: var(--space-sm);
+}
+
+.page-meta {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-md);
+}
+
 /* Encabezado de sección estándar */
 .section-head {
   max-width: var(--container-narrow);

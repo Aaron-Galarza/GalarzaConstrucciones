@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PageHeader from '../../components/PageHeader.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import FAQSection from '../../components/FAQSection.astro';
 import { CONTACT, COMPANY, whatsappURL } from '../../lib/company';
@@ -29,15 +30,11 @@ const schema = [
       ]}
     />
 
-    <header class="page-head">
-      <p class="annotation">Contacto</p>
-      <h1>Contanos qué proyecto tenés.</h1>
-      <p class="lead">
-        Cada consulta arranca igual: entendemos qué necesitás antes de pensar
-        cualquier solución. Sin formularios falsos: el primer contacto es
-        directo, por WhatsApp, teléfono o email.
-      </p>
-    </header>
+    <PageHeader
+      annotation="Contacto"
+      title="Contanos qué proyecto tenés."
+      lead="Cada consulta arranca igual: entendemos qué necesitás antes de pensar cualquier solución. Sin formularios falsos: el primer contacto es directo, por WhatsApp, teléfono o email."
+    />
 
     <div class="how-grid">
       <a href={whatsappURL(CONTACT.whatsappMessage)} class="how-card card card--link" target="_blank" rel="noopener">
@@ -93,21 +90,6 @@ const schema = [
 </BaseLayout>
 
 <style>
-  .page-content {
-    padding-top: var(--space-lg);
-  }
-
-  .page-head {
-    max-width: var(--container-narrow);
-    margin-bottom: var(--space-lg);
-  }
-
-  .page-head .lead {
-    font-size: var(--text-lg);
-    color: var(--color-muted);
-    margin-top: var(--space-sm);
-  }
-
   .how-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PageHeader from '../../components/PageHeader.astro';
 import BlueprintCard from '../../components/BlueprintCard.astro';
 import CTASection from '../../components/CTASection.astro';
 import { breadcrumbSchema, localBusinessSchema } from '../../lib/schema';
@@ -45,14 +46,11 @@ const schema = [
         { name: 'Obras', path: '/obras/' },
       ]}
     />
-    <header class="page-head">
-      <p class="annotation">Obras</p>
-      <h1>Proyectos reales, ejecutados y supervisados.</h1>
-      <p class="lead">
-        Una selección de obras que muestran escala, infraestructura, resolución
-        estructural y adaptación al entorno.
-      </p>
-    </header>
+    <PageHeader
+      annotation="Obras"
+      title="Proyectos reales, ejecutados y supervisados."
+      lead="Una selección de obras que muestran escala, infraestructura, resolución estructural y adaptación al entorno."
+    />
 
     <div class="works-grid">
       {
@@ -75,21 +73,6 @@ const schema = [
 </BaseLayout>
 
 <style>
-  .page-content {
-    padding-top: var(--space-lg);
-  }
-
-  .page-head {
-    max-width: var(--container-narrow);
-    margin-bottom: var(--space-lg);
-  }
-
-  .page-head .lead {
-    font-size: var(--text-lg);
-    color: var(--color-muted);
-    margin-top: var(--space-sm);
-  }
-
   .works-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

@@ -5,6 +5,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PageHeader from '../../components/PageHeader.astro';
 import CTASection from '../../components/CTASection.astro';
 import WorkGallery from '../../components/WorkGallery.astro';
 import { workSchema, breadcrumbSchema, localBusinessSchema } from '../../lib/schema';
@@ -66,19 +67,12 @@ const schema = [
       ]}
     />
 
-    <header class="page-head">
-      {
-        isCase && (
-          <p class="annotation">Caso de estudio</p>
-        )
-      }
-      <h1>{obra.data.title}</h1>
-      <p class="obra-meta small">
-        {obra.data.category} · {obra.data.location}, {obra.data.province}
-        {obra.data.period ? ` · ${obra.data.period}` : ''}
-      </p>
-      <p class="lead">{obra.data.description}</p>
-    </header>
+    <PageHeader
+      annotation={isCase ? 'Caso de estudio' : undefined}
+      title={obra.data.title}
+      meta={`${obra.data.category} · ${obra.data.location}, ${obra.data.province}${obra.data.period ? ` · ${obra.data.period}` : ''}`}
+      lead={obra.data.description}
+    />
 
     {
       gallery.length > 0 && (
@@ -168,28 +162,6 @@ const schema = [
 </BaseLayout>
 
 <style>
-  .page-content {
-    padding-top: var(--space-lg);
-  }
-
-  .page-head {
-    max-width: var(--container-narrow);
-    margin-bottom: var(--space-lg);
-  }
-
-  .obra-meta {
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: var(--space-md);
-  }
-
-  .lead {
-    font-size: var(--text-lg);
-    color: var(--color-muted);
-    margin-top: var(--space-sm);
-    max-width: 62ch;
-  }
-
   .layout-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 20rem;

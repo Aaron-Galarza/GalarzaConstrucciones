@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PageHeader from '../../components/PageHeader.astro';
 import TrajectorySection from '../../components/TrajectorySection.astro';
 import ExperienceSection from '../../components/ExperienceSection.astro';
 import CTASection from '../../components/CTASection.astro';
@@ -30,15 +31,11 @@ const schema = [
       ]}
     />
 
-    <header class="page-head">
-      <p class="annotation">Nosotros</p>
-      <h1>De ayudante de albañil a ingeniero.</h1>
-      <p class="lead">
-        La trayectoria de Galarza Construcción se construyó del lado real de la
-        obra. La explicación de cómo se formó un criterio técnico que combina
-        formación académica y ejecución directa.
-      </p>
-    </header>
+    <PageHeader
+      annotation="Nosotros"
+      title="De ayudante de albañil a ingeniero."
+      lead="La trayectoria de Galarza Construcción se construyó del lado real de la obra. La explicación de cómo se formó un criterio técnico que combina formación académica y ejecución directa."
+    />
 
     <section class="profile" id="historia">
       <figure class="profile-photo">
@@ -134,21 +131,6 @@ const schema = [
 </BaseLayout>
 
 <style>
-  .page-content {
-    padding-top: var(--space-lg);
-  }
-
-  .page-head {
-    max-width: var(--container-narrow);
-    margin-bottom: var(--space-lg);
-  }
-
-  .page-head .lead {
-    font-size: var(--text-lg);
-    color: var(--color-muted);
-    margin-top: var(--space-sm);
-  }
-
   .profile {
     display: grid;
     grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);

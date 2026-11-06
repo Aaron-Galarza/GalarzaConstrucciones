@@ -5,6 +5,7 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PageHeader from '../../components/PageHeader.astro';
 import FAQSection from '../../components/FAQSection.astro';
 import CTASection from '../../components/CTASection.astro';
 import WorkGallery from '../../components/WorkGallery.astro';
@@ -57,11 +58,11 @@ const schema = [
       ]}
     />
 
-    <header class="page-head">
-      <p class="annotation">Servicios</p>
-      <h1>{servicio.data.title}</h1>
-      <p class="lead">{servicio.data.summary}</p>
-    </header>
+    <PageHeader
+      annotation="Servicios"
+      title={servicio.data.title}
+      lead={servicio.data.summary}
+    />
 
     <div class="layout-grid">
       <article class="main-col">
@@ -168,21 +169,6 @@ const schema = [
 </BaseLayout>
 
 <style>
-  .page-content {
-    padding-top: var(--space-lg);
-  }
-
-  .page-head {
-    max-width: var(--container-narrow);
-    margin-bottom: var(--space-lg);
-  }
-
-  .page-head .lead {
-    font-size: var(--text-lg);
-    color: var(--color-muted);
-    margin-top: var(--space-sm);
-  }
-
   .layout-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 20rem;

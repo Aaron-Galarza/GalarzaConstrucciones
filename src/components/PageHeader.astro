@@ -1,0 +1,21 @@
+---
+// Encabezado de páginas interiores (h1 + anotación + bajada + metadatos).
+// Reemplaza el bloque `page-head` que se repetía en cada página.
+
+interface Props {
+  annotation?: string;
+  title: string;
+  /** Línea de metadatos (categoría, ubicación, período). */
+  meta?: string;
+  lead?: string;
+}
+
+const { annotation, title, meta, lead } = Astro.props;
+---
+
+<header class="page-head">
+  {annotation && <p class="annotation">{annotation}</p>}
+  <h1>{title}</h1>
+  {meta && <p class="page-meta small">{meta}</p>}
+  {lead && <p class="lead">{lead}</p>}
+</header>
