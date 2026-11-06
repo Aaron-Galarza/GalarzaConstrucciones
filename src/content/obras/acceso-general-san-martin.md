@@ -1,6 +1,6 @@
 ---
-# PLACEHOLDER — Acceso a General San Martín.
-# Reemplazar todos los textos e imágenes por contenido real.
+# PLACEHOLDER - Acceso a General San Martín.
+# Textos pendientes de revisión; imágenes reales cargadas.
 title: Acceso a General San Martín
 location: General San Martín
 province: Chaco
@@ -27,17 +27,17 @@ services:
   - construccion
   - direccion-tecnica
 gallery:
-  - src: /obras/acceso-general-san-martin/antes.webp
-    alt: Lorem ipsum — estado inicial del acceso a General San Martín
-    caption: "Antes: Lorem ipsum dolor sit amet"
+  - src: /obras/acceso-general-san-martin/acceso-san-martin-antes-avenida-sin-monolitos-01.webp
+    alt: Avenida de acceso antes de la instalación de los monolitos
+    caption: Estado previo de la avenida, con la estación de servicio YPF al frente
     stage: antes
-  - src: /obras/acceso-general-san-martin/durante.webp
-    alt: Lorem ipsum — obra del acceso en ejecución
-    caption: "Durante: Lorem ipsum dolor sit amet"
+  - src: /obras/acceso-general-san-martin/acceso-san-martin-durante-instalacion-monolitos-01.webp
+    alt: Operarios con chalecos naranjas instalando los monolitos
+    caption: Colocación de los monolitos sobre la banqueta
     stage: durante
-  - src: /obras/acceso-general-san-martin/despues.webp
-    alt: Lorem ipsum — acceso terminado
-    caption: "Después: Lorem ipsum dolor sit amet"
+  - src: /obras/acceso-general-san-martin/acceso-san-martin-despues-render-proyecto-01.webp
+    alt: Render del proyecto terminado con ciclovía, ciclistas y peatones
+    caption: Render del acceso terminado, con la ciclovía y los monolitos integrados al paisaje
     stage: despues
 featured: false
 caseStudy: false

@@ -1,6 +1,6 @@
 ---
-# PLACEHOLDER — Club América.
-# Reemplazar todos los textos e imágenes por contenido real.
+# PLACEHOLDER - Club América.
+# Textos pendientes de revisión; imágenes reales cargadas.
 title: Club América
 location: Resistencia
 province: Chaco
@@ -27,17 +27,25 @@ services:
   - construccion
   - direccion-tecnica
 gallery:
-  - src: /obras/club-america/antes.webp
-    alt: Lorem ipsum — estado inicial de la obra del Club América
-    caption: "Antes: Lorem ipsum dolor sit amet"
+  - src: /obras/club-america/club-america-antes-fachada-original-01.webp
+    alt: Fachada original del Club América, blanca y con techo arqueado
+    caption: Estado previo de la fachada, con el escudo original y las aberturas sin vidrios
     stage: antes
-  - src: /obras/club-america/durante.webp
-    alt: Lorem ipsum — obra del Club América en ejecución
-    caption: "Durante: Lorem ipsum dolor sit amet"
+  - src: /obras/club-america/club-america-durante-estructura-metalica-01.webp
+    alt: Estructura metálica del techo sobre pared de ladrillo visto
+    caption: Montaje de la estructura metálica y andamios durante la ejecución
     stage: durante
-  - src: /obras/club-america/despues.webp
-    alt: Lorem ipsum — obra terminada del Club América
-    caption: "Después: Lorem ipsum dolor sit amet"
+  - src: /obras/club-america/club-america-durante-paredes-hormigon-01.webp
+    alt: Paredes de hormigón y techo metálico instalado
+    caption: Etapa avanzada con paredes de hormigón y cubierta metálica
+    stage: durante
+  - src: /obras/club-america/club-america-durante-paredes-hormigon-02.webp
+    alt: Paredes revocadas y andamios en el acceso del club
+    caption: Terminaciones y revoques sobre la estructura principal
+    stage: durante
+  - src: /obras/club-america/club-america-despues-fachada-terminada-01.webp
+    alt: Fachada terminada del Club Atlético América en beige y rojo
+    caption: Obra terminada con el ventanal de acceso y el letrero institucional
     stage: despues
 featured: false
 caseStudy: false
