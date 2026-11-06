@@ -5,17 +5,48 @@
 User-agent: *
 Allow: /
 
-# Buscadores y sistemas de búsqueda generativa
+# Buscadores tradicionales
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
+# Buscadores y asistentes de IA (resumen del sitio en /llms.txt)
+User-agent: GPTBot
+Allow: /
+
 User-agent: OAI-SearchBot
 Allow: /
 
-User-agent: GPTBot
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: meta-externalagent
 Allow: /
 
 # Sitemap generado por @astrojs/sitemap en cada build
