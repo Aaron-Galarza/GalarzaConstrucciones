@@ -25,10 +25,10 @@ const { heading = 'Consultá por tu proyecto.' } = Astro.props;
         <ul class="contact-list">
           <li>
             <span class="contact-label">Dirección</span>
-            <a href={COMPANY.instagram.url} target="_blank" rel="noopener">
+            <span>
               {COMPANY.address.street}, {COMPANY.address.city},{' '}
               {COMPANY.address.province}
-            </a>
+            </span>
           </li>
           <li>
             <span class="contact-label">Teléfono fijo</span>
