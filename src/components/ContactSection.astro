@@ -48,6 +48,10 @@ const { heading = 'Consultá por tu proyecto.' } = Astro.props;
             <span class="contact-label">Instagram</span>
             <a href={COMPANY.instagram.url} target="_blank" rel="noopener">
               {COMPANY.instagram.handle}
+              <span class="visually-hidden">
+                {' '}
+                (se abre en una pestaña nueva)
+              </span>
             </a>
           </li>
         </ul>

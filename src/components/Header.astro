@@ -156,6 +156,14 @@ const navTree: NavItem[] = NAV_LINKS.map((link) => {
                                 <span class="drop-sub">{child.sub}</span>
                               )
                             }
+                            {
+                              child.external && (
+                                <span class="visually-hidden">
+                                  {' '}
+                                  (se abre en una pestaña nueva)
+                                </span>
+                              )
+                            }
                           </a>
                         </li>
                       ))

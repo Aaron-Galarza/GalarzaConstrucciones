@@ -25,29 +25,33 @@ import { COMPANY, CONTACT, NAV_LINKS, SERVICES, WHATSAPP_MESSAGES } from '../lib
       </div>
 
       <div class="footer-col">
-        <h4 class="footer-title">Navegación</h4>
-        <ul class="footer-list">
-          {
-            NAV_LINKS.map((link) => (
-              <li>
-                <a href={link.href}>{link.label}</a>
-              </li>
-            ))
-          }
-        </ul>
+        <h4 class="footer-title" id="footer-nav-title">Navegación</h4>
+        <nav aria-labelledby="footer-nav-title">
+          <ul class="footer-list">
+            {
+              NAV_LINKS.map((link) => (
+                <li>
+                  <a href={link.href}>{link.label}</a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
       </div>
 
       <div class="footer-col">
-        <h4 class="footer-title">Servicios</h4>
-        <ul class="footer-list">
-          {
-            SERVICES.map((service) => (
-              <li>
-                <a href={service.link}>{service.title}</a>
-              </li>
-            ))
-          }
-        </ul>
+        <h4 class="footer-title" id="footer-services-title">Servicios</h4>
+        <nav aria-labelledby="footer-services-title">
+          <ul class="footer-list">
+            {
+              SERVICES.map((service) => (
+                <li>
+                  <a href={service.link}>{service.title}</a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
       </div>
 
       <div class="footer-col">
@@ -69,6 +73,10 @@ import { COMPANY, CONTACT, NAV_LINKS, SERVICES, WHATSAPP_MESSAGES } from '../lib
           <li>
             <a href={COMPANY.instagram.url} target="_blank" rel="noopener">
               Instagram {COMPANY.instagram.handle}
+              <span class="visually-hidden">
+                {' '}
+                (se abre en una pestaña nueva)
+              </span>
             </a>
           </li>
         </ul>
