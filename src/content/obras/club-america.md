@@ -1,34 +1,39 @@
 ---
-# PLACEHOLDER - Club América.
-# Textos pendientes de revisión; imágenes reales cargadas.
-title: Club América
-location: Resistencia
+title: Club Atlético América
+location: General San Martín
 province: Chaco
 category: Institucional
-summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+summary: Remodelación de la sede del Club Atlético América, emblema deportivo y social de General San Martín, con una nueva fachada sobre la avenida San Martín.
 description: >
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim
-  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-  cillum dolore eu fugiat nulla pariatur.
+  El Club Atlético América es una de las instituciones deportivas y sociales
+  más representativas de General San Martín. Fundado el 10 de mayo de 1925, con
+  Fernando Carrasco como primer presidente, cumplió su centenario en 2025 con una
+  historia de títulos deportivos, actividades culturales y un fuerte aporte a la
+  comunidad. Durante la pandemia, sus instalaciones funcionaron como hospital de
+  campaña y centro de vacunación. La obra renovó su sede sobre la avenida San
+  Martín con una nueva fachada y un frente vidriado que actualizan su imagen
+  institucional.
 before: >
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  La sede original tenía una fachada blanca con techo arqueado, el escudo
+  histórico del club y aberturas sin vidrios. El frente sobre la avenida San
+  Martín pedía una actualización que mantuviera los colores rojo y amarillo y el
+  vínculo con la historia de la institución.
 during: >
-  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-  deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus
-  error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
+  La obra avanzó con el montaje de la estructura metálica de cubierta, la
+  ejecución de paredes de hormigón armado y el revoque de los frentes. Sobre la
+  avenida San Martín se armó un nuevo acceso con un gran ventanal y el letrero
+  institucional del club.
 after: >
-  Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
-  quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-  Neque porro quisquam est qui dolorem ipsum quia dolor sit amet.
+  La sede quedó con una fachada en beige y rojo, un frente vidriado de gran
+  altura y el nombre del club integrado a la arquitectura. La intervención renovó
+  la imagen de la institución sobre la avenida San Martín y reafirmó su presencia
+  como emblema deportivo y social de General San Martín.
 services:
   - construccion
   - direccion-tecnica
 gallery:
   - src: /obras/club-america/club-america-antes-fachada-original-01.webp
-    alt: Fachada original del Club América, blanca y con techo arqueado
+    alt: Fachada original del Club Atlético América, blanca y con techo arqueado
     caption: Estado previo de la fachada, con el escudo original y las aberturas sin vidrios
     stage: antes
   - src: /obras/club-america/club-america-durante-estructura-metalica-01.webp

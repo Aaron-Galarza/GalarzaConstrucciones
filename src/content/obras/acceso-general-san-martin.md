@@ -1,27 +1,28 @@
 ---
-# PLACEHOLDER - Acceso a General San Martín.
-# Textos pendientes de revisión; imágenes reales cargadas.
 title: Acceso a General San Martín
 location: General San Martín
 province: Chaco
 category: Infraestructura
-summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
+summary: Puesta en valor del acceso a General San Martín con monolitos identificatorios, ciclovía y tratamiento del espacio público sobre la avenida de ingreso.
 description: >
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lacinia
-  bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet
-  fermentum. Donec ullamcorper nulla non metus auctor fringilla.
+  General San Martín, ubicada a 120 km de Resistencia y Capital Provincial del
+  Carnaval, es uno de los destinos de turismo rural de la provincia del Chaco. La
+  obra interviene sobre su acceso principal con la instalación de monolitos
+  identificatorios y la reorganización del espacio urbano para peatones y
+  ciclistas.
 before: >
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula
-  porta felis euismod semper. Curabitur blandit tempus porttitor. Nullam quis
-  risus eget urna mollis ornare vel eu leo.
+  El acceso se presentaba como una avenida de paso, sin un elemento que
+  identificara la llegada a la localidad. La intervención debía ordenar el
+  espacio y darle una imagen reconocible al ingreso.
 during: >
-  Maecenas faucibus mollis interdum. Donec id elit non mi porta gravida at eget
-  metus. Etiam porta sem malesuada magna mollis euismod. Cras justo odio,
-  dapibus ac facilisis in, egestas eget quam.
+  La obra incluyó la ejecución de las torres y la instalación de los monolitos
+  sobre la banqueta, con trabajos en altura y montaje de piezas. Los monolitos se
+  colocaron en verde, azul y rojo, y quedaron integrados a la secuencia del
+  acceso.
 after: >
-  Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia
-  odio sem nec elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam
-  venenatis vestibulum.
+  El render del proyecto terminado muestra el acceso con una ciclovía, arbolado y
+  circulación peatonal, y los monolitos integrados al paisaje. La intervención
+  apunta a un ingreso más ordenado y reconocible para vecinos y visitantes.
 services:
   - obras-civiles
   - construccion
