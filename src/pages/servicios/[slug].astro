@@ -9,7 +9,8 @@ import PageHeader from '../../components/PageHeader.astro';
 import FAQSection from '../../components/FAQSection.astro';
 import CTASection from '../../components/CTASection.astro';
 import WorkGallery from '../../components/WorkGallery.astro';
-import { serviceSchema, breadcrumbSchema, localBusinessSchema } from '../../lib/schema';
+import { serviceSchema, localBusinessSchema } from '../../lib/schema';
+import { breadcrumbTrail } from '../../lib/breadcrumbs';
 import { whatsappURL } from '../../lib/company';
 
 export async function getStaticPaths() {
@@ -28,6 +29,11 @@ const obrasRelacionadas = (await getCollection('obras')).filter(
   (obra) => servicio.data.works.includes(obra.id),
 );
 
+const crumbs = breadcrumbTrail([
+  { name: 'Servicios', path: '/servicios/' },
+  { name: servicio.data.title, path: `/servicios/${servicio.id}/` },
+]);
+
 const schema = [
   serviceSchema({
     title: servicio.data.title,
@@ -35,11 +41,7 @@ const schema = [
     path: `/servicios/${servicio.id}/`,
   }),
   localBusinessSchema(),
-  breadcrumbSchema([
-    { name: 'Inicio', path: '/' },
-    { name: 'Servicios', path: '/servicios/' },
-    { name: servicio.data.title, path: `/servicios/${servicio.id}/` },
-  ]),
+  crumbs.schema,
 ];
 ---
 
@@ -50,13 +52,7 @@ const schema = [
   schemas={schema}
 >
   <div class="shell page-content">
-    <Breadcrumbs
-      items={[
-        { name: 'Inicio', path: '/' },
-        { name: 'Servicios', path: '/servicios/' },
-        { name: servicio.data.title, path: `/servicios/${servicio.id}/` },
-      ]}
-    />
+    <Breadcrumbs items={crumbs.items} />
 
     <PageHeader
       annotation="Servicios"

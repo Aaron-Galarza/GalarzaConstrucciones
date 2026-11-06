@@ -8,7 +8,8 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import CTASection from '../../components/CTASection.astro';
 import WorkGallery from '../../components/WorkGallery.astro';
-import { workSchema, breadcrumbSchema, localBusinessSchema } from '../../lib/schema';
+import { workSchema, localBusinessSchema } from '../../lib/schema';
+import { breadcrumbTrail } from '../../lib/breadcrumbs';
 import { whatsappURL } from '../../lib/company';
 
 export async function getStaticPaths() {
@@ -34,6 +35,11 @@ const stageItems = (stage: 'antes' | 'durante' | 'despues') =>
 
 const gallery = obra.data.gallery.filter((item) => !item.stage);
 
+const crumbs = breadcrumbTrail([
+  { name: 'Obras', path: '/obras/' },
+  { name: obra.data.title, path: `/obras/${obra.id}/` },
+]);
+
 const schema = [
   workSchema({
     title: obra.data.title,
@@ -43,11 +49,7 @@ const schema = [
     image: obra.data.gallery[0]?.src,
   }),
   localBusinessSchema(),
-  breadcrumbSchema([
-    { name: 'Inicio', path: '/' },
-    { name: 'Obras', path: '/obras/' },
-    { name: obra.data.title, path: `/obras/${obra.id}/` },
-  ]),
+  crumbs.schema,
 ];
 ---
 
@@ -59,13 +61,7 @@ const schema = [
   schemas={schema}
 >
   <div class="shell page-content">
-    <Breadcrumbs
-      items={[
-        { name: 'Inicio', path: '/' },
-        { name: 'Obras', path: '/obras/' },
-        { name: obra.data.title, path: `/obras/${obra.id}/` },
-      ]}
-    />
+    <Breadcrumbs items={crumbs.items} />
 
     <PageHeader
       annotation={isCase ? 'Caso de estudio' : undefined}

@@ -6,15 +6,12 @@ import ServicesSection from '../../components/ServicesSection.astro';
 import ProcessSection from '../../components/ProcessSection.astro';
 import FAQSection from '../../components/FAQSection.astro';
 import CTASection from '../../components/CTASection.astro';
-import { breadcrumbSchema, localBusinessSchema } from '../../lib/schema';
+import { localBusinessSchema } from '../../lib/schema';
+import { breadcrumbTrail } from '../../lib/breadcrumbs';
 
-const schema = [
-  localBusinessSchema(),
-  breadcrumbSchema([
-    { name: 'Inicio', path: '/' },
-    { name: 'Servicios', path: '/servicios/' },
-  ]),
-];
+const crumbs = breadcrumbTrail([{ name: 'Servicios', path: '/servicios/' }]);
+
+const schema = [localBusinessSchema(), crumbs.schema];
 ---
 
 <BaseLayout
@@ -24,12 +21,7 @@ const schema = [
   schemas={schema}
 >
   <div class="shell page-content">
-    <Breadcrumbs
-      items={[
-        { name: 'Inicio', path: '/' },
-        { name: 'Servicios', path: '/servicios/' },
-      ]}
-    />
+    <Breadcrumbs items={crumbs.items} />
     <PageHeader
       annotation="Servicios"
       title="Todo el ciclo de la obra, con criterio técnico."

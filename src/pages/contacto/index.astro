@@ -5,15 +5,12 @@ import PageHeader from '../../components/PageHeader.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import FAQSection from '../../components/FAQSection.astro';
 import { CONTACT, COMPANY, whatsappURL } from '../../lib/company';
-import { breadcrumbSchema, localBusinessSchema } from '../../lib/schema';
+import { localBusinessSchema } from '../../lib/schema';
+import { breadcrumbTrail } from '../../lib/breadcrumbs';
 
-const schema = [
-  localBusinessSchema(),
-  breadcrumbSchema([
-    { name: 'Inicio', path: '/' },
-    { name: 'Contacto', path: '/contacto/' },
-  ]),
-];
+const crumbs = breadcrumbTrail([{ name: 'Contacto', path: '/contacto/' }]);
+
+const schema = [localBusinessSchema(), crumbs.schema];
 ---
 
 <BaseLayout
@@ -23,12 +20,7 @@ const schema = [
   schemas={schema}
 >
   <div class="shell page-content">
-    <Breadcrumbs
-      items={[
-        { name: 'Inicio', path: '/' },
-        { name: 'Contacto', path: '/contacto/' },
-      ]}
-    />
+    <Breadcrumbs items={crumbs.items} />
 
     <PageHeader
       annotation="Contacto"

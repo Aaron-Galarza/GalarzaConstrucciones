@@ -5,16 +5,12 @@ import PageHeader from '../../components/PageHeader.astro';
 import TrajectorySection from '../../components/TrajectorySection.astro';
 import ExperienceSection from '../../components/ExperienceSection.astro';
 import CTASection from '../../components/CTASection.astro';
-import { personSchema, breadcrumbSchema, localBusinessSchema } from '../../lib/schema';
+import { personSchema, localBusinessSchema } from '../../lib/schema';
+import { breadcrumbTrail } from '../../lib/breadcrumbs';
 
-const schema = [
-  personSchema(),
-  localBusinessSchema(),
-  breadcrumbSchema([
-    { name: 'Inicio', path: '/' },
-    { name: 'Nosotros', path: '/nosotros/' },
-  ]),
-];
+const crumbs = breadcrumbTrail([{ name: 'Nosotros', path: '/nosotros/' }]);
+
+const schema = [personSchema(), localBusinessSchema(), crumbs.schema];
 ---
 
 <BaseLayout
@@ -24,12 +20,7 @@ const schema = [
   schemas={schema}
 >
   <div class="shell page-content">
-    <Breadcrumbs
-      items={[
-        { name: 'Inicio', path: '/' },
-        { name: 'Nosotros', path: '/nosotros/' },
-      ]}
-    />
+    <Breadcrumbs items={crumbs.items} />
 
     <PageHeader
       annotation="Nosotros"

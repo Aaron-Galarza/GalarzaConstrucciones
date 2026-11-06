@@ -5,7 +5,8 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import BlueprintCard from '../../components/BlueprintCard.astro';
 import CTASection from '../../components/CTASection.astro';
-import { breadcrumbSchema, localBusinessSchema } from '../../lib/schema';
+import { localBusinessSchema } from '../../lib/schema';
+import { breadcrumbTrail } from '../../lib/breadcrumbs';
 import { COMPANY } from '../../lib/company';
 import { canonicalUrl } from '../../lib/seo';
 
@@ -13,12 +14,11 @@ const obras = (await getCollection('obras')).sort(
   (a, b) => a.data.order - b.data.order,
 );
 
+const crumbs = breadcrumbTrail([{ name: 'Obras', path: '/obras/' }]);
+
 const schema = [
   localBusinessSchema(),
-  breadcrumbSchema([
-    { name: 'Inicio', path: '/' },
-    { name: 'Obras', path: '/obras/' },
-  ]),
+  crumbs.schema,
   {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
@@ -40,12 +40,7 @@ const schema = [
   schemas={schema}
 >
   <div class="shell page-content">
-    <Breadcrumbs
-      items={[
-        { name: 'Inicio', path: '/' },
-        { name: 'Obras', path: '/obras/' },
-      ]}
-    />
+    <Breadcrumbs items={crumbs.items} />
     <PageHeader
       annotation="Obras"
       title="Proyectos reales, ejecutados y supervisados."
