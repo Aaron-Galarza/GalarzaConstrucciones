@@ -3,7 +3,7 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import CTASection from '../../components/CTASection.astro';
-import { articleSchema, localBusinessSchema } from '../../lib/schema';
+import { articleSchema } from '../../lib/schema';
 import { breadcrumbTrail } from '../../lib/breadcrumbs';
 import { WHATSAPP_MESSAGES } from '../../lib/company';
 
@@ -32,7 +32,6 @@ const schema = [
     path: `/blog/${post.id}/`,
     author: post.data.author,
   }),
-  localBusinessSchema(),
   crumbs.schema,
 ];
 ---

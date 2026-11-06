@@ -9,7 +9,7 @@ import PageHeader from '../../components/PageHeader.astro';
 import CTASection from '../../components/CTASection.astro';
 import WorkGallery from '../../components/WorkGallery.astro';
 import WhatsAppButton from '../../components/WhatsAppButton.astro';
-import { workSchema, localBusinessSchema } from '../../lib/schema';
+import { workSchema } from '../../lib/schema';
 import { breadcrumbTrail } from '../../lib/breadcrumbs';
 import { WHATSAPP_MESSAGES } from '../../lib/company';
 
@@ -49,7 +49,6 @@ const schema = [
     location: obra.data.location,
     image: obra.data.gallery[0]?.src,
   }),
-  localBusinessSchema(),
   crumbs.schema,
 ];
 ---

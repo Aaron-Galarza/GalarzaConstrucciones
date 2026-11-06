@@ -5,10 +5,9 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import BlueprintCard from '../../components/BlueprintCard.astro';
 import CTASection from '../../components/CTASection.astro';
-import { localBusinessSchema } from '../../lib/schema';
+import { itemListSchema } from '../../lib/schema';
 import { breadcrumbTrail } from '../../lib/breadcrumbs';
 import { COMPANY, WHATSAPP_MESSAGES } from '../../lib/company';
-import { canonicalUrl } from '../../lib/seo';
 
 const obras = (await getCollection('obras')).sort(
   (a, b) => a.data.order - b.data.order,
@@ -17,19 +16,14 @@ const obras = (await getCollection('obras')).sort(
 const crumbs = breadcrumbTrail([{ name: 'Obras', path: '/obras/' }]);
 
 const schema = [
-  localBusinessSchema(),
   crumbs.schema,
-  {
-    '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    name: 'Obras de Galarza Construcción',
-    itemListElement: obras.map((obra, i) => ({
-      '@type': 'ListItem',
-      position: i + 1,
+  itemListSchema(
+    'Obras de Galarza Construcción',
+    obras.map((obra) => ({
       name: obra.data.title,
-      url: canonicalUrl(`/obras/${obra.id}/`),
+      path: `/obras/${obra.id}/`,
     })),
-  },
+  ),
 ];
 ---
 

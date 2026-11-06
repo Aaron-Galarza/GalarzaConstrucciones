@@ -15,21 +15,9 @@ import CTASection from '../components/CTASection.astro';
 import ContactSection from '../components/ContactSection.astro';
 import { SITE } from '../lib/site';
 import { FAQ_ITEMS } from '../lib/faq';
-import { localBusinessSchema, websiteSchema } from '../lib/schema';
+import { faqPageSchema } from '../lib/schema';
 
-const schema = [
-  localBusinessSchema(),
-  websiteSchema(),
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: FAQ_ITEMS.map((item) => ({
-      '@type': 'Question',
-      name: item.q,
-      acceptedAnswer: { '@type': 'Answer', text: item.a },
-    })),
-  },
-];
+const schema = [faqPageSchema(FAQ_ITEMS)];
 ---
 
 <BaseLayout

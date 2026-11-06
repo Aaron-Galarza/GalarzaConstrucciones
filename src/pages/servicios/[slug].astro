@@ -10,7 +10,7 @@ import FAQSection from '../../components/FAQSection.astro';
 import CTASection from '../../components/CTASection.astro';
 import WorkGallery from '../../components/WorkGallery.astro';
 import WhatsAppButton from '../../components/WhatsAppButton.astro';
-import { serviceSchema, localBusinessSchema } from '../../lib/schema';
+import { serviceSchema, faqPageSchema } from '../../lib/schema';
 import { breadcrumbTrail } from '../../lib/breadcrumbs';
 import { WHATSAPP_MESSAGES } from '../../lib/company';
 
@@ -41,8 +41,10 @@ const schema = [
     description: servicio.data.summary,
     path: `/servicios/${servicio.id}/`,
   }),
-  localBusinessSchema(),
   crumbs.schema,
+  ...(servicio.data.faq.length > 0
+    ? [faqPageSchema(servicio.data.faq)]
+    : []),
 ];
 ---
 

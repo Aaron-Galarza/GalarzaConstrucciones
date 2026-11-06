@@ -5,12 +5,12 @@ import PageHeader from '../../components/PageHeader.astro';
 import TrajectorySection from '../../components/TrajectorySection.astro';
 import ExperienceSection from '../../components/ExperienceSection.astro';
 import CTASection from '../../components/CTASection.astro';
-import { personSchema, localBusinessSchema } from '../../lib/schema';
+import { personSchema } from '../../lib/schema';
 import { breadcrumbTrail } from '../../lib/breadcrumbs';
 
 const crumbs = breadcrumbTrail([{ name: 'Nosotros', path: '/nosotros/' }]);
 
-const schema = [personSchema(), localBusinessSchema(), crumbs.schema];
+const schema = [personSchema(), crumbs.schema];
 ---
 
 <BaseLayout
