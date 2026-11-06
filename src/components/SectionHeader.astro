@@ -1,0 +1,29 @@
+---
+// Encabezado estándar de sección: anotación técnica + título + bajada.
+// Centraliza el markup que antes se repetía en cada componente de la home.
+
+interface Props {
+  /** Etiqueta corta en mayúsculas sobre el título (ej. "Servicios"). */
+  annotation?: string;
+  title: string;
+  /** Bajada opcional; hereda el estilo de `.lead`. */
+  lead?: string;
+  /** Nivel del título; por defecto `h2`. */
+  as?: 'h2' | 'h3';
+  centered?: boolean;
+}
+
+const {
+  annotation,
+  title,
+  lead,
+  as: Heading = 'h2',
+  centered = false,
+} = Astro.props;
+---
+
+<header class:list={['section-head', { 'is-centered': centered }]}>
+  {annotation && <p class="annotation">{annotation}</p>}
+  <Heading>{title}</Heading>
+  {lead && <p class="lead">{lead}</p>}
+</header>

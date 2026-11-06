@@ -1,5 +1,6 @@
 ---
 import { FAQ_ITEMS } from '../lib/faq';
+import SectionHeader from './SectionHeader.astro';
 
 interface Props {
   /** Preguntas a mostrar; por defecto todas las de lib/faq.ts. */
@@ -11,10 +12,10 @@ const items = Astro.props.items ?? FAQ_ITEMS;
 
 <section class="section faq" id="preguntas">
   <div class="shell">
-    <header class="section-head">
-      <p class="annotation">Preguntas frecuentes</p>
-      <h2>Respuestas concretas a dudas frecuentes.</h2>
-    </header>
+    <SectionHeader
+      annotation="Preguntas frecuentes"
+      title="Respuestas concretas a dudas frecuentes."
+    />
 
     <div class="faq-list">
       {

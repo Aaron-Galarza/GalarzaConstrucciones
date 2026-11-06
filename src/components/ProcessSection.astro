@@ -1,4 +1,6 @@
 ---
+import SectionHeader from './SectionHeader.astro';
+
 const steps = [
   {
     num: '01',
@@ -30,15 +32,11 @@ const steps = [
 
 <section class="section process">
   <div class="shell">
-    <header class="section-head">
-      <p class="annotation">Cómo trabajamos</p>
-      <h2>Un proceso de cinco etapas, siempre el mismo rigor.</h2>
-      <p class="lead">
-        Aplica lo mismo a la obra nueva que a la intervención más delicada sobre
-        una construcción existente. Funciona sin depender de JavaScript: es
-        contenido estructural.
-      </p>
-    </header>
+    <SectionHeader
+      annotation="Cómo trabajamos"
+      title="Un proceso de cinco etapas, siempre el mismo rigor."
+      lead="Aplica lo mismo a la obra nueva que a la intervención más delicada sobre una construcción existente. Funciona sin depender de JavaScript: es contenido estructural."
+    />
 
     <ol class="process-list">
       {

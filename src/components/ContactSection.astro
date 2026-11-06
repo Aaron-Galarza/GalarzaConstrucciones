@@ -1,5 +1,6 @@
 ---
 import { COMPANY, CONTACT, whatsappURL } from '../lib/company';
+import SectionHeader from './SectionHeader.astro';
 
 interface Props {
   /** Encabezado de la sección (en la home se usa uno más corto). */
@@ -11,10 +12,7 @@ const { heading = 'Consultá por tu proyecto.' } = Astro.props;
 
 <section class="section contact" id="contacto">
   <div class="shell">
-    <header class="section-head">
-      <p class="annotation">Contacto</p>
-      <h2>{heading}</h2>
-    </header>
+    <SectionHeader annotation="Contacto" title={heading} />
 
     <div class="contact-grid">
       <div class="contact-info">

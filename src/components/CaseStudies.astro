@@ -3,6 +3,7 @@
 // narrativo (antes → durante → después) en su página propia.
 
 import { getCollection } from 'astro:content';
+import SectionHeader from './SectionHeader.astro';
 
 const cases = (await getCollection('obras'))
   .filter((obra) => obra.data.caseStudy)
@@ -11,14 +12,11 @@ const cases = (await getCollection('obras'))
 
 <section class="section cases dark">
   <div class="shell">
-    <header class="section-head">
-      <p class="annotation">Casos de estudio</p>
-      <h2>Obras que exigieron análisis y planificación.</h2>
-      <p class="lead">
-        Dos intervenciones sobre construcciones existentes donde el riesgo
-        técnico se manejó con criterio de ingeniería.
-      </p>
-    </header>
+    <SectionHeader
+      annotation="Casos de estudio"
+      title="Obras que exigieron análisis y planificación."
+      lead="Dos intervenciones sobre construcciones existentes donde el riesgo técnico se manejó con criterio de ingeniería."
+    />
 
     <div class="cases-grid">
       {

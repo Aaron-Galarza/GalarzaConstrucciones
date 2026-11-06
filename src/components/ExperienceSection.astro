@@ -1,4 +1,6 @@
 ---
+import SectionHeader from './SectionHeader.astro';
+
 const areas = [
   'Residencial',
   'Comercial',
@@ -21,14 +23,11 @@ const actors = [
 
 <section class="section experience" id="experiencia">
   <div class="shell">
-    <header class="section-head">
-      <p class="annotation">Experiencia</p>
-      <h2>Ámbitos donde desarrollamos obra real.</h2>
-      <p class="lead">
-        No usamos logos ajenos: los organismos y empresas se muestran por su
-        nombre, con la relación de trabajo correspondiente.
-      </p>
-    </header>
+    <SectionHeader
+      annotation="Experiencia"
+      title="Ámbitos donde desarrollamos obra real."
+      lead="No usamos logos ajenos: los organismos y empresas se muestran por su nombre, con la relación de trabajo correspondiente."
+    />
 
     <div class="experience-areas">
       {

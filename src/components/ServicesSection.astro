@@ -1,5 +1,6 @@
 ---
 import { SERVICES } from '../lib/company';
+import SectionHeader from './SectionHeader.astro';
 
 interface Props {
   /** Texto del encabezado de la sección; se reutiliza en /servicios/. */
@@ -11,14 +12,11 @@ const { heading = 'Servicios que cubren todo el ciclo de la obra' } = Astro.prop
 
 <section class="section services">
   <div class="shell">
-    <header class="section-head">
-      <p class="annotation">Servicios</p>
-      <h2>{heading}</h2>
-      <p class="lead">
-        Desde la obra nueva hasta la intervención sobre una construcción que ya
-        existe: cada servicio se adapta al contexto del proyecto.
-      </p>
-    </header>
+    <SectionHeader
+      annotation="Servicios"
+      title={heading}
+      lead="Desde la obra nueva hasta la intervención sobre una construcción que ya existe: cada servicio se adapta al contexto del proyecto."
+    />
 
     <div class="services-grid">
       {

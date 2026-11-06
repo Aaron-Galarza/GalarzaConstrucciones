@@ -1,4 +1,6 @@
 ---
+import SectionHeader from './SectionHeader.astro';
+
 const points = [
   {
     title: 'Analizar antes de ejecutar',
@@ -17,15 +19,11 @@ const points = [
 
 <section class="section value">
   <div class="shell">
-    <header class="section-head">
-      <p class="annotation">Propuesta</p>
-      <h2>No solamente ejecutamos trabajos: los analizamos.</h2>
-      <p class="lead">
-        Galarza observa, encuentra el problema, define la solución, planifica,
-        ejecuta y supervisa. La diferencia es el criterio técnico aplicado a
-        cada decisión de obra.
-      </p>
-    </header>
+    <SectionHeader
+      annotation="Propuesta"
+      title="No solamente ejecutamos trabajos: los analizamos."
+      lead="Galarza observa, encuentra el problema, define la solución, planifica, ejecuta y supervisa. La diferencia es el criterio técnico aplicado a cada decisión de obra."
+    />
 
     <div class="value-grid">
       {

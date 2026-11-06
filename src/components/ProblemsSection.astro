@@ -1,4 +1,6 @@
 ---
+import SectionHeader from './SectionHeader.astro';
+
 const problems = [
   {
     title: 'Grietas y fisuras',
@@ -45,15 +47,11 @@ const problems = [
 
 <section class="section problems dark">
   <div class="shell">
-    <header class="section-head">
-      <p class="annotation">Problemas que resolvemos</p>
-      <h2>Cuando construir implica resolver un problema técnico.</h2>
-      <p class="lead">
-        El diagnóstico importa tanto como la ejecución. Estas son las
-        situaciones más frecuentes con las que trabajamos en obras existentes y
-        nuevos proyectos.
-      </p>
-    </header>
+    <SectionHeader
+      annotation="Problemas que resolvemos"
+      title="Cuando construir implica resolver un problema técnico."
+      lead="El diagnóstico importa tanto como la ejecución. Estas son las situaciones más frecuentes con las que trabajamos en obras existentes y nuevos proyectos."
+    />
 
     <ul class="problems-list">
       {
