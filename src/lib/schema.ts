@@ -71,6 +71,8 @@ export function personSchema() {
     '@type': 'Person',
     name: COMPANY.founder,
     jobTitle: COMPANY.profession,
+    url: canonicalUrl('/nosotros/'),
+    image: `${SITE.url}/javier-galarza.webp`,
     worksFor: {
       '@type': 'Organization',
       '@id': ORGANIZATION_ID,
@@ -89,6 +91,7 @@ export function serviceSchema(service: {
   title: string;
   description: string;
   path: string;
+  image?: string;
 }) {
   return {
     '@context': 'https://schema.org',
@@ -97,6 +100,7 @@ export function serviceSchema(service: {
     description: service.description,
     serviceType: service.title,
     url: canonicalUrl(service.path),
+    ...(service.image ? { image: `${SITE.url}${service.image}` } : {}),
     provider: {
       '@type': ['LocalBusiness', 'GeneralContractor'],
       '@id': ORGANIZATION_ID,
@@ -176,6 +180,7 @@ export function articleSchema(article: {
   updatedDate?: Date;
   path: string;
   author: string;
+  image?: string;
 }) {
   return {
     '@context': 'https://schema.org',
@@ -186,6 +191,7 @@ export function articleSchema(article: {
     ...(article.updatedDate
       ? { dateModified: article.updatedDate.toISOString() }
       : {}),
+    ...(article.image ? { image: `${SITE.url}${article.image}` } : {}),
     author: {
       '@type': 'Person',
       name: article.author,

@@ -22,6 +22,8 @@ export const GET: APIRoute = async () => {
 
 ${COMPANY.name} es una empresa de construcción con base en ${COMPANY.address.city}, ${COMPANY.address.province}, ${COMPANY.address.country}. Dirigida por ${COMPANY.founder}, ${COMPANY.profession.toLowerCase()}, con trayectoria profesional iniciada en ${COMPANY.startedYear}. Ejecuta obras nuevas, remodelaciones, ampliaciones, soluciones estructurales, patologías de la construcción, dirección técnica, proyectos y obras civiles.
 
+Versión completa de este documento: ${SITE.url}/llms-full.txt
+
 ## Servicios
 ${SERVICES.map(
   (service) =>

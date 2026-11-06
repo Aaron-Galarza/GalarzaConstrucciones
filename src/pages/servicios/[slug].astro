@@ -38,8 +38,9 @@ const crumbs = breadcrumbTrail([
 const schema = [
   serviceSchema({
     title: servicio.data.title,
-    description: servicio.data.summary,
+    description: servicio.data.description,
     path: `/servicios/${servicio.id}/`,
+    image: servicio.data.images[0]?.src,
   }),
   crumbs.schema,
   ...(servicio.data.faq.length > 0

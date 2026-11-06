@@ -44,7 +44,7 @@ const crumbs = breadcrumbTrail([
 const schema = [
   workSchema({
     title: obra.data.title,
-    description: obra.data.summary,
+    description: obra.data.description,
     path: `/obras/${obra.id}/`,
     location: obra.data.location,
     image: obra.data.gallery[0]?.src,

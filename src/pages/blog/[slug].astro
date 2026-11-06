@@ -31,13 +31,14 @@ const schema = [
     updatedDate: post.data.updatedDate,
     path: `/blog/${post.id}/`,
     author: post.data.author,
+    image: post.data.image,
   }),
   crumbs.schema,
 ];
 ---
 
 <BaseLayout
-  title={post.data.title}
+  title={`${post.data.title} | Galarza Construcción`}
   description={post.data.description}
   path={`/blog/${post.id}/`}
   type="article"
