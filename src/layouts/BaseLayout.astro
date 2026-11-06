@@ -1,5 +1,6 @@
 ---
-import '@fontsource-variable/archivo';
+import archivoFont from '../assets/fonts/archivo-latin-wght-normal.woff2?url';
+import '../styles/fonts.css';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -36,6 +37,13 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID as string | undefined;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0a1e2c" />
+    <link
+      rel="preload"
+      href={archivoFont}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
 
     {
       seo.map((t) =>
