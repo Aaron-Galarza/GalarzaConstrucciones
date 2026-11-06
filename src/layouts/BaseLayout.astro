@@ -11,8 +11,6 @@ import { localBusinessSchema, websiteSchema } from '../lib/schema';
 interface Props extends SEOProps {
   /** Schemas JSON-LD específicos de la página (objetos de lib/schema). */
   schemas?: Record<string, unknown>[];
-  /** Alias para SLOT del main */
-  children?: any;
 }
 
 const {

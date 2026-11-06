@@ -20,7 +20,7 @@ export const GET: APIRoute = async () => {
 
 > ${SITE.description}
 
-${COMPANY.name} es una empresa de construcción con base en ${COMPANY.address.city}, ${COMPANY.address.province}, ${COMPANY.address.country}. Dirigida por ${COMPANY.lawyer}, ${COMPANY.profession.toLowerCase()}, con trayectoria profesional iniciada en ${COMPANY.startedYear}. Ejecuta obras nuevas, remodelaciones, ampliaciones, soluciones estructurales, patologías de la construcción, dirección técnica, proyectos y obras civiles.
+${COMPANY.name} es una empresa de construcción con base en ${COMPANY.address.city}, ${COMPANY.address.province}, ${COMPANY.address.country}. Dirigida por ${COMPANY.founder}, ${COMPANY.profession.toLowerCase()}, con trayectoria profesional iniciada en ${COMPANY.startedYear}. Ejecuta obras nuevas, remodelaciones, ampliaciones, soluciones estructurales, patologías de la construcción, dirección técnica, proyectos y obras civiles.
 
 ## Servicios
 ${SERVICES.map(

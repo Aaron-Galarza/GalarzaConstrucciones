@@ -425,8 +425,3 @@ li::marker {
 .dark .divider {
   background: var(--color-line-on-dark);
 }
-
-/* Los encabezados de página (h1) no deben quedar pegados al layout */
-.page-h1 {
-  margin-bottom: var(--space-lg);
-}

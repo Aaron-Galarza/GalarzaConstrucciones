@@ -72,7 +72,7 @@ ${post.data.description}`,
 
 ## Perfil de la empresa
 - Nombre: ${COMPANY.name}
-- Fundador: ${COMPANY.lawyer} — ${COMPANY.profession}
+- Fundador: ${COMPANY.founder} — ${COMPANY.profession}
 - Trayectoria profesional iniciada en: ${COMPANY.startedYear}
 - Base: ${COMPANY.address.street}, ${COMPANY.address.city}, ${COMPANY.address.province}, ${COMPANY.address.country}
 - Cobertura: ${COMPANY.address.city}, provincia del ${COMPANY.address.province} y otras provincias de Argentina según el proyecto.

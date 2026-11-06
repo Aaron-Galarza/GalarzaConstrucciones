@@ -23,12 +23,4 @@ export default defineConfig({
       changefreq: 'monthly',
     }),
   ],
-  vite: {
-    ssr: {
-      external: [],
-    },
-    optimizeDeps: {
-      include: [],
-    },
-  },
 });

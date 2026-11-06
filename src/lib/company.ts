@@ -4,7 +4,7 @@
 
 export const COMPANY = {
   name: 'Galarza Construcción',
-  lawyer: 'Ing. Javier Galarza',
+  founder: 'Ing. Javier Galarza',
   profession: 'Ingeniero en Construcciones',
   address: {
     street: 'Bélgica Nº 652',

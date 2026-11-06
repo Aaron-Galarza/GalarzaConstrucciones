@@ -16,34 +16,6 @@ const AREA_SERVED = [
   { '@type': 'Country', name: COMPANY.address.country },
 ];
 
-const ORGANIZATION = {
-  '@type': 'Organization',
-  name: COMPANY.name,
-  url: SITE.url,
-  email: COMPANY.email,
-  telephone: COMPANY.phone.landline,
-  founder: {
-    '@type': 'Person',
-    name: COMPANY.lawyer,
-    jobTitle: COMPANY.profession,
-  },
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: COMPANY.address.street,
-    addressLocality: COMPANY.address.city,
-    addressRegion: COMPANY.address.province,
-    addressCountry: 'AR',
-  },
-  sameAs: [COMPANY.instagram.url],
-};
-
-export function organizationSchema() {
-  return {
-    ...ORGANIZATION,
-    '@context': 'https://schema.org',
-  };
-}
-
 export function localBusinessSchema() {
   return {
     '@context': 'https://schema.org',
@@ -68,7 +40,7 @@ export function localBusinessSchema() {
     foundingDate: String(COMPANY.startedYear),
     founder: {
       '@type': 'Person',
-      name: COMPANY.lawyer,
+      name: COMPANY.founder,
       jobTitle: COMPANY.profession,
     },
     contactPoint: [
@@ -97,7 +69,7 @@ export function personSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: COMPANY.lawyer,
+    name: COMPANY.founder,
     jobTitle: COMPANY.profession,
     worksFor: {
       '@type': 'Organization',
