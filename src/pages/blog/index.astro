@@ -6,6 +6,7 @@ import PageHeader from '../../components/PageHeader.astro';
 import CTASection from '../../components/CTASection.astro';
 import { localBusinessSchema } from '../../lib/schema';
 import { breadcrumbTrail } from '../../lib/breadcrumbs';
+import { WHATSAPP_MESSAGES } from '../../lib/company';
 
 const posts = (await getCollection('blog')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
@@ -46,7 +47,7 @@ const schema = [localBusinessSchema(), crumbs.schema];
     </div>
   </div>
 
-  <CTASection message="Hola, leí los artículos técnicos del blog de Galarza Construcción y quiero consultar por un problema concreto. ¿Cómo coordino una consulta o una reunión para comentarles mi caso?" />
+  <CTASection message={WHATSAPP_MESSAGES.blogList} />
 </BaseLayout>
 
 <style>

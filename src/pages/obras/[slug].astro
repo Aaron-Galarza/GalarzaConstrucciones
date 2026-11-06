@@ -8,9 +8,10 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import CTASection from '../../components/CTASection.astro';
 import WorkGallery from '../../components/WorkGallery.astro';
+import WhatsAppButton from '../../components/WhatsAppButton.astro';
 import { workSchema, localBusinessSchema } from '../../lib/schema';
 import { breadcrumbTrail } from '../../lib/breadcrumbs';
-import { whatsappURL } from '../../lib/company';
+import { WHATSAPP_MESSAGES } from '../../lib/company';
 
 export async function getStaticPaths() {
   const obras = await getCollection('obras');
@@ -136,25 +137,17 @@ const schema = [
             Si tu obra plantea un desafío de estructura, remodelación o
             construcción, contanos el caso y lo evaluamos.
           </p>
-          <a
-            href={whatsappURL(
-              `Hola, vi la obra ${obra.data.title} en la web de Galarza Construcción y me gustaría hacer un proyecto similar. ¿Me cuentan cómo lo encararían y cómo coordinamos una llamada o reunión?`,
-            )}
-            class="btn"
-            target="_blank"
-            rel="noopener"
-          >
-            Consultar mi proyecto
-          </a>
+          <WhatsAppButton
+            message={WHATSAPP_MESSAGES.work(obra.data.title)}
+            label="Consultar mi proyecto"
+          />
           <a href="/obras/" class="btn btn--ghost side-link">Ver más obras</a>
         </div>
       </aside>
     </div>
   </div>
 
-  <CTASection
-    message={`Hola, vi la obra ${obra.data.title} en la web de Galarza Construcción y me gustaría hacer un proyecto similar. ¿Me cuentan cómo lo encararían y cómo coordinamos una llamada o reunión?`}
-  />
+  <CTASection message={WHATSAPP_MESSAGES.work(obra.data.title)} />
 </BaseLayout>
 
 <style>

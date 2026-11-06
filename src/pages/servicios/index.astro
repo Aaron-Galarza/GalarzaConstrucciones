@@ -8,6 +8,7 @@ import FAQSection from '../../components/FAQSection.astro';
 import CTASection from '../../components/CTASection.astro';
 import { localBusinessSchema } from '../../lib/schema';
 import { breadcrumbTrail } from '../../lib/breadcrumbs';
+import { WHATSAPP_MESSAGES } from '../../lib/company';
 
 const crumbs = breadcrumbTrail([{ name: 'Servicios', path: '/servicios/' }]);
 
@@ -32,5 +33,5 @@ const schema = [localBusinessSchema(), crumbs.schema];
   <ServicesSection heading="Un servicio para cada etapa del proyecto." />
   <ProcessSection />
   <FAQSection />
-  <CTASection message="Hola, vi el listado de servicios de Galarza Construcción y tengo un proyecto en mente. ¿Con qué servicio convendría arrancar y cómo coordinamos una reunión para conversarlo?" />
+  <CTASection message={WHATSAPP_MESSAGES.servicesList} />
 </BaseLayout>

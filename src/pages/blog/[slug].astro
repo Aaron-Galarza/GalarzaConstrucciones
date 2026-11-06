@@ -5,6 +5,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import CTASection from '../../components/CTASection.astro';
 import { articleSchema, localBusinessSchema } from '../../lib/schema';
 import { breadcrumbTrail } from '../../lib/breadcrumbs';
+import { WHATSAPP_MESSAGES } from '../../lib/company';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -99,9 +100,7 @@ const schema = [
     </article>
   </div>
 
-  <CTASection
-    message={`Hola, llegué desde el artículo "${post.data.title}" del blog de Galarza Construcción y creo que tengo un problema similar. ¿Me orientan sobre cómo se hace la evaluación de estos casos o coordinamos una visita?`}
-  />
+  <CTASection message={WHATSAPP_MESSAGES.article(post.data.title)} />
 </BaseLayout>
 
 <style>

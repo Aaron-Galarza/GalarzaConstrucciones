@@ -48,6 +48,24 @@ export const CONTACT = {
 export const whatsappURL = (message: string): string =>
   `https://wa.me/${CONTACT.whatsappNumber}?text=${encodeURIComponent(message)}`;
 
+// Mensajes precargados por contexto. Centralizados para no repetir textos
+// largos en las páginas y mantener el mismo tono en todos los CTA.
+export const WHATSAPP_MESSAGES = {
+  general: CONTACT.whatsappMessage,
+  servicesList:
+    'Hola, vi el listado de servicios de Galarza Construcción y tengo un proyecto en mente. ¿Con qué servicio convendría arrancar y cómo coordinamos una reunión para conversarlo?',
+  worksList:
+    'Hola, vi el portfolio de obras de Galarza Construcción y quiero encargar un proyecto. ¿Me cuentan sobre sus servicios, precios y la mejor forma de coordinar una reunión?',
+  blogList:
+    'Hola, leí los artículos técnicos del blog de Galarza Construcción y quiero consultar por un problema concreto. ¿Cómo coordino una consulta o una reunión para comentarles mi caso?',
+  service: (title: string) =>
+    `Hola, vi la página de ${title} en la web de Galarza Construcción y quiero avanzar con ese servicio. ¿Me cuentan cómo encararían mi proyecto, plazos y presupuestos, o coordinamos una reunión?`,
+  work: (title: string) =>
+    `Hola, vi la obra ${title} en la web de Galarza Construcción y me gustaría hacer un proyecto similar. ¿Me cuentan cómo lo encararían y cómo coordinamos una llamada o reunión?`,
+  article: (title: string) =>
+    `Hola, llegué desde el artículo "${title}" del blog de Galarza Construcción y creo que tengo un problema similar. ¿Me orientan sobre cómo se hace la evaluación de estos casos o coordinamos una visita?`,
+} as const;
+
 // Navegación principal del header/footer. Cada destino existe realmente.
 export const NAV_LINKS = [
   { label: 'Inicio', href: '/' },
@@ -59,7 +77,7 @@ export const NAV_LINKS = [
 
 export const CTA_PRIMARY = {
   label: 'Consultar mi proyecto',
-  href: whatsappURL(CONTACT.whatsappMessage),
+  message: CONTACT.whatsappMessage,
 } as const;
 
 // Servicios confirmados (Docs/Informacion.txt). Cada item define su slug de página

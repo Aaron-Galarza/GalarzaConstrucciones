@@ -7,7 +7,7 @@ import BlueprintCard from '../../components/BlueprintCard.astro';
 import CTASection from '../../components/CTASection.astro';
 import { localBusinessSchema } from '../../lib/schema';
 import { breadcrumbTrail } from '../../lib/breadcrumbs';
-import { COMPANY } from '../../lib/company';
+import { COMPANY, WHATSAPP_MESSAGES } from '../../lib/company';
 import { canonicalUrl } from '../../lib/seo';
 
 const obras = (await getCollection('obras')).sort(
@@ -64,7 +64,7 @@ const schema = [
     </div>
   </div>
 
-  <CTASection message="Hola, vi el portfolio de obras de Galarza Construcción y quiero encargar un proyecto. ¿Me cuentan sobre sus servicios, precios y la mejor forma de coordinar una reunión?" />
+  <CTASection message={WHATSAPP_MESSAGES.worksList} />
 </BaseLayout>
 
 <style>

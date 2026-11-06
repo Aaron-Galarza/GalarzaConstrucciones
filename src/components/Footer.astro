@@ -1,6 +1,7 @@
 ---
 import Logo from './Logo.astro';
-import { COMPANY, CONTACT, NAV_LINKS, SERVICES, whatsappURL } from '../lib/company';
+import WhatsAppButton from './WhatsAppButton.astro';
+import { COMPANY, CONTACT, NAV_LINKS, SERVICES, WHATSAPP_MESSAGES } from '../lib/company';
 ---
 
 <footer class="site-footer">
@@ -15,14 +16,12 @@ import { COMPANY, CONTACT, NAV_LINKS, SERVICES, whatsappURL } from '../lib/compa
           remodelaciones, ampliaciones y soluciones estructurales en
           Resistencia, Chaco y otras provincias.
         </p>
-        <a
-          href={whatsappURL(CONTACT.whatsappMessage)}
-          class="btn btn--om-dark footer-cta"
-          target="_blank"
-          rel="noopener"
-        >
-          Consultar mi proyecto por WhatsApp
-        </a>
+        <WhatsAppButton
+          message={WHATSAPP_MESSAGES.general}
+          label="Consultar mi proyecto por WhatsApp"
+          variant="accent"
+          class="footer-cta"
+        />
       </div>
 
       <div class="footer-col">

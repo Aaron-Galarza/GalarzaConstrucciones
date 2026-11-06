@@ -335,15 +335,16 @@ b {
   border-color: #fff;
 }
 
-.btn--om-dark {
+.btn--accent {
   background: var(--color-cyan);
   border-color: var(--color-cyan);
   color: #06202a;
 }
 
-.btn--om-dark:hover {
+.btn--accent:hover {
   background: #0c8fa3;
   border-color: #0c8fa3;
+  color: #06202a;
 }
 
 /* Pantallas muy pequeñas: los botones con etiqueta larga (p. ej. el CTA del

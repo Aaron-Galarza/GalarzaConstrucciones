@@ -9,9 +9,10 @@ import PageHeader from '../../components/PageHeader.astro';
 import FAQSection from '../../components/FAQSection.astro';
 import CTASection from '../../components/CTASection.astro';
 import WorkGallery from '../../components/WorkGallery.astro';
+import WhatsAppButton from '../../components/WhatsAppButton.astro';
 import { serviceSchema, localBusinessSchema } from '../../lib/schema';
 import { breadcrumbTrail } from '../../lib/breadcrumbs';
-import { whatsappURL } from '../../lib/company';
+import { WHATSAPP_MESSAGES } from '../../lib/company';
 
 export async function getStaticPaths() {
   const servicios = await getCollection('servicios');
@@ -137,16 +138,10 @@ const schema = [
             Contanos tu caso y lo evaluamos: tipo de proyecto, localidad y qué
             necesitás resolver.
           </p>
-          <a
-            href={whatsappURL(
-              `Hola, vi la página de ${servicio.data.title} en la web de Galarza Construcción y quiero avanzar con ese servicio. ¿Me cuentan cómo encararían mi proyecto, plazos y presupuestos, o coordinamos una reunión?`,
-            )}
-            class="btn"
-            target="_blank"
-            rel="noopener"
-          >
-            Consultar mi proyecto
-          </a>
+          <WhatsAppButton
+            message={WHATSAPP_MESSAGES.service(servicio.data.title)}
+            label="Consultar mi proyecto"
+          />
           <a href="/contacto/" class="btn btn--ghost side-link">Ir a contacto</a>
         </div>
       </aside>
@@ -160,7 +155,7 @@ const schema = [
   </div>
 
   <CTASection
-    message={`Hola, vi la página de ${servicio.data.title} en la web de Galarza Construcción y quiero avanzar con ese servicio. ¿Me cuentan cómo encararían mi proyecto, plazos y presupuestos, o coordinamos una reunión?`}
+    message={WHATSAPP_MESSAGES.service(servicio.data.title)}
   />
 </BaseLayout>
 

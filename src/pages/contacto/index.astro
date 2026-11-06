@@ -4,7 +4,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import FAQSection from '../../components/FAQSection.astro';
-import { CONTACT, COMPANY, whatsappURL } from '../../lib/company';
+import { CONTACT, COMPANY, WHATSAPP_MESSAGES, whatsappURL } from '../../lib/company';
 import { localBusinessSchema } from '../../lib/schema';
 import { breadcrumbTrail } from '../../lib/breadcrumbs';
 
@@ -29,7 +29,7 @@ const schema = [localBusinessSchema(), crumbs.schema];
     />
 
     <div class="how-grid">
-      <a href={whatsappURL(CONTACT.whatsappMessage)} class="how-card card card--link" target="_blank" rel="noopener">
+      <a href={whatsappURL(WHATSAPP_MESSAGES.general)} class="how-card card card--link" target="_blank" rel="noopener">
         <h2 class="how-title">WhatsApp</h2>
         <p class="small">{COMPANY.phone.mobile}</p>
         <p class="how-note">

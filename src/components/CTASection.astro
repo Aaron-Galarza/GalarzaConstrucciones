@@ -1,13 +1,13 @@
 ---
-import { CONTACT, whatsappURL } from '../lib/company';
+import { WHATSAPP_MESSAGES } from '../lib/company';
+import WhatsAppButton from './WhatsAppButton.astro';
 
 interface Props {
   /** Mensaje precargado del WhatsApp según la sección donde se toca el CTA. */
   message?: string;
 }
 
-const { message = CONTACT.whatsappMessage } = Astro.props;
-const href = whatsappURL(message);
+const { message = WHATSAPP_MESSAGES.general } = Astro.props;
 ---
 
 <section class="section cta dark">
@@ -18,9 +18,11 @@ const href = whatsappURL(message);
       problema estructural. Respondemos con criterio técnico y sin vueltas.
     </p>
     <div class="cta-actions">
-      <a href={href} class="btn btn--om-dark" target="_blank" rel="noopener">
-        Hablar por WhatsApp
-      </a>
+      <WhatsAppButton
+        message={message}
+        label="Hablar por WhatsApp"
+        variant="accent"
+      />
       <a href="/contacto/" class="btn btn--ghost">Ir a contacto</a>
     </div>
   </div>

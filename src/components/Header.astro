@@ -1,5 +1,6 @@
 ---
 import Logo from './Logo.astro';
+import WhatsAppButton from './WhatsAppButton.astro';
 import { getCollection } from 'astro:content';
 import {
   NAV_LINKS,
@@ -7,6 +8,7 @@ import {
   CONTACT,
   COMPANY,
   SERVICES,
+  WHATSAPP_MESSAGES,
   whatsappURL,
 } from '../lib/company';
 
@@ -74,7 +76,7 @@ const navTree: NavItem[] = NAV_LINKS.map((link) => {
   } else if (link.href === '/contacto/') {
     children.push(
       {
-        href: whatsappURL(CONTACT.whatsappMessage),
+        href: whatsappURL(WHATSAPP_MESSAGES.general),
         label: 'WhatsApp',
         sub: COMPANY.phone.mobile,
         isActive: false,
@@ -170,17 +172,21 @@ const navTree: NavItem[] = NAV_LINKS.map((link) => {
           ))
         }
         <li class="nav-mobile-cta">
-          <a href={CTA_PRIMARY.href} class="btn" target="_blank" rel="noopener">
-            {CTA_PRIMARY.label}
-          </a>
+          <WhatsAppButton
+            message={CTA_PRIMARY.message}
+            label={CTA_PRIMARY.label}
+          />
         </li>
       </ul>
     </nav>
 
     <div class="header-actions">
-      <a href={CTA_PRIMARY.href} class="btn btn--ghost header-cta" target="_blank" rel="noopener">
-        {CTA_PRIMARY.label}
-      </a>
+      <WhatsAppButton
+        message={CTA_PRIMARY.message}
+        label={CTA_PRIMARY.label}
+        variant="ghost"
+        class="header-cta"
+      />
       <label for="nav-check" class="nav-toggle" aria-label="Abrir o cerrar el menú">
         <span class="nav-toggle-box">
           <span class="nav-toggle-bar" aria-hidden="true"></span>

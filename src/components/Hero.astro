@@ -1,5 +1,6 @@
 ---
-import { CTA_PRIMARY, CONTACT, COMPANY, whatsappURL } from '../lib/company';
+import { CTA_PRIMARY, COMPANY } from '../lib/company';
+import WhatsAppButton from './WhatsAppButton.astro';
 ---
 
 <section class="hero">
@@ -17,9 +18,10 @@ import { CTA_PRIMARY, CONTACT, COMPANY, whatsappURL } from '../lib/company';
         {COMPANY.startedYear}.
       </p>
       <div class="hero-ctas">
-        <a href={whatsappURL(CONTACT.whatsappMessage)} class="btn" target="_blank" rel="noopener">
-          {CTA_PRIMARY.label}
-        </a>
+        <WhatsAppButton
+          message={CTA_PRIMARY.message}
+          label={CTA_PRIMARY.label}
+        />
         <a href="/obras/" class="btn btn--ghost btn--on-dark">Ver obras</a>
       </div>
       <dl class="hero-meta">
