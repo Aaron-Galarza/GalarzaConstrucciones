@@ -66,3 +66,16 @@
     --shell-pad: 1rem;
   }
 }
+
+@media (max-width: 420px) {
+  :root {
+    --shell-pad: clamp(12px, 4vw, 20px);
+  }
+}
+
+@media (max-width: 300px) {
+  :root {
+    --text-3xl: 1.8rem;
+    --shell-pad: 0.75rem;
+  }
+}

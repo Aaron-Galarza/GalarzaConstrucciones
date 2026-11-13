@@ -76,7 +76,13 @@ const { heading = 'Servicios que cubren todo el ciclo de la obra' } = Astro.prop
 
   @media (max-width: 560px) {
     .services-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 420px) {
+    .service-card {
+      padding: clamp(12px, 4vw, 20px);
     }
   }
 </style>

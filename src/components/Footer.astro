@@ -109,6 +109,10 @@ import { COMPANY, CONTACT, NAV_LINKS, SERVICES, WHATSAPP_MESSAGES } from '../lib
     padding-block: var(--space-lg);
   }
 
+  .footer-col {
+    min-width: 0;
+  }
+
   .footer-logo {
     display: inline-flex;
     text-decoration: none;
@@ -147,6 +151,7 @@ import { COMPANY, CONTACT, NAV_LINKS, SERVICES, WHATSAPP_MESSAGES } from '../lib
     color: var(--color-muted-on-dark);
     text-decoration: none;
     font-size: 0.95rem;
+    overflow-wrap: anywhere;
   }
 
   .footer-list a:hover {
@@ -180,8 +185,30 @@ import { COMPANY, CONTACT, NAV_LINKS, SERVICES, WHATSAPP_MESSAGES } from '../lib
 
   @media (max-width: 560px) {
     .footer-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
       gap: var(--space-lg);
     }
+
+    .footer-logo :global(.brand) {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      width: 100%;
+    }
+
+    .footer-logo :global(.brand-name) {
+      overflow-wrap: anywhere;
+    }
+
+    .footer-logo :global(.brand-tag) {
+      overflow-wrap: anywhere;
+    }
+  }
+
+  @media (max-width: 300px) {
+    .footer-logo,
+    .footer-cta {
+      max-width: 100%;
+    }
+
   }
 </style>

@@ -366,6 +366,18 @@ b {
   .btn {
     white-space: normal;
     padding-inline: 1.2rem;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  h1, h2, h3, h4, .annotation, .page-meta {
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 300px) {
+  h1, h2, h3, h4, .annotation {
+    overflow-wrap: anywhere;
   }
 }
 

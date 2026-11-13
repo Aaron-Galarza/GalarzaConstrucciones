@@ -1,17 +1,17 @@
 ---
-// Página dinámica de obra: detalle completo (descripción, problema, solución,
-// resultado) + formato de caso de estudio cuando la obra lo declara.
+// Página dinámica de obra: relato visual que alterna texto e imágenes
+// (antes, durante y después) + servicios involucrados.
 
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import CTASection from '../../components/CTASection.astro';
-import WorkGallery from '../../components/WorkGallery.astro';
-import WhatsAppButton from '../../components/WhatsAppButton.astro';
+import WorkStory from '../../components/WorkStory.astro';
 import { workSchema } from '../../lib/schema';
 import { breadcrumbTrail } from '../../lib/breadcrumbs';
 import { WHATSAPP_MESSAGES } from '../../lib/company';
+import { obraCover } from '../../lib/obras';
 
 export async function getStaticPaths() {
   const obras = await getCollection('obras');
@@ -28,13 +28,7 @@ const serviciosRelacionados = (await getCollection('servicios')).filter(
 );
 
 const isCase = obra.data.caseStudy;
-
-// Galería: las imágenes sin etapa van al registro general; las que tienen
-// etapa se muestran junto a su bloque del proceso (antes, durante, después).
-const stageItems = (stage: 'antes' | 'durante' | 'despues') =>
-  obra.data.gallery.filter((item) => item.stage === stage);
-
-const gallery = obra.data.gallery.filter((item) => !item.stage);
+const cover = obraCover(obra);
 
 const crumbs = breadcrumbTrail([
   { name: 'Obras', path: '/obras/' },
@@ -47,7 +41,7 @@ const schema = [
     description: obra.data.description,
     path: `/obras/${obra.id}/`,
     location: obra.data.location,
-    image: obra.data.gallery[0]?.src,
+    image: cover?.src,
   }),
   crumbs.schema,
 ];
@@ -57,7 +51,8 @@ const schema = [
   title={`${obra.data.title} | Obras de Galarza Construcción`}
   description={obra.data.summary}
   path={`/obras/${obra.id}/`}
-  image={obra.data.gallery[0]?.src}
+  image={cover?.src}
+  imageAlt={cover?.alt}
   schemas={schema}
 >
   <div class="shell page-content">
@@ -67,113 +62,40 @@ const schema = [
       annotation={isCase ? 'Caso de estudio' : undefined}
       title={obra.data.title}
       meta={`${obra.data.category} · ${obra.data.location}, ${obra.data.province}${obra.data.period ? ` · ${obra.data.period}` : ''}`}
-      lead={obra.data.description}
+      lead={obra.data.summary}
     />
 
+    <WorkStory blocks={obra.data.story} />
+
     {
-      gallery.length > 0 && (
-        <WorkGallery
-          items={gallery}
-          heading="Registro fotográfico de la obra"
-        />
+      serviciosRelacionados.length > 0 && (
+        <section class="services-block">
+          <h2>Servicios involucrados</h2>
+          <ul class="service-tags">
+            {serviciosRelacionados.map((s) => (
+              <li>
+                <a href={`/servicios/${s.id}/`}>{s.data.title}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
       )
     }
-
-    <div class="layout-grid">
-      <article class="case-body">
-        <section class="block">
-          <h2>Antes</h2>
-          <p>{obra.data.before}</p>
-          {
-            stageItems('antes').length > 0 && (
-              <WorkGallery items={stageItems('antes')} heading="" />
-            )
-          }
-        </section>
-
-        <section class="block">
-          <h2>Durante</h2>
-          <p>{obra.data.during}</p>
-          {
-            stageItems('durante').length > 0 && (
-              <WorkGallery items={stageItems('durante')} heading="" />
-            )
-          }
-        </section>
-
-        <section class="block">
-          <h2>Después</h2>
-          <p>{obra.data.after}</p>
-          {
-            stageItems('despues').length > 0 && (
-              <WorkGallery items={stageItems('despues')} heading="" />
-            )
-          }
-        </section>
-
-        {
-          serviciosRelacionados.length > 0 && (
-            <section class="block">
-              <h2>Servicios involucrados</h2>
-              <ul class="service-tags">
-                {
-                  serviciosRelacionados.map((s) => (
-                    <li>
-                      <a href={`/servicios/${s.id}/`}>{s.data.title}</a>
-                    </li>
-                  ))
-                }
-              </ul>
-            </section>
-          )
-        }
-      </article>
-
-      <aside class="side-col">
-        <div class="side-card">
-          <h3>¿Tenés un proyecto similar?</h3>
-          <p class="small">
-            Si tu obra plantea un desafío de estructura, remodelación o
-            construcción, contanos el caso y lo evaluamos.
-          </p>
-          <WhatsAppButton
-            message={WHATSAPP_MESSAGES.work(obra.data.title)}
-            label="Consultar mi proyecto"
-          />
-          <a href="/obras/" class="btn btn--ghost side-link">Ver más obras</a>
-        </div>
-      </aside>
-    </div>
   </div>
 
   <CTASection message={WHATSAPP_MESSAGES.work(obra.data.title)} />
 </BaseLayout>
 
 <style>
-  .layout-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 20rem;
-    gap: var(--space-xl);
-    align-items: start;
-  }
-
-  .case-body {
-    min-width: 0;
-  }
-
-  .block {
+  .services-block {
     margin-bottom: var(--space-xl);
   }
 
-  .block h2 {
+  .services-block h2 {
     font-size: 1.4rem;
     margin-bottom: var(--space-sm);
     border-bottom: 1px solid var(--color-line);
     padding-bottom: 0.5rem;
-  }
-
-  .block p {
-    max-width: 64ch;
   }
 
   .service-tags {
@@ -199,33 +121,5 @@ const schema = [
 
   .service-tags a:hover {
     border-color: var(--color-navy);
-  }
-
-  .side-card {
-    position: sticky;
-    top: 100px;
-    background: var(--color-surface);
-    border: 1px solid var(--color-line);
-    border-top: 3px solid var(--color-navy);
-    padding: var(--space-lg);
-  }
-
-  .side-card .btn {
-    width: 100%;
-    margin-bottom: var(--space-sm);
-  }
-
-  .side-link {
-    width: 100%;
-  }
-
-  @media (max-width: 900px) {
-    .layout-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .side-card {
-      position: static;
-    }
   }
 </style>

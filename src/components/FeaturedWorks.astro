@@ -5,6 +5,7 @@
 import { getCollection } from 'astro:content';
 import BlueprintCard from './BlueprintCard.astro';
 import SectionHeader from './SectionHeader.astro';
+import { obraCover } from '../lib/obras';
 
 const obras = (await getCollection('obras'))
   .filter((obra) => obra.data.featured)
@@ -21,17 +22,20 @@ const obras = (await getCollection('obras'))
 
     <div class="works-grid">
       {
-        obras.map((obra, i) => (
-          <BlueprintCard
-            code={`O-${String(i + 1).padStart(2, '0')}`}
-            title={obra.data.title}
-            href={`/obras/${obra.id}/`}
-            category={obra.data.category}
-            location={obra.data.location}
-            image={obra.data.gallery[0]?.src}
-            imageAlt={obra.data.gallery[0]?.alt}
-          />
-        ))
+        obras.map((obra, i) => {
+          const cover = obraCover(obra);
+          return (
+            <BlueprintCard
+              code={`O-${String(i + 1).padStart(2, '0')}`}
+              title={obra.data.title}
+              href={`/obras/${obra.id}/`}
+              category={obra.data.category}
+              location={obra.data.location}
+              image={cover?.src}
+              imageAlt={cover?.alt}
+            />
+          );
+        })
       }
     </div>
 
@@ -60,7 +64,7 @@ const obras = (await getCollection('obras'))
 
   @media (max-width: 560px) {
     .works-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
   }
 </style>

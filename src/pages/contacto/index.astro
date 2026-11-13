@@ -125,7 +125,13 @@ const schema = [crumbs.schema, faqPageSchema(contactFaq)];
 
   @media (max-width: 860px) {
     .how-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 420px) {
+    .how-card {
+      padding: clamp(12px, 4vw, 20px);
     }
   }
 </style>

@@ -16,6 +16,8 @@ export interface SEOProps {
   type?: 'website' | 'article';
   /** Imagen compartible: ruta pública; por defecto la OG general. */
   image?: string;
+  /** Descripción de la imagen social, cuando es específica de la página. */
+  imageAlt?: string;
   /** Directiva robots; por defecto 'index, follow'. */
   robots?: string;
 }
@@ -42,6 +44,7 @@ export function buildSEOTags({
   path,
   type = 'website',
   image = SITE.ogImage,
+  imageAlt = COMPANY.name,
   robots = 'index, follow',
 }: SEOProps): HeadTag[] {
   const canonical = canonicalUrl(path);
@@ -60,7 +63,7 @@ export function buildSEOTags({
     { tag: 'meta', attrs: { property: 'og:url', content: canonical } },
     { tag: 'meta', attrs: { property: 'og:locale', content: 'es_AR' } },
     { tag: 'meta', attrs: { property: 'og:image', content: `${SITE.url}${image}` } },
-    { tag: 'meta', attrs: { property: 'og:image:alt', content: COMPANY.name } },
+    { tag: 'meta', attrs: { property: 'og:image:alt', content: imageAlt } },
 
     // Twitter Card
     { tag: 'meta', attrs: { name: 'twitter:card', content: 'summary_large_image' } },

@@ -63,7 +63,19 @@ const points = [
 
   @media (max-width: 860px) {
     .value-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 420px) {
+    .value-card {
+      padding: clamp(12px, 4vw, 20px);
+    }
+  }
+
+  @media (max-width: 300px) {
+    .value-card {
+      padding: var(--space-sm);
     }
   }
 </style>

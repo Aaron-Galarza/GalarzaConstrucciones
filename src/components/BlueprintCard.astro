@@ -146,4 +146,10 @@ const { code, title, href, category, location, image, imageAlt = title } =
     text-decoration-color: var(--color-cyan);
     text-underline-offset: 3px;
   }
+
+  @media (max-width: 420px) {
+    .work-body {
+      padding: clamp(12px, 4vw, 20px);
+    }
+  }
 </style>

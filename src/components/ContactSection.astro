@@ -139,7 +139,7 @@ const { heading = 'Consultá por tu proyecto.' } = Astro.props;
 
   @media (max-width: 820px) {
     .contact-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
       gap: var(--space-lg);
     }
   }
@@ -149,6 +149,12 @@ const { heading = 'Consultá por tu proyecto.' } = Astro.props;
     .contact-list li {
       grid-template-columns: 1fr;
       gap: 0.2rem;
+    }
+  }
+
+  @media (max-width: 240px) {
+    .contact-note {
+      padding: var(--space-sm);
     }
   }
 </style>

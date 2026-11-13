@@ -118,6 +118,7 @@ const navTree: NavItem[] = NAV_LINKS.map((link) => {
     <input type="checkbox" id="nav-check" class="nav-check" />
     <a href="/" class="brand-link" aria-label="Galarza Construcción — volver al inicio">
       <Logo />
+      <span class="brand-mobile-name" aria-hidden="true">Galarza</span>
     </a>
 
     <nav class="nav" aria-label="Navegación principal">
@@ -224,6 +225,10 @@ const navTree: NavItem[] = NAV_LINKS.map((link) => {
     text-decoration: none;
     display: inline-flex;
     margin-right: auto;
+  }
+
+  .brand-mobile-name {
+    display: none;
   }
 
   /* Conmutador CSS para el menú móvil (sin JavaScript) */
@@ -420,15 +425,15 @@ const navTree: NavItem[] = NAV_LINKS.map((link) => {
     top: 16px;
   }
 
-  .nav-check:checked ~ .nav-toggle .nav-toggle-box::before {
+  .nav-check:checked ~ .header-actions .nav-toggle-box::before {
     transform: translateY(8px) rotate(45deg);
   }
 
-  .nav-check:checked ~ .nav-toggle .nav-toggle-bar {
+  .nav-check:checked ~ .header-actions .nav-toggle-bar {
     opacity: 0;
   }
 
-  .nav-check:checked ~ .nav-toggle .nav-toggle-box::after {
+  .nav-check:checked ~ .header-actions .nav-toggle-box::after {
     transform: translateY(-8px) rotate(-45deg);
   }
 
@@ -436,7 +441,12 @@ const navTree: NavItem[] = NAV_LINKS.map((link) => {
     display: none;
   }
 
-  @media (max-width: 880px) {
+  .nav-check:focus-visible ~ .header-actions .nav-toggle {
+    outline: 2px solid var(--color-cyan);
+    outline-offset: 4px;
+  }
+
+  @media (max-width: 1100px) {
     .header-inner {
       justify-content: space-between;
     }
@@ -445,7 +455,7 @@ const navTree: NavItem[] = NAV_LINKS.map((link) => {
       display: block;
     }
 
-    .header-cta {
+    .header-actions :global(.header-cta) {
       display: none;
     }
 
@@ -547,8 +557,27 @@ const navTree: NavItem[] = NAV_LINKS.map((link) => {
       margin-top: var(--space-md);
     }
 
-    .nav-mobile-cta .btn {
+    .nav-mobile-cta :global(.btn) {
       width: 100%;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .brand-link :global(.brand-text) {
+      display: none;
+    }
+
+    .brand-mobile-name {
+      display: inline;
+      align-self: center;
+      margin-left: 0.5rem;
+      color: var(--color-ink);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .header-inner {
+      gap: var(--space-sm);
     }
   }
 </style>

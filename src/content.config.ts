@@ -15,10 +15,26 @@ const imageRef = z.object({
   caption: z.string().optional(),
 });
 
-/** Imagen de obra con la etapa del ciclo a la que pertenece. */
-const workImage = imageRef.extend({
-  stage: z.enum(['antes', 'durante', 'despues']).optional(),
-});
+/**
+ * Bloque del relato visual de una obra. El contenido se alterna en el orden
+ * declarado: texto, imagen, texto, imagen, para que el relato y el registro
+ * fotográfico se complementen en lugar de quedar en bloques separados.
+ */
+const storyBlock = z.discriminatedUnion('type', [
+  z.object({
+    type: z.literal('text'),
+    /** Etapa del proceso, se muestra como subtítulo cuando corresponde. */
+    label: z.enum(['Antes', 'Durante', 'Después']).optional(),
+    body: z.string(),
+  }),
+  z.object({
+    type: z.literal('image'),
+    src: z.string(),
+    alt: z.string(),
+    caption: z.string().optional(),
+    orientation: z.enum(['landscape', 'portrait', 'wide']).optional(),
+  }),
+]);
 
 const obras = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/obras' }),
@@ -31,14 +47,12 @@ const obras = defineCollection({
     category: z.string(),
     summary: z.string(),
     description: z.string(),
-    /** Guía de contenido del proceso: antes, durante y después. */
-    before: z.string(),
-    during: z.string(),
-    after: z.string(),
+    /** Relato visual: texto e imágenes intercalados en orden. */
+    story: z.array(storyBlock).default([]),
+    /** Imagen de portada para listados y metadatos sociales. */
+    cover: imageRef.optional(),
     /** Slugs de servicios relacionados (colección `servicios`). */
     services: z.array(z.string()).default([]),
-    /** Galería fotográfica agrupable por etapa del ciclo. */
-    gallery: z.array(workImage).default([]),
     featured: z.boolean().default(false),
     caseStudy: z.boolean().default(false),
     order: z.number().default(99),

@@ -1,0 +1,220 @@
+---
+// Relato visual de una obra. Agrupa cada bloque de texto con las imágenes que
+// lo siguen y arma filas alternadas (texto/imagen, imagen/texto) para que el
+// contenido y el registro fotográfico se lean como un collage continuo.
+
+interface StoryText {
+  type: 'text';
+  label?: 'Antes' | 'Durante' | 'Después';
+  body: string;
+}
+
+interface StoryImage {
+  type: 'image';
+  src: string;
+  alt: string;
+  caption?: string;
+  orientation?: 'landscape' | 'portrait' | 'wide';
+}
+
+interface Props {
+  blocks: Array<StoryText | StoryImage>;
+}
+
+const { blocks } = Astro.props;
+
+type Row = { text?: StoryText; images: StoryImage[] };
+
+const rows: Row[] = [];
+for (const block of blocks) {
+  if (block.type === 'text') {
+    rows.push({ text: block, images: [] });
+  } else {
+    const current = rows[rows.length - 1];
+    if (current) {
+      current.images.push(block);
+    } else {
+      rows.push({ images: [block] });
+    }
+  }
+}
+---
+
+<div class="work-story">
+  {
+    rows.map((row, i) => {
+      const reverse = i % 2 === 1;
+      const mediaCount = Math.min(row.images.length, 3);
+
+      return (
+        <div
+          class:list={[
+            'story-row',
+            { 'story-row--reverse': reverse },
+            { 'story-row--text-only': !row.images.length },
+            { 'story-row--media-only': !row.text },
+          ]}
+        >
+          {row.text && (
+            <div class="story-text">
+              {row.text.label && <h2 class="story-label">{row.text.label}</h2>}
+              <p>{row.text.body}</p>
+            </div>
+          )}
+
+          {row.images.length > 0 && (
+            <div class:list={['story-media', `story-media--${mediaCount}`]}>
+              {row.images.map((image) => (
+                <figure class:list={[
+                  'story-figure',
+                  { 'story-figure--portrait': image.orientation === 'portrait' },
+                  { 'story-figure--wide': image.orientation === 'wide' },
+                ]}>
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  {image.caption && <figcaption>{image.caption}</figcaption>}
+                </figure>
+              ))}
+            </div>
+          )}
+        </div>
+      );
+    })
+  }
+</div>
+
+<style>
+  .work-story {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xl);
+  }
+
+  .story-row {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: var(--space-lg);
+    align-items: center;
+  }
+
+  .story-row--reverse .story-text {
+    order: 2;
+  }
+
+  .story-row--reverse .story-media {
+    order: 1;
+  }
+
+  .story-row--text-only {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .story-row--media-only {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .story-text p {
+    max-width: 48ch;
+    margin: 0;
+  }
+
+  .story-row--text-only .story-text p {
+    max-width: 68ch;
+  }
+
+  .story-label {
+    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-cyan);
+    margin: 0 0 var(--space-sm);
+    padding: 0;
+    border: 0;
+  }
+
+  .story-media {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .story-media--2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .story-media--3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .story-media--3 .story-figure:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .story-figure {
+    margin: 0;
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+  }
+
+  .story-figure img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .story-media--1 .story-figure img,
+  .story-media--3 .story-figure:first-child img {
+    aspect-ratio: 16 / 10;
+  }
+
+  .story-media .story-figure--portrait img,
+  .story-media--1 .story-figure--portrait img {
+    aspect-ratio: 3 / 4;
+  }
+
+  .story-media .story-figure--wide img {
+    aspect-ratio: 2.25 / 1;
+    object-fit: contain;
+  }
+
+  .story-figure figcaption {
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--text-sm);
+    color: var(--color-ink);
+  }
+
+  @media (max-width: 900px) {
+    .story-row {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-md);
+    }
+
+    .story-row--reverse .story-text,
+    .story-row--reverse .story-media {
+      order: initial;
+    }
+
+    .story-text p {
+      max-width: 62ch;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .story-media--2,
+    .story-media--3 {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .story-media--3 .story-figure:first-child {
+      grid-column: auto;
+    }
+  }
+</style>

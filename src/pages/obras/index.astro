@@ -7,6 +7,7 @@ import BlueprintCard from '../../components/BlueprintCard.astro';
 import CTASection from '../../components/CTASection.astro';
 import { itemListSchema } from '../../lib/schema';
 import { breadcrumbTrail } from '../../lib/breadcrumbs';
+import { obraCover } from '../../lib/obras';
 import { COMPANY, WHATSAPP_MESSAGES } from '../../lib/company';
 
 const obras = (await getCollection('obras')).sort(
@@ -43,17 +44,20 @@ const schema = [
 
     <div class="works-grid">
       {
-        obras.map((obra, i) => (
-          <BlueprintCard
-            code={`O-${String(i + 1).padStart(2, '0')}`}
-            title={obra.data.title}
-            href={`/obras/${obra.id}/`}
-            category={obra.data.category}
-            location={obra.data.location}
-            image={obra.data.gallery[0]?.src}
-            imageAlt={obra.data.gallery[0]?.alt}
-          />
-        ))
+        obras.map((obra, i) => {
+          const cover = obraCover(obra);
+          return (
+            <BlueprintCard
+              code={`O-${String(i + 1).padStart(2, '0')}`}
+              title={obra.data.title}
+              href={`/obras/${obra.id}/`}
+              category={obra.data.category}
+              location={obra.data.location}
+              image={cover?.src}
+              imageAlt={cover?.alt}
+            />
+          );
+        })
       }
     </div>
   </div>

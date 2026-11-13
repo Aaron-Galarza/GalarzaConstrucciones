@@ -40,19 +40,22 @@ ${faq ? `\n**Preguntas frecuentes:**\n${faq}` : ''}`;
   }).join('\n\n');
 
   const works = obras
-    .map(
-      (obra) => `### ${obra.data.title}
+    .map((obra) => {
+      const story = obra.data.story
+        .filter((block) => block.type === 'text')
+        .map((block) =>
+          block.label ? `**${block.label}:** ${block.body}` : block.body,
+        )
+        .join('\n\n');
+
+      return `### ${obra.data.title}
 URL: ${canonicalUrl(`/obras/${obra.id}/`)}
 Ubicación: ${obra.data.location}, ${obra.data.province}
 Categoría: ${obra.data.category}
 ${obra.data.summary}
 
-**Antes:** ${obra.data.before}
-
-**Durante:** ${obra.data.during}
-
-**Después:** ${obra.data.after}`,
-    )
+${story}`;
+    })
     .join('\n\n');
 
   const articles = posts

@@ -19,11 +19,12 @@ const {
   path,
   type,
   image,
+  imageAlt,
   robots,
   schemas = [],
 } = Astro.props;
 
-const seo = buildSEOTags({ title, description, path, type, image, robots });
+const seo = buildSEOTags({ title, description, path, type, image, imageAlt, robots });
 
 // Datos estructurados comunes a todo el sitio: empresa y sitio web. Cada
 // página suma sólo los suyos (servicio, obra, artículo, migas, FAQ).
